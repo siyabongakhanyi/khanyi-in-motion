@@ -593,6 +593,17 @@ html:not(.kim-js-ready) #the-world :is(#tab-worn,#tab-built,#tab-moved,#tab-live
     border-left:0 !important;
   }
 }
+
+/* Brand marks: locally bundled, brand-specific SVGs. Navigation glyphs remain generic. */
+.brand-icon{display:inline-block;width:18px;height:18px;flex:none;object-fit:contain;vertical-align:middle}
+.nav .brand-nav-link{display:inline-flex;align-items:center;gap:8px}
+.contact .pill{gap:12px}
+.contact .pill .brand-icon{width:19px;height:19px}
+.foot .social{flex-wrap:wrap;row-gap:16px}
+.foot .social a{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.foot .social .brand-icon{width:19px;height:19px}
+@media(max-width:760px){.foot .social{gap:14px 20px}}
+
 </style>
 </head>
 <body>
@@ -602,7 +613,7 @@ html:not(.kim-js-ready) #the-world :is(#tab-worn,#tab-built,#tab-moved,#tab-live
     <nav class="nav" id="main-nav" aria-label="Main navigation">
       <a href="#the-world">The world</a>
       <a href="#work">Selected work</a>
-      <a href="/pinterest/">Pinterest Studio ↗</a>
+      <a class="brand-nav-link" href="/pinterest/"><img class="brand-icon" src="/assets/brand/pinterest.svg" alt="" aria-hidden="true">Pinterest Studio <span aria-hidden="true">↗</span></a>
       <a href="#about">About</a>
       <a class="btn-mini" href="#collaborate">Collaborate ↗</a>
     </nav>
@@ -744,10 +755,10 @@ html:not(.kim-js-ready) #the-world :is(#tab-worn,#tab-built,#tab-moved,#tab-live
       <span class="eyebrow">04 / The next movement</span>
       <h2 id="contact-heading">LET'S<br/>MAKE<br/>SOMETHING.</h2>
       <p>Editorial concepts, content, styling, digital experiences or something we haven't thought of yet. If there's a story to tell or an idea to explore, let's talk.</p>
-      <a class="pill" href="https://www.instagram.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer">Start a conversation on Instagram <span aria-hidden="true">↗</span></a>
+      <a class="pill" href="https://www.instagram.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer"><img class="brand-icon" src="/assets/brand/instagram.svg" alt="" aria-hidden="true">Start a conversation on Instagram <span aria-hidden="true">↗</span></a>
     </div></section>
   </main>
-  <footer><div class="wrap foot"><div><div class="big">KHANYI<br/>IN MOTION<span style="color:var(--orange)">.</span></div><div class="small">© 2026 Siya Khanyi · Independent personal and creative portfolio.</div></div><div class="social"><a href="https://www.instagram.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.pinterest.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer">Pinterest ↗</a><a href="https://www.tiktok.com/@_heysiyakhanyi" target="_blank" rel="noopener noreferrer">TikTok ↗</a></div></div></footer>
+  <footer><div class="wrap foot"><div><div class="big">KHANYI<br/>IN MOTION<span style="color:var(--orange)">.</span></div><div class="small">© 2026 Siya Khanyi · Independent personal and creative portfolio.</div></div><div class="social"><a href="https://www.instagram.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer"><img class="brand-icon" src="/assets/brand/instagram.svg" alt="" aria-hidden="true">Instagram <span aria-hidden="true">↗</span></a><a href="https://www.pinterest.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer"><img class="brand-icon" src="/assets/brand/pinterest.svg" alt="" aria-hidden="true">Pinterest <span aria-hidden="true">↗</span></a><a href="https://www.tiktok.com/@_heysiyakhanyi" target="_blank" rel="noopener noreferrer"><img class="brand-icon" src="/assets/brand/tiktok.svg" alt="" aria-hidden="true">TikTok <span aria-hidden="true">↗</span></a></div></div></footer>
   <script>
     const menuButton=document.getElementById('menu-button');const nav=document.getElementById('main-nav');
     menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));menuButton.textContent=open?'CLOSE −':'MENU +';});
