@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f3eb">
+<meta name="description" content="The Pinterest Studio — a living visual archive for Khanyi in Motion. Draft creative boards, connect public Pinterest boards and display them together.">
+<title>Pinterest Studio — Khanyi in Motion</title>
+<style>
+:root{--paper:#f6f3eb;--ink:#171613;--line:#cbc7bd;--muted:#6b695f;--orange:#e65426;--cream:#ebe6da;--dark:#25231f;--white:#fffdf7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.55;cursor:not-allowed}
+.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:10px;background:#fff;padding:12px;z-index:10}
+.shell{max-width:1440px;padding:0 5vw;margin:auto}
+.site-header{height:90px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink);gap:20px}
+.wordmark{display:flex;align-items:center;gap:13px;text-decoration:none;font-size:11px;font-weight:900;letter-spacing:.12em}
+.mark{display:grid;place-items:center;width:43px;height:43px;border-radius:50%;background:var(--ink);color:var(--paper);font-size:17px;letter-spacing:-.1em}
+.header-nav{display:flex;align-items:center;gap:24px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:800}
+.header-nav a{text-decoration:none}.header-nav a:hover{text-decoration:underline}
+.header-nav .pill{border:1px solid var(--ink);border-radius:50px;padding:12px 16px}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:5vw;padding:92px 0 80px;position:relative}
+.eyebrow{font-size:11px;font-weight:900;letter-spacing:.19em;text-transform:uppercase;display:flex;gap:15px;align-items:center}
+.eyebrow:before{content:"";width:30px;height:2px;background:var(--orange)}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(68px,10vw,156px);letter-spacing:-.092em;line-height:.78;margin:40px 0 33px;font-weight:900;max-width:850px}
+h1 span{color:var(--orange)}
+.hero-copy{font-size:clamp(16px,1.8vw,21px);line-height:1.48;max-width:550px}
+.hero-aside{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-end;gap:20px}
+.art{background:var(--orange);min-height:280px;position:relative;overflow:hidden;border-radius:44% 0 43% 0}
+.art:before{content:"";position:absolute;width:105%;height:135%;top:-15%;left:-4%;border:4px solid var(--ink);border-radius:50%;transform:rotate(-32deg)}
+.art:after{content:"MOTION";position:absolute;bottom:18px;right:18px;color:var(--paper);font-size:clamp(28px,5vw,70px);letter-spacing:-.08em;font-weight:900;transform:rotate(-90deg);transform-origin:80% 0}
+.aside-note{display:flex;justify-content:space-between;gap:18px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.strip{background:var(--ink);color:var(--paper);padding:17px 0}
+.strip .shell{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:11px;letter-spacing:.16em;font-weight:900;text-transform:uppercase}
+.section{padding:85px 0;border-top:1px solid var(--ink)}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:36px}
+.section h2{font-size:clamp(40px,6vw,76px);letter-spacing:-.075em;line-height:.95;margin:16px 0 0;font-weight:900}
+.section-head>p{max-width:375px;font-size:15px;color:var(--muted);line-height:1.5;margin-bottom:0}
+.world-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.world-card{min-height:340px;border:1px solid var(--ink);padding:23px;display:flex;flex-direction:column;align-items:flex-start;transition:transform .18s,background .18s;background:var(--cream)}
+.world-card:hover{transform:translateY(-5px)}
+.world-card:nth-child(2){background:#e2ded3}.world-card:nth-child(3){background:#ded6ca}.world-card:nth-child(4){background:#e7e3d6}
+.world-num{font-size:11px;letter-spacing:.15em;font-weight:900}
+.world-title{font-size:clamp(36px,4vw,58px);letter-spacing:-.08em;line-height:1;margin:auto 0 14px;font-weight:900}
+.world-desc{font-size:13px;line-height:1.4;max-width:230px;min-height:55px}
+.cta{appearance:none;background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:15px 18px;font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;display:inline-flex;gap:15px;align-items:center;justify-content:center;text-decoration:none;transition:background .2s,color .2s}
+.cta:hover{background:var(--orange);border-color:var(--orange);color:white}
+.cta.alt{background:transparent;color:var(--ink)}.cta.alt:hover{background:var(--ink);color:white}
+.cta.small{padding:11px 13px;font-size:10px}
+.workspace{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:30px}
+.panel{border:1px solid var(--ink);background:var(--white);padding:30px}
+.panel.dark{background:var(--dark);color:var(--paper)}
+.panel h3{font-size:30px;letter-spacing:-.055em;margin:0 0 15px}
+.panel-intro{color:var(--muted);font-size:14px;line-height:1.5;margin-bottom:25px}
+.panel.dark .panel-intro{color:#c0bab0}
+form{margin:0}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.field{display:flex;flex-direction:column;gap:9px;min-width:0}.field.full{grid-column:1/-1}
+.field label{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.13em}
+.field input,.field textarea,.field select{background:transparent;color:var(--ink);border:1px solid #a5a196;border-radius:0;padding:14px;width:100%;outline:0;font-size:14px}
+.field textarea{resize:vertical;min-height:115px;line-height:1.5}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange)}
+.panel.dark .field input,.panel.dark .field textarea,.panel.dark .field select{color:var(--paper);border-color:#8b877d}
+.panel.dark .field select option{color:#222}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:21px}
+.notice{font-size:12px;line-height:1.5;color:var(--muted);margin:20px 0 0}
+.panel.dark .notice{color:#d5cfc4}
+.alert{margin:15px 0 0;min-height:16px;font-size:12px;font-weight:700;color:var(--orange)}
+.draft-list{margin-top:30px;border-top:1px solid var(--line);padding-top:20px}
+.draft-list>h4{font-size:11px;letter-spacing:.13em;text-transform:uppercase}
+.draft-item{display:flex;justify-content:space-between;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);align-items:center}
+.draft-item strong{display:block;font-size:15px}.draft-item span{display:block;font-size:11px;color:var(--muted);margin-top:5px}
+.ghost-btn{background:none;border:0;padding:7px;color:var(--muted);text-decoration:underline;font-size:11px;cursor:pointer}
+.ghost-btn:hover{color:var(--orange)}
+.pin-divider{height:1px;background:#89867e;margin:28px 0}
+.helpbox{padding:20px 22px;background:#34312d;color:#eee;line-height:1.55;font-size:13px}
+.helpbox b{color:#fff}
+.live-intro{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-bottom:24px}
+.live-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.board-view{border:1px solid var(--ink);padding:18px;background:var(--white);min-width:0}
+.board-view .embed-frame{min-height:250px;display:flex;align-items:flex-start;overflow:hidden;width:100%;padding-top:12px}
+.board-view h3{font-size:22px;letter-spacing:-.045em;margin:10px 0}
+.board-meta{font-size:10px;font-weight:900;letter-spacing:.13em;color:var(--orange);text-transform:uppercase}
+.board-view a.external{font-size:11px;font-weight:800}
+.board-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.profile-view{padding:16px 0;min-height:30px;overflow:hidden}
+.profile-view:empty{display:none}
+.empty{padding:58px 20px;text-align:center;border:1px dashed var(--line);color:var(--muted);font-size:14px;line-height:1.5}
+.full-span{grid-column:1/-1}
+.small-print{font-size:12px;line-height:1.5;color:var(--muted);max-width:1000px}
+footer{border-top:1px solid var(--ink);padding:45px 0 60px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+footer a{text-decoration:none}footer a:hover{text-decoration:underline}
+@media(max-width:1000px){.world-grid{grid-template-columns:repeat(2,1fr)}.world-card{min-height:290px}.hero{padding:65px 0;grid-template-columns:1.4fr .6fr}.art{min-height:220px}}
+@media(max-width:720px){.shell{padding:0 20px}.site-header{height:75px}.header-nav{gap:12px;font-size:9px}.header-nav .pill{padding:10px}.hero{display:block;padding:54px 0 65px}.hero-aside{display:none}h1{font-size:clamp(62px,16vw,110px);margin:34px 0}.hero-copy{font-size:17px}.section{padding:60px 0}.section-head{display:block}.section-head>p{margin-top:20px}.workspace,.live-intro,.live-grid{grid-template-columns:1fr}.panel{padding:22px}.world-grid{gap:8px}.world-card{min-height:275px;padding:17px}.world-title{font-size:38px}.world-desc{font-size:12px}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.strip .shell{gap:9px;font-size:9px}.header-nav a:first-child{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.world-card,.cta{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="Return to Khanyi in Motion"><span class="mark">K</span><span>KHANYI IN MOTION</span></a>
+    <nav class="header-nav" aria-label="Main"><a href="/">The world</a><a href="#boards">Live boards</a><a href="#studio" class="pill">The studio ↗</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div><div class="eyebrow">The connected visual world / 001</div>
+        <h1 id="hero-title">THE<br>PINTEREST<br><span>STUDIO.</span></h1>
+        <p class="hero-copy">A place to collect what moves me, shape ideas into visual worlds, and bring my Pinterest inspiration into Khanyi in Motion. Not a niche. A life in motion.</p>
+        <a class="cta" href="#studio">Make a board <span aria-hidden="true">↗</span></a>
+      </div>
+      <aside class="hero-aside" aria-hidden="true"><div class="art"></div><div class="aside-note"><span>Visual thought / living archive</span><span>2026 →</span></div></aside>
+    </section>
+  </main>
+</div>
+<div class="strip"><div class="shell"><span>01 / WORN</span><span>02 / BUILT</span><span>03 / MOVED</span><span>04 / LIVED</span><span>ONE LIFE. MANY WORLDS.</span></div></div>
+<div class="shell">
+  <section class="section" id="worlds" aria-labelledby="worlds-title">
+    <div class="section-head"><div><div class="eyebrow">The visual chapters</div><h2 id="worlds-title">START WITH<br>A WORLD.</h2></div><p>These are starting points, not boxes. Each board is a chapter in the same creative identity.</p></div>
+    <div class="world-grid">
+      <article class="world-card"><div class="world-num">01 / THE EXPRESSION</div><div class="world-title">WORN.</div><p class="world-desc">Styling, silhouettes, fittings, campaigns, objects and the looks that say something.</p><button class="cta small" type="button" data-template="WORN">Start this board ↗</button></article>
+      <article class="world-card"><div class="world-num">02 / THE MAKING</div><div class="world-title">BUILT.</div><p class="world-desc">Interfaces, systems, beautiful utility and ideas that deserve to exist.</p><button class="cta small" type="button" data-template="BUILT">Start this board ↗</button></article>
+      <article class="world-card"><div class="world-num">03 / THE BECOMING</div><div class="world-title">MOVED.</div><p class="world-desc">Body, movement, strength, pace and the feeling of getting somewhere.</p><button class="cta small" type="button" data-template="MOVED">Start this board ↗</button></article>
+      <article class="world-card"><div class="world-num">04 / THE IN-BETWEEN</div><div class="world-title">LIVED.</div><p class="world-desc">Places, travel, everyday rituals, spaces and moments worth holding onto.</p><button class="cta small" type="button" data-template="LIVED">Start this board ↗</button></article>
+    </div>
+  </section>
+  <section class="section" id="studio" aria-labelledby="studio-title">
+    <div class="section-head"><div><div class="eyebrow">An idea becomes a board</div><h2 id="studio-title">THE BOARD<br>WORKSHOP.</h2></div><p>Write your concept and save the brief here. Then create the actual board in Pinterest and link it back to this space.</p></div>
+    <div class="workspace">
+      <div class="panel">
+        <h3>01. Draft a visual world.</h3><p class="panel-intro">Give the board a point of view before collecting images.</p>
+        <form id="draft-form">
+          <div class="fields">
+            <div class="field"><label for="draft-world">Chapter</label><select id="draft-world"><option>WORN</option><option>BUILT</option><option>MOVED</option><option>LIVED</option></select></div>
+            <div class="field"><label for="draft-name">Board title</label><input id="draft-name" maxlength="100" required placeholder="e.g. THE FIT ARCHIVE"></div>
+            <div class="field full"><label for="draft-desc">Board description</label><textarea id="draft-desc" required maxlength="490" placeholder="What belongs in this visual world?"></textarea></div>
+            <div class="field full"><label for="draft-ideas">Visual search notes / Pin ideas</label><textarea id="draft-ideas" placeholder="Materials, references, silhouettes, settings, lighting, colours..."></textarea></div>
+          </div>
+          <div class="actions"><button type="submit" class="cta">Save board brief ↗</button><button id="copy-brief" class="cta alt" type="button">Copy brief</button><button id="open-pinterest" class="cta alt" type="button">Open Pinterest ↗</button></div>
+          <p id="draft-status" class="alert" role="status" aria-live="polite"></p>
+        </form>
+        <div class="draft-list"><h4>Your saved briefs <span id="draft-count">(0)</span></h4><div id="draft-items" class="small-print">No briefs drafted yet.</div></div>
+      </div>
+      <div class="panel dark">
+        <h3>02. Compose a Pin.</h3><p class="panel-intro">Write a compelling creative caption or save idea before you publish it on Pinterest.</p>
+        <div class="fields">
+          <div class="field full"><label for="pin-title">Pin title</label><input id="pin-title" maxlength="100" placeholder="The styling language of movement"></div>
+          <div class="field full"><label for="pin-desc">Pin description</label><textarea id="pin-desc" maxlength="500" placeholder="What is the image about? Why does it belong in this world?"></textarea></div>
+          <div class="field full"><label for="pin-link">Destination link (optional)</label><input id="pin-link" type="url" placeholder="https://khanyi-in-motion.vercel.app"></div>
+        </div>
+        <div class="actions"><button id="copy-pin" type="button" class="cta">Copy Pin copy ↗</button><a class="cta alt" style="color:inherit;border-color:#aca69a" target="_blank" rel="noopener noreferrer" href="https://www.pinterest.com/">Create Pin on Pinterest ↗</a></div>
+        <p id="pin-status" class="alert" role="status" aria-live="polite"></p>
+        <div class="pin-divider"></div>
+        <div class="helpbox"><b>How this works now</b><p style="margin:8px 0 0">Your drafts stay in this browser. Pinterest boards and Pins are created on Pinterest itself until API authorisation is enabled. Nothing here is automatically published to Pinterest.</p></div>
+        <div style="margin-top:24px;font-size:11px;letter-spacing:.13em;font-weight:900">KHANYI IN MOTION / THE VISUAL ARCHIVE</div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="boards" aria-labelledby="boards-title">
+    <div class="section-head"><div><div class="eyebrow">Your connected inspiration</div><h2 id="boards-title">PINTEREST,<br>IN MOTION.</h2></div><p>Paste your public Pinterest profile and board links. Official Pinterest embeds display their content here when available.</p></div>
+    <div class="live-intro">
+      <div class="panel">
+        <h3>03. Add your Pinterest profile.</h3><p class="panel-intro">Use the public profile URL, not a password. You can change it whenever you like.</p>
+        <form id="profile-form">
+          <div class="field"><label for="profile-url">Pinterest profile URL</label><input id="profile-url" type="url" placeholder="https://www.pinterest.com/yourusername/" required></div>
+          <div class="actions"><button class="cta" type="submit">Show my profile ↗</button><button id="clear-profile" class="cta alt" type="button">Clear</button></div>
+          <p class="alert" id="profile-status" role="status" aria-live="polite"></p>
+        </form>
+        <div class="profile-view" id="profile-view" aria-label="Embedded Pinterest profile"></div>
+      </div>
+      <div class="panel">
+        <h3>04. Add a live board.</h3><p class="panel-intro">Create a public board in Pinterest, copy its URL and connect it to your visual chapter.</p>
+        <form id="board-form">
+          <div class="fields">
+            <div class="field"><label for="board-world">Chapter</label><select id="board-world"><option>WORN</option><option>BUILT</option><option>MOVED</option><option>LIVED</option></select></div>
+            <div class="field"><label for="board-name">Display title</label><input id="board-name" required maxlength="90" placeholder="e.g. WORN: THE FIT ARCHIVE"></div>
+            <div class="field full"><label for="board-url">Public Pinterest board URL</label><input id="board-url" type="url" required placeholder="https://www.pinterest.com/yourusername/your-board/"></div>
+          </div>
+          <div class="actions"><button class="cta" type="submit">Add to gallery ↗</button></div>
+          <p class="alert" id="board-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+    <div class="live-grid" id="board-grid"><div class="empty full-span">Your live boards will appear here once you add their Pinterest links.</div></div>
+    <p class="small-print" style="margin-top:20px">Pinterest embeds require public boards, a working internet connection and permission for Pinterest's third-party content. Private or secret boards cannot be shown publicly. Connected links and drafts are currently stored only in this browser, not synchronised between devices.</p>
+  </section>
+  <footer><span>KHANYI IN MOTION © 2026</span><span>NOT A NICHE. A LIFE IN MOTION.</span><a href="/">Return to the world ↗</a></footer>
+</div>
+<script>
+(function(){
+  "use strict";
+  var STORAGE="kim-pinterest-studio-v1";
+  var templates={
+    WORN:{title:"THE FIT ARCHIVE",desc:"A visual study of what I wear and why: silhouettes, proportions, personal style, fashion images and creative direction that reveal a point of view.",ideas:"Outfit construction; tailoring; campaign lighting; expressive portraits; unexpected styling; colour and texture"},
+    BUILT:{title:"THINGS I WANT TO BUILD",desc:"Technology can be beautiful. A collection of interfaces, objects, systems and creative ideas that bring utility and feeling together.",ideas:"Editorial interfaces; information architecture; digital product ideas; interaction details; design systems; tangible inventions"},
+    MOVED:{title:"A BODY IN MOTION",desc:"Strength, pace and possibility. Visual references for training, transformation, movement, recovery and everything that keeps me becoming.",ideas:"Running photography; training rituals; dynamic poses; sport styling; textures of movement; recovery"},
+    LIVED:{title:"THE LIFE BETWEEN",desc:"The places, moments and rituals that shape a life beyond one category: rooms, journeys, ordinary beauty and extraordinary stories.",ideas:"Travel journals; warm interiors; favourite places; tablescapes; daily rituals; fleeting moments"}
+  };
+  function $(id){return document.getElementById(id)}
+  function load(){try{var raw=JSON.parse(localStorage.getItem(STORAGE)||"{}");return {profile:typeof raw.profile==="string"?raw.profile:"",boards:Array.isArray(raw.boards)?raw.boards:[],drafts:Array.isArray(raw.drafts)?raw.drafts:[]}}catch(e){return {profile:"",boards:[],drafts:[]}}}
+  var state=load();
+  function persist(){try{localStorage.setItem(STORAGE,JSON.stringify(state));return true}catch(e){return false}}
+  function status(id,message){$(id).textContent=message}
+  function validPinterest(raw,minParts){try{var url=new URL(raw.trim());var host=url.hostname.toLowerCase();if(url.protocol!=="https:"||!(host==="pinterest.com"||host==="www.pinterest.com"||host.endsWith(".pinterest.com")))return null;var parts=url.pathname.split("/").filter(Boolean);if(parts.length<minParts||["pin","search","ideas","settings","business","today","_"].includes(parts[0].toLowerCase()))return null;url.search="";url.hash="";url.hostname="www.pinterest.com";return url.toString()}catch(e){return null}}
+  function el(tag,className,textContent){var node=document.createElement(tag);if(className)node.className=className;if(textContent!==undefined)node.textContent=textContent;return node}
+  function rebuildPinterest(){if(window.PinUtils&&typeof window.PinUtils.build==="function"){window.PinUtils.build()}else if(!document.querySelector('script[data-pinterest-script]')){var s=document.createElement("script");s.src="https://assets.pinterest.com/js/pinit.js";s.async=true;s.defer=true;s.setAttribute("data-pinterest-script","1");document.body.appendChild(s)}}
+  function embedLink(url,kind){var anchor=el("a");anchor.href=url;anchor.setAttribute("data-pin-do",kind);anchor.setAttribute("data-pin-board-width","440");anchor.setAttribute("data-pin-scale-height","270");anchor.setAttribute("data-pin-scale-width","85");anchor.textContent="View on Pinterest";anchor.target="_blank";anchor.rel="noopener noreferrer";return anchor}
+  function paintProfile(){var view=$("profile-view");view.replaceChildren();$("profile-url").value=state.profile;if(state.profile){view.appendChild(embedLink(state.profile,"embedUser"));rebuildPinterest()}}
+  function paintBoards(){var grid=$("board-grid");grid.replaceChildren();if(!state.boards.length){grid.appendChild(el("div","empty full-span","Your live boards will appear here once you add their Pinterest links."));return}
+    state.boards.forEach(function(board){
+      var card=el("article","board-view");var bar=el("div","board-toolbar");bar.appendChild(el("span","board-meta",board.world+" / CONNECTED"));
+      var del=el("button","ghost-btn","Remove");del.type="button";del.setAttribute("aria-label","Remove "+board.title);
+      del.addEventListener("click",function(){state.boards=state.boards.filter(function(b){return b.id!==board.id});persist();paintBoards()});bar.appendChild(del);card.appendChild(bar);
+      card.appendChild(el("h3","",board.title));
+      var frame=el("div","embed-frame");frame.appendChild(embedLink(board.url,"embedBoard"));card.appendChild(frame);
+      var ext=el("a","external","Open original board ↗");ext.href=board.url;ext.target="_blank";ext.rel="noopener noreferrer";card.appendChild(ext);grid.appendChild(card)
+    });rebuildPinterest()
+  }
+  function paintDrafts(){var view=$("draft-items");view.replaceChildren();$("draft-count").textContent="("+state.drafts.length+")";if(!state.drafts.length){view.appendChild(el("p","small-print","No briefs drafted yet."));return}
+    state.drafts.forEach(function(d){
+      var row=el("div","draft-item");var content=el("div");content.appendChild(el("strong","",d.title));content.appendChild(el("span","",d.world+" / board brief"));row.appendChild(content);
+      var controls=el("div");var loadButton=el("button","ghost-btn","Edit");loadButton.type="button";loadButton.addEventListener("click",function(){prefill(d.world,d);$("studio").scrollIntoView({behavior:"smooth"})});controls.appendChild(loadButton);
+      var remove=el("button","ghost-btn","Delete");remove.type="button";remove.addEventListener("click",function(){state.drafts=state.drafts.filter(function(item){return item.id!==d.id});persist();paintDrafts()});controls.appendChild(remove);row.appendChild(controls);view.appendChild(row)
+    })
+  }
+  function prefill(world,data){var t=data||templates[world];$("draft-world").value=world;$("draft-name").value=t.title;$("draft-desc").value=t.desc;$("draft-ideas").value=t.ideas;$("draft-status").textContent=""}
+  function brief(){return "KHANYI IN MOTION — "+$("draft-world").value+"\nBOARD: "+$("draft-name").value.trim()+"\n\n"+$("draft-desc").value.trim()+"\n\nVISUAL NOTES\n"+$("draft-ideas").value.trim()}
+  function copy(text,id){if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(function(){status(id,"Copied to clipboard.")}).catch(function(){fallbackCopy(text,id)})}else fallbackCopy(text,id)}
+  function fallbackCopy(text,id){var input=document.createElement("textarea");input.value=text;input.style.position="fixed";input.style.left="-9999px";document.body.appendChild(input);input.select();try{document.execCommand("copy");status(id,"Copied to clipboard.")}catch(e){status(id,"Copy failed. Please select and copy your text manually.")}input.remove()}
+  document.querySelectorAll("[data-template]").forEach(function(button){button.addEventListener("click",function(){var world=button.getAttribute("data-template");prefill(world);$("studio").scrollIntoView({behavior:"smooth"})})});
+  $("draft-form").addEventListener("submit",function(e){e.preventDefault();var entry={id:Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6),world:$("draft-world").value,title:$("draft-name").value.trim(),desc:$("draft-desc").value.trim(),ideas:$("draft-ideas").value.trim()};if(!entry.title||!entry.desc)return;state.drafts.unshift(entry);state.drafts=state.drafts.slice(0,100);status("draft-status",persist()?"Board brief saved in this browser.":"Unable to save on this device.");paintDrafts()});
+  $("copy-brief").addEventListener("click",function(){copy(brief(),"draft-status")});
+  $("open-pinterest").addEventListener("click",function(){window.open("https://www.pinterest.com/","_blank","noopener,noreferrer");status("draft-status","Create the board on Pinterest, then paste its public URL in section 04 below.")});
+  $("copy-pin").addEventListener("click",function(){var copyText=[$("pin-title").value.trim(),$("pin-desc").value.trim(),$("pin-link").value.trim()].filter(Boolean).join("\n\n");if(copyText)copy(copyText,"pin-status");else status("pin-status","Write a title or description first.")});
+  $("profile-form").addEventListener("submit",function(e){e.preventDefault();var url=validPinterest($("profile-url").value,1);if(!url||new URL(url).pathname.split("/").filter(Boolean).length!==1){status("profile-status","Enter a full Pinterest profile URL ending in your username.");return}state.profile=url;persist();paintProfile();status("profile-status","Profile link saved in this browser.")});
+  $("clear-profile").addEventListener("click",function(){state.profile="";persist();paintProfile();status("profile-status","Profile link cleared.")});
+  $("board-form").addEventListener("submit",function(e){e.preventDefault();var url=validPinterest($("board-url").value,2);if(!url){status("board-status","Enter a public Pinterest board URL with username and board slug.");return}var name=$("board-name").value.trim();if(!name)return;var exists=state.boards.some(function(item){return item.url===url});if(exists){status("board-status","That board has already been added.");return}
+    state.boards.unshift({id:Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6),world:$("board-world").value,title:name,url:url});persist();paintBoards();$("board-name").value="";$("board-url").value="";status("board-status","Board added. Pinterest may take a moment to render its embed.")
+  });
+  prefill("WORN");paintDrafts();paintBoards();paintProfile()
+})();
+</script>
+<noscript><div style="padding:24px;background:#fff6eb">JavaScript is required to save briefs and display connected Pinterest boards.</div></noscript>
+</body>
+</html>
