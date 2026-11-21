@@ -107,7 +107,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
       <div><div class="eyebrow">The connected visual world / 001</div>
         <h1 id="hero-title">THE<br>PINTEREST<br><span>STUDIO.</span></h1>
         <p class="hero-copy">A place to collect what moves me, shape ideas into visual worlds, and bring my Pinterest inspiration into Khanyi in Motion. Not a niche. A life in motion.</p>
-        <div class="hero-actions"><a class="cta" href="#studio">Make a board <span aria-hidden="true">↗</span></a><a class="cta alt" href="https://pin.it/44q5RBLH4" target="_blank" rel="noopener noreferrer">Visit my Pinterest ↗</a></div>
+        <div class="hero-actions"><a class="cta" href="#studio">Make a board <span aria-hidden="true">↗</span></a><a class="cta alt" href="https://www.pinterest.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer">My Pinterest ↗</a></div>
       </div>
       <aside class="hero-aside" aria-hidden="true"><div class="art"></div><div class="aside-note"><span>Visual thought / living archive</span><span>2026 →</span></div></aside>
     </section>
@@ -160,7 +160,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
     <div class="section-head"><div><div class="eyebrow">Your connected inspiration</div><h2 id="boards-title">PINTEREST,<br>IN MOTION.</h2></div><p>Paste your public Pinterest profile and board links. Official Pinterest embeds display their content here when available.</p></div>
     <div class="live-intro">
       <div class="panel">
-        <h3>03. Add your Pinterest profile.</h3><p class="panel-intro">Your shared Pinterest link is <a href="https://pin.it/44q5RBLH4" target="_blank" rel="noopener noreferrer">saved here ↗</a>. For an embedded live profile, open that link and copy the full <b>pinterest.com/username/</b> URL into the field below. No password needed.</p>
+        <h3>03. Add your Pinterest profile.</h3><p class="panel-intro">Connected public profile: <a href="https://www.pinterest.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer"><b>@khanyiinmotion ↗</b></a>. Public Pins can appear below through Pinterest's official widget. You can change the profile URL whenever you like; no password is needed.</p>
         <form id="profile-form">
           <div class="field"><label for="profile-url">Pinterest profile URL</label><input id="profile-url" type="url" placeholder="https://www.pinterest.com/yourusername/" required></div>
           <div class="actions"><button class="cta" type="submit">Show my profile ↗</button><button id="clear-profile" class="cta alt" type="button">Clear</button></div>
@@ -197,7 +197,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
     LIVED:{title:"THE LIFE BETWEEN",desc:"The places, moments and rituals that shape a life beyond one category: rooms, journeys, ordinary beauty and extraordinary stories.",ideas:"Travel journals; warm interiors; favourite places; tablescapes; daily rituals; fleeting moments"}
   };
   function $(id){return document.getElementById(id)}
-  function load(){try{var raw=JSON.parse(localStorage.getItem(STORAGE)||"{}");return {profile:typeof raw.profile==="string"?raw.profile:"",boards:Array.isArray(raw.boards)?raw.boards:[],drafts:Array.isArray(raw.drafts)?raw.drafts:[]}}catch(e){return {profile:"",boards:[],drafts:[]}}}
+  function load(){try{var raw=JSON.parse(localStorage.getItem(STORAGE)||"{}");return {profile:typeof raw.profile==="string"?raw.profile:"https://www.pinterest.com/khanyiinmotion/",boards:Array.isArray(raw.boards)?raw.boards:[],drafts:Array.isArray(raw.drafts)?raw.drafts:[]}}catch(e){return {profile:"",boards:[],drafts:[]}}}
   var state=load();
   function persist(){try{localStorage.setItem(STORAGE,JSON.stringify(state));return true}catch(e){return false}}
   function status(id,message){$(id).textContent=message}
