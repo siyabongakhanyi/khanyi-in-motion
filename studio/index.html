@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#131312">
+  <meta name="description" content="Khanyi in Motion Creative Studio: your personal boards, inspiration, Pinterest viewing and publishing preparation.">
+  <title>Creative Studio — Khanyi in Motion</title>
+  <style>
+    :root {--ink:#131312;--paper:#f4f1e7;--muted:#77736c;--orange:#e94c27;--line:#d3cfc4;--display:Impact,"Arial Narrow",Arial,sans-serif;--body:Arial,Helvetica,sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 var(--body)}
+    button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+    [hidden]{display:none!important}.wrap{max-width:1380px;margin:auto;padding:0 clamp(20px,5vw,76px)}
+    .top{height:77px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line)}
+    .brand{font-family:var(--display);font-size:25px;letter-spacing:-.04em;text-decoration:none}.brand b{color:var(--orange)}
+    .top-right{display:flex;align-items:center;gap:16px}.top-right a{text-transform:uppercase;letter-spacing:.08em;font-size:11px;text-decoration:none;font-weight:bold}
+    .p-chip{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;border:1px solid var(--ink);padding:9px 12px}
+    .hero{background:var(--ink);color:var(--paper);padding:46px 0 58px;border-bottom:6px solid var(--orange)}
+    .hero-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#bbb4a6;font-weight:800}
+    .hero-grid{display:flex;justify-content:space-between;align-items:end;gap:35px}.hero h1{font:normal clamp(73px,12vw,174px)/.78 var(--display);margin:32px 0 8px;letter-spacing:-.055em;text-transform:uppercase}
+    .hero h1 em{color:var(--orange);font-style:normal}.hero p{max-width:360px;color:#c5c0b7;font-size:16px;margin:0 0 6px}
+    .workspace{padding-top:28px;padding-bottom:80px}.utility{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    .tabs{display:flex;gap:5px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:transparent;color:var(--ink);padding:12px 17px;text-transform:uppercase;font-size:11px;letter-spacing:.12em;font-weight:800}
+    .tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+    .storage{color:var(--muted);font-size:11px;display:flex;align-items:center;gap:7px}
+    .storage:before{content:"";width:8px;height:8px;background:var(--orange);border-radius:50%}
+    .panel{padding-top:48px}.panel-top{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:28px}
+    .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.18em;font-weight:800;color:var(--orange);margin:0 0 10px}
+    .panel h2,.detail h2{font:normal clamp(42px,6vw,80px)/.92 var(--display);letter-spacing:-.035em;text-transform:uppercase;margin:0}
+    .panel-description{max-width:650px;font-size:15px;color:#555149;line-height:1.7;margin:17px 0 0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--ink);padding:13px 18px;background:transparent;color:var(--ink);text-transform:uppercase;font-size:11px;font-weight:800;letter-spacing:.08em;white-space:nowrap}
+    .btn.dark{background:var(--ink);color:var(--paper)}.btn.dark:hover{background:var(--orange);border-color:var(--orange)}.btn.orange{background:var(--orange);color:white;border-color:var(--orange)}
+    .btn.small{padding:9px 12px;font-size:10px}.btn:hover{border-color:var(--orange);color:var(--orange)}.btn.dark:hover,.btn.orange:hover{color:#fff}
+    .board-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+    .board{padding:0;text-align:left;border:1px solid var(--line);background:#fffdf7;min-width:0;transition:transform .2s}
+    .board:hover{transform:translateY(-4px)}.cover{height:220px;display:flex;align-items:flex-end;padding:23px;background:linear-gradient(125deg,#312b27,#ab7658);color:#fff;position:relative;overflow:hidden}
+    .cover:before{content:"";position:absolute;width:220px;height:220px;right:-28px;top:-35px;border:1px solid #ffffff75;border-radius:50%;box-shadow:0 0 0 35px #ffffff11,0 0 0 70px #ffffff0d}
+    .cover[data-tone="2"]{background:linear-gradient(145deg,#1f2220,#7b8175)}.cover[data-tone="3"]{background:linear-gradient(145deg,#493b38,#9e675b)}.cover[data-tone="4"]{background:linear-gradient(145deg,#25222d,#625965)}
+    .cover span{position:relative;font:normal 48px/.9 var(--display);letter-spacing:-.03em;text-transform:uppercase;max-width:90%;overflow-wrap:anywhere}
+    .board-body{padding:18px 20px 20px}.board-body strong{font-size:15px}.board-body p{margin:7px 0 14px;color:#625e57;min-height:42px;font-size:12px}.board-meta{font-size:10px;text-transform:uppercase;letter-spacing:.11em;color:#928a7e;font-weight:800}
+    .empty{border:1px dashed #b2aa9b;padding:42px 26px;color:#706a61;text-align:center}
+    .back{background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:5px;font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:.08em;margin-bottom:24px}
+    .detail-header{display:flex;justify-content:space-between;align-items:end;gap:20px}.detail-header p{max-width:560px;color:#625e57;font-size:15px;margin:16px 0 0}
+    .detail-actions{display:flex;gap:9px;flex-wrap:wrap}.ideas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:30px}
+    .idea{background:#fffdf7;border:1px solid var(--line);min-width:0}.idea-media{height:230px;background:#dfd9c9;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+    .idea-media img{width:100%;height:100%;object-fit:cover}.idea-media .placeholder{font-family:var(--display);font-size:42px;text-align:center;color:#817c71;text-transform:uppercase;padding:20px}
+    .idea-body{padding:17px}.idea-body h3{margin:0 0 7px;font-size:16px}.idea-body p{margin:0;color:#625e57;font-size:12px;overflow-wrap:anywhere}
+    .idea-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.idea-actions a{color:var(--ink);text-decoration:none}
+    .tag{font-size:10px;text-transform:uppercase;letter-spacing:.07em;background:#eee9da;padding:5px 8px;display:inline-block;margin-top:12px}
+    .connect-card{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;background:#1d1d1b;color:var(--paper);padding:32px;margin:28px 0}
+    .connect-card h3{font:normal 38px/.95 var(--display);margin:0 0 16px;text-transform:uppercase}.connect-card p{color:#c6c2b8;max-width:510px;line-height:1.7}
+    .connect-status{border:1px solid #696860;padding:22px;align-self:start}.connect-status b{display:block;color:var(--orange);letter-spacing:.09em;font-size:12px;text-transform:uppercase}.connect-status p{margin:10px 0 0}
+    .form-row{display:flex;gap:10px;margin:22px 0;flex-wrap:wrap}.form-row input{min-width:240px;flex:1;padding:13px;border:1px solid #aaa293;background:#fff}
+    .embeds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    .embed-card{border:1px solid var(--line);padding:18px;overflow:hidden;background:#fffdf7}.embed-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+    .embed-top a{font-size:12px;text-decoration:underline;overflow-wrap:anywhere}.embed-region{min-height:180px;max-width:100%;overflow:auto}
+    .queue-list{display:grid;gap:10px;margin-top:28px}.queue{border:1px solid var(--line);background:#fffdf7;padding:16px;display:flex;gap:20px;align-items:center;justify-content:space-between}
+    .queue strong{display:block;font-size:15px}.queue p{font-size:12px;color:#666156;margin:4px 0}.queue-actions{display:flex;gap:7px;flex-wrap:wrap}
+    .notice{font-size:12px;color:#5f5a50;border-left:3px solid var(--orange);padding:9px 14px;background:#ebe6da;margin:23px 0}
+    .footer{border-top:1px solid var(--line);padding-top:30px;margin-top:60px;font-size:11px;color:#716b62;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    dialog{width:min(570px,calc(100vw - 30px));max-height:92vh;overflow:auto;border:1px solid var(--ink);box-shadow:15px 15px 0 #e94c27;padding:28px;background:var(--paper);color:var(--ink)}
+    dialog::backdrop{background:#131312bb}dialog h2{font:normal 42px/.95 var(--display);text-transform:uppercase;margin:0 0 15px}
+    .field{display:grid;gap:7px;margin:15px 0}.field label{font-size:11px;letter-spacing:.09em;font-weight:800;text-transform:uppercase}
+    .field input,.field textarea,.field select{width:100%;padding:12px;background:white;border:1px solid #aaa293;border-radius:0}
+    .field textarea{min-height:90px;resize:vertical}.dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+    .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:12px 18px;max-width:90%;z-index:20;font-size:12px;box-shadow:0 5px 25px #0003}
+    @media(max-width:900px){.board-grid,.ideas{grid-template-columns:repeat(2,1fr)}.hero-grid{align-items:start;flex-direction:column}.hero h1{margin:25px 0}.connect-card{grid-template-columns:1fr}}
+    @media(max-width:600px){.top{height:64px}.brand{font-size:22px}.top-right .p-chip{display:none}.hero{padding:38px 0}.hero h1{font-size:clamp(68px,15vw,104px)}.panel{padding-top:33px}.panel-top,.detail-header{align-items:start;flex-direction:column}.board-grid,.ideas,.embeds{grid-template-columns:1fr}.cover{height:180px}.cover span{font-size:42px}.queue{align-items:stretch;flex-direction:column}.connect-card{padding:24px}.dialog-actions{flex-wrap:wrap}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="top wrap">
+    <a class="brand" href="/">KHANYI IN MOTION<b>.</b></a>
+    <div class="top-right"><span class="p-chip">Creative studio / preview</span><a href="/">Back to site</a></div>
+  </header>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-label">01 / Creative direction is a practice</div>
+      <div class="hero-grid">
+        <h1>THE<br>CREATIVE<br><em>STUDIO.</em></h1>
+        <p>Collect the reference. Build the idea. Make it yours. A working space for creative boards, visual thinking and future publishing.</p>
+      </div>
+    </div>
+  </section>
+  <main class="wrap workspace">
+    <div class="utility">
+      <div class="tabs" role="tablist" aria-label="Creative studio sections">
+        <button class="tab" role="tab" id="tab-boards" aria-controls="view-boards" aria-selected="true" data-tab="boards">My boards</button>
+        <button class="tab" role="tab" id="tab-pinterest" aria-controls="view-pinterest" aria-selected="false" data-tab="pinterest">Pinterest view</button>
+        <button class="tab" role="tab" id="tab-queue" aria-controls="view-queue" aria-selected="false" data-tab="queue">Publishing prep</button>
+      </div>
+      <span class="storage" title="Saved only in this browser. Not backed up to an account.">Local preview • not yet cloud synced</span>
+    </div>
+    <section class="panel" id="view-boards" role="tabpanel" aria-labelledby="tab-boards">
+      <div id="boardOverview">
+        <div class="panel-top">
+          <div><p class="eyebrow">Your creative universe</p><h2>THE BOARDS.</h2><p class="panel-description">Create as many themes as you like. Develop a visual language before you share it with the world.</p></div>
+          <button class="btn dark" id="newBoard">+ Create board</button>
+        </div>
+        <div class="board-grid" id="boardGrid"></div>
+      </div>
+      <div class="detail" id="boardDetail" hidden>
+        <button class="back" id="backBoards">← All boards</button>
+        <div class="detail-header">
+          <div><p class="eyebrow" id="detailCategory"></p><h2 id="detailTitle"></h2><p id="detailDescription"></p></div>
+          <div class="detail-actions"><button class="btn" id="editBoard">Edit board</button><button class="btn dark" id="newIdea">+ Add idea</button></div>
+        </div>
+        <p class="notice">This workspace stores drafts on this device only. A Pinterest link is a reference, not a copied image or a published Pin.</p>
+        <div id="ideas" class="ideas"></div>
+      </div>
+    </section>
+    <section class="panel" id="view-pinterest" role="tabpanel" aria-labelledby="tab-pinterest" hidden>
+      <div class="panel-top"><div><p class="eyebrow">View your references</p><h2>PINTEREST.</h2><p class="panel-description">Paste links to public Pinterest boards to see them inside this workspace. This is an official embed, not a signed-in account connection.</p></div></div>
+      <div class="connect-card">
+        <div><h3>ONE ECOSYSTEM.<br>CONNECTED IN STAGES.</h3><p>The next integration stage is authorised Pinterest account access for reading, creating and publishing boards and Pins. Until then, you can display public boards here and prepare your own ideas.</p></div>
+        <div class="connect-status"><b>Account sync: Not connected</b><p>Requires a Pinterest developer app, OAuth permissions and approval for production publishing.</p><a href="https://developers.pinterest.com/docs/getting-started/connect-app/" target="_blank" rel="noopener noreferrer" style="font-size:12px;color:#fff;text-decoration:underline">View Pinterest developer requirements</a></div>
+      </div>
+      <form class="form-row" id="addPinterestForm">
+        <input type="url" id="pinterestUrl" placeholder="https://www.pinterest.com/username/board-name/" required aria-label="Public Pinterest board URL">
+        <button class="btn dark" type="submit">+ Add board view</button>
+      </form>
+      <div id="pinterestEmbeds" class="embeds"></div>
+    </section>
+    <section class="panel" id="view-queue" role="tabpanel" aria-labelledby="tab-queue" hidden>
+      <div class="panel-top"><div><p class="eyebrow">From draft to published</p><h2>PUBLISHING PREP.</h2><p class="panel-description">Prepare ideas and captions for Pinterest. Publishing from this preview is manual until authorised API integration is active.</p></div><a class="btn dark" href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer">Open Pinterest</a></div>
+      <p class="notice">No automatic posts are sent. “Published” is a status you mark yourself after posting on Pinterest.</p>
+      <div class="queue-list" id="queueList"></div>
+    </section>
+    <footer class="footer"><span>KHANYI IN MOTION / YOUR WORK, YOUR DIRECTION.</span><div><button class="btn small" id="exportData">Export workspace JSON</button> <label class="btn small" for="importData" style="cursor:pointer">Import backup</label><input id="importData" type="file" accept="application/json,.json" hidden></div><span>Preview data stays in this browser. Back it up before switching devices.</span></footer>
+  </main>
+  <dialog id="boardDialog" aria-labelledby="boardDialogTitle">
+    <form id="boardForm">
+      <h2 id="boardDialogTitle">CREATE A BOARD.</h2>
+      <div class="field"><label for="boardName">Board name</label><input id="boardName" maxlength="70" placeholder="e.g. The New Uniform" required></div>
+      <div class="field"><label for="boardCategory">Category</label><select id="boardCategory"><option>Style</option><option>Editorial</option><option>Creative direction</option><option>Campaign</option><option>Personal archive</option><option>Other</option></select></div>
+      <div class="field"><label for="boardDesc">Creative direction / notes</label><textarea id="boardDesc" maxlength="500" placeholder="What is this board exploring?"></textarea></div>
+      <div class="dialog-actions"><button type="button" class="btn" id="cancelBoard">Cancel</button><button type="submit" class="btn dark">Save board</button></div>
+    </form>
+  </dialog>
+  <dialog id="ideaDialog" aria-labelledby="ideaDialogTitle">
+    <form id="ideaForm">
+      <h2 id="ideaDialogTitle">ADD AN IDEA.</h2>
+      <div class="field"><label for="ideaName">Idea title</label><input id="ideaName" maxlength="90" placeholder="e.g. Elevated everyday tailoring" required></div>
+      <div class="field"><label for="ideaNote">Creative notes / caption</label><textarea id="ideaNote" maxlength="1000" placeholder="What interests you about this idea?"></textarea></div>
+      <div class="field"><label for="ideaUrl">Reference link (optional)</label><input type="url" id="ideaUrl" placeholder="https://www.pinterest.com/pin/..."></div>
+      <div class="field"><label for="imageUrl">Image URL (optional, direct https image URL)</label><input type="url" id="imageUrl" placeholder="https://example.com/image.jpg"></div>
+      <div class="field"><label for="imageFile">Or upload your image (max 1.5 MB)</label><input type="file" id="imageFile" accept="image/png,image/jpeg,image/webp"></div>
+      <p style="font-size:11px;color:#77736c">Use imagery you own or have permission to use. Uploaded files are saved only in your browser and may fill its local storage.</p>
+      <div class="dialog-actions"><button type="button" class="btn" id="cancelIdea">Cancel</button><button type="submit" class="btn dark">Save idea</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
+  <script>
+    (function(){
+      "use strict";
+      var KEY="kim_creative_studio_v1";
+      var starter=[
+        {id:"seed-style",name:"The Lookbook",category:"Style",description:"An evolving record of personal style, silhouettes and the way I want to show up.",ideas:[]},
+        {id:"seed-editorial",name:"Visual References",category:"Editorial",description:"Textures, photography, typography and visual references worth studying.",ideas:[]},
+        {id:"seed-campaigns",name:"Concept Lab",category:"Creative direction",description:"Ideas in progress: campaigns, editorials, collaborations and experiments.",ideas:[]}
+      ];
+      function emptyState(){return {version:1,boards:starter,pinterestBoards:[]};}
+      function load(){try{var v=JSON.parse(localStorage.getItem(KEY));if(v&&Array.isArray(v.boards)&&Array.isArray(v.pinterestBoards))return v;}catch(e){}return emptyState();}
+      var data=load(),currentBoard=null,editingBoard=null;
+      var $=function(id){return document.getElementById(id);};
+      function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+      function safeUrl(url){try{var u=new URL(url);return u.protocol==="https:"?u.href:"";}catch(e){return "";}}
+      function pinterestBoardUrl(url){var u=safeUrl(url);if(!u)return "";var x=new URL(u);var h=x.hostname.toLowerCase();if(h!=="pinterest.com"&&h!=="www.pinterest.com")return "";var s=x.pathname.split("/").filter(Boolean);return s.length>=2?u:"";}
+      function uid(){return "kim-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8);}
+      function persist(){try{localStorage.setItem(KEY,JSON.stringify(data));return true;}catch(e){toast("Device storage is full. Try smaller images, or export your workspace.");return false;}}
+      function toast(s){$("toast").textContent=s;$("toast").hidden=false;clearTimeout(toast.timer);toast.timer=setTimeout(function(){$("toast").hidden=true;},3500);}
+      function board(id){return data.boards.find(function(b){return b.id===id;});}
+      function switchTab(name){
+        ["boards","pinterest","queue"].forEach(function(t){$("tab-"+t).setAttribute("aria-selected",String(t===name));$("view-"+t).hidden=t!==name;});
+        if(name==="queue")renderQueue();if(name==="pinterest")renderPinterest();
+      }
+      document.querySelectorAll(".tab").forEach(function(b){b.addEventListener("click",function(){switchTab(b.dataset.tab);});});
+      function renderBoards(){
+        var grid=$("boardGrid");
+        if(!data.boards.length){grid.innerHTML='<div class="empty">No boards yet. Create the first one.</div>';return;}
+        grid.innerHTML=data.boards.map(function(b,i){
+          return '<button type="button" class="board" data-board="'+esc(b.id)+'"><div class="cover" data-tone="'+(i%4+1)+'"><span>'+esc(b.name)+'</span></div><div class="board-body"><strong>'+esc(b.category||"Creative board")+'</strong><p>'+esc(b.description||"Your creative direction starts here.")+'</p><div class="board-meta">'+(Array.isArray(b.ideas)?b.ideas.length:0)+' ideas / Open board →</div></div></button>';
+        }).join("");
+        grid.querySelectorAll("[data-board]").forEach(function(el){el.addEventListener("click",function(){openBoard(el.dataset.board);});});
+      }
+      function openBoard(id){if(!board(id))return;currentBoard=id;$("boardOverview").hidden=true;$("boardDetail").hidden=false;renderDetail();window.scrollTo({top:document.querySelector(".workspace").offsetTop,behavior:"smooth"});}
+      function renderDetail(){
+        var b=board(currentBoard);if(!b){currentBoard=null;$("boardOverview").hidden=false;$("boardDetail").hidden=true;renderBoards();return;}
+        $("detailCategory").textContent=b.category||"Board";$("detailTitle").textContent=b.name;$("detailDescription").textContent=b.description||"Ideas to be added.";
+        var items=Array.isArray(b.ideas)?b.ideas:[];
+        $("ideas").innerHTML=items.length?items.map(function(it){
+          var img=safeUrl(it.image)||((it.image||"").startsWith("data:image/")?it.image:"");
+          var ref=safeUrl(it.url);
+          return '<article class="idea"><div class="idea-media">'+(img?'<img loading="lazy" src="'+esc(img)+'" alt="'+esc(it.name)+'">':'<span class="placeholder">REFERENCE / '+esc(b.category||"IDEA")+'</span>')+'</div><div class="idea-body"><h3>'+esc(it.name)+'</h3><p>'+esc(it.note||"No notes yet.")+'</p><span class="tag">'+esc(it.status||"draft")+'</span><div class="idea-actions">'+(ref?'<a class="btn small" href="'+esc(ref)+'" target="_blank" rel="noopener noreferrer">View source</a>':'')+'<button type="button" class="btn small" data-status="'+esc(it.id)+'">Next status</button><button type="button" class="btn small" data-delete="'+esc(it.id)+'">Remove</button></div></div></article>';
+        }).join(""):'<div class="empty">Your board is ready. Add an image, a reference link or an original idea.</div>';
+        $("ideas").querySelectorAll("[data-status]").forEach(function(el){el.addEventListener("click",function(){changeStatus(b.id,el.dataset.status);});});
+        $("ideas").querySelectorAll("[data-delete]").forEach(function(el){el.addEventListener("click",function(){if(!confirm("Remove this idea from the board?"))return;b.ideas=b.ideas.filter(function(x){return x.id!==el.dataset.delete;});persist();renderDetail();});});
+      }
+      function changeStatus(boardId,id){var b=board(boardId);if(!b)return;var it=(b.ideas||[]).find(function(x){return x.id===id;});if(!it)return;var order=["draft","ready","published"];it.status=order[(order.indexOf(it.status)+1)%3];persist();if(currentBoard===boardId)renderDetail();renderQueue();toast("Status: "+it.status+". This does not publish to Pinterest.");}
+      $("backBoards").addEventListener("click",function(){$("boardDetail").hidden=true;$("boardOverview").hidden=false;currentBoard=null;renderBoards();});
+      function boardEditor(id){editingBoard=id||null;var b=board(id);$("boardDialogTitle").textContent=b?"EDIT BOARD.":"CREATE A BOARD.";$("boardName").value=b?b.name:"";$("boardCategory").value=b?b.category:"Style";$("boardDesc").value=b?b.description:"";$("boardDialog").showModal();}
+      $("newBoard").addEventListener("click",function(){boardEditor(null);});$("editBoard").addEventListener("click",function(){boardEditor(currentBoard);});$("cancelBoard").addEventListener("click",function(){$("boardDialog").close();});
+      $("boardForm").addEventListener("submit",function(e){e.preventDefault();var name=$("boardName").value.trim();if(!name)return;var b=editingBoard?board(editingBoard):null;if(!b){b={id:uid(),ideas:[]};data.boards.unshift(b);}b.name=name;b.category=$("boardCategory").value;b.description=$("boardDesc").value.trim();persist();$("boardDialog").close();renderBoards();if(currentBoard===b.id)renderDetail();else if(!editingBoard)openBoard(b.id);});
+      $("newIdea").addEventListener("click",function(){$("ideaForm").reset();$("ideaDialog").showModal();});$("cancelIdea").addEventListener("click",function(){$("ideaDialog").close();});
+      $("ideaForm").addEventListener("submit",async function(e){
+        e.preventDefault();var b=board(currentBoard);if(!b)return;var file=$("imageFile").files[0],img=safeUrl($("imageUrl").value.trim()),ref=$("ideaUrl").value.trim();
+        if(ref&&!safeUrl(ref)){toast("Use an https link for references.");return;}if($("imageUrl").value.trim()&&!img){toast("Use a direct https link for an image.");return;}
+        if(file){if(!["image/jpeg","image/png","image/webp"].includes(file.type)||file.size>1500000){toast("Choose a JPG, PNG or WebP smaller than 1.5 MB.");return;}img=await new Promise(function(resolve,reject){var r=new FileReader();r.onload=function(){resolve(r.result);};r.onerror=reject;r.readAsDataURL(file);});}
+        var item={id:uid(),name:$("ideaName").value.trim(),note:$("ideaNote").value.trim(),url:safeUrl(ref),image:img,status:"draft"};
+        b.ideas=b.ideas||[];b.ideas.unshift(item);
+        if(!persist()){b.ideas.shift();return;}
+        $("ideaDialog").close();renderDetail();toast("Idea saved to your device.");
+      });
+      $("addPinterestForm").addEventListener("submit",function(e){e.preventDefault();var u=pinterestBoardUrl($("pinterestUrl").value.trim());if(!u){toast("Paste a full public Pinterest board link (username/board).");return;}if(data.pinterestBoards.includes(u)){toast("This board is already in the viewer.");return;}data.pinterestBoards.unshift(u);persist();$("pinterestUrl").value="";renderPinterest();});
+      function renderPinterest(){
+        var el=$("pinterestEmbeds");
+        if(!data.pinterestBoards.length){el.innerHTML='<div class="empty">Your Pinterest board viewer is empty. Add a public board link above.</div>';return;}
+        el.innerHTML=data.pinterestBoards.map(function(u,i){return '<div class="embed-card"><div class="embed-top"><a href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">Open board on Pinterest</a><button class="btn small" type="button" data-remove-embed="'+i+'">Remove</button></div><div class="embed-region"><a data-pin-do="embedBoard" data-pin-board-width="350" data-pin-scale-height="250" data-pin-scale-width="80" href="'+esc(u)+'">View Pinterest board</a></div></div>';}).join("");
+        el.querySelectorAll("[data-remove-embed]").forEach(function(x){x.addEventListener("click",function(){data.pinterestBoards.splice(Number(x.dataset.removeEmbed),1);persist();renderPinterest();});});
+        try{if(window.PinUtils&&window.PinUtils.build)window.PinUtils.build();}catch(e){}
+      }
+      function renderQueue(){
+        var all=[];data.boards.forEach(function(b){(b.ideas||[]).forEach(function(it){all.push({b:b,it:it});});});
+        $("queueList").innerHTML=all.length?all.map(function(entry){
+          var b=entry.b,it=entry.it;
+          return '<div class="queue"><div><strong>'+esc(it.name)+'</strong><p>'+esc(b.name)+' / '+esc(it.status||"draft")+'</p><p>'+esc((it.note||"").slice(0,160))+'</p></div><div class="queue-actions"><button class="btn small" data-copy="'+esc(it.id)+'">Copy caption</button><button class="btn small" data-next="'+esc(it.id)+'" data-board-id="'+esc(b.id)+'">Next status</button></div></div>';
+        }).join(""):'<div class="empty">No ideas yet. Create a board and add ideas to prepare them for Pinterest.</div>';
+        $("queueList").querySelectorAll("[data-copy]").forEach(function(el){el.addEventListener("click",async function(){var item=all.find(function(x){return x.it.id===el.dataset.copy;});if(!item)return;var caption=item.it.name+"\n\n"+(item.it.note||"")+"\n\nBoard: "+item.b.name;try{await navigator.clipboard.writeText(caption);toast("Caption copied. Open Pinterest to publish manually.");}catch(e){toast("Clipboard unavailable; use your browser's copy controls.");}});});
+        $("queueList").querySelectorAll("[data-next]").forEach(function(el){el.addEventListener("click",function(){changeStatus(el.dataset.boardId,el.dataset.next);});});
+      }
+      $("exportData").addEventListener("click",function(){var blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});var u=URL.createObjectURL(blob);var a=document.createElement("a");a.href=u;a.download="khanyi-creative-studio-backup.json";a.click();setTimeout(function(){URL.revokeObjectURL(u);},3000);});
+      $("importData").addEventListener("change",async function(e){
+        var file=e.target.files[0];if(!file)return;if(file.size>9000000){toast("Backup file is too large.");return;}
+        try{var incoming=JSON.parse(await file.text());if(!incoming||!Array.isArray(incoming.boards)||!Array.isArray(incoming.pinterestBoards)||incoming.boards.length>500)throw Error("Invalid backup");if(!confirm("Replace this browser's current studio data with the backup? Export first if needed."))return;data=incoming;currentBoard=null;persist();$("boardDetail").hidden=true;$("boardOverview").hidden=false;renderBoards();renderPinterest();renderQueue();toast("Backup imported.");}catch(err){toast("This is not a valid studio backup.");}finally{e.target.value="";}
+      });
+      renderBoards();renderPinterest();renderQueue();
+    })();
+  </script>
+</body>
+</html>
