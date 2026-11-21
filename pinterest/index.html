@@ -34,7 +34,7 @@
     .pinterest-link{display:flex;align-items:center;gap:22px;min-height:120px;padding:24px 28px;background:var(--white);border:1px solid var(--ink);text-decoration:none;transition:background .2s,color .2s,transform .2s}
     .pinterest-link:hover{background:var(--ink);color:var(--white);transform:translateY(-2px)}
     .pinterest-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
-    .p-logo{flex:none;display:grid;place-items:center;width:59px;height:59px;border-radius:50%;background:#e60023;color:#fff;font-family:Georgia,serif;font-size:37px;font-weight:bold;font-style:italic;letter-spacing:-.09em}
+    .p-logo{flex:none;display:block;width:59px;height:59px;object-fit:contain}
     .content{flex:1;min-width:0}
     .type{display:block;margin-bottom:8px;font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
     .name{display:block;font-size:clamp(22px,3vw,32px);line-height:1.13;font-weight:900;letter-spacing:-.055em}
@@ -54,7 +54,7 @@
       .intro p{font-size:14px}
       .connections{padding:37px 0 65px}
       .pinterest-link{padding:19px 16px;gap:14px;min-height:108px}
-      .p-logo{width:44px;height:44px;font-size:29px}
+      .p-logo{width:44px;height:44px}
       .type{font-size:9px}
       .name{font-size:clamp(18px,5vw,24px)}
       .description{font-size:12px}
@@ -81,12 +81,12 @@
       <div class="section-head"><h2 id="connections-title">THE CONNECTED THINGS.</h2><span class="count">02 / LINKS</span></div>
       <div class="links">
         <a class="pinterest-link" href="https://www.pinterest.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer" aria-label="Open Siya Khanyi's Pinterest profile">
-          <span class="p-logo" aria-hidden="true">P</span>
+          <img class="p-logo" src="/assets/brand/pinterest.svg" width="59" height="59" alt="" aria-hidden="true">
           <span class="content"><span class="type">01 / Pinterest profile</span><span class="name">Siya Khanyi | In Motion</span><span class="description">@khanyiinmotion</span></span>
           <span class="action">View profile <span class="arrow" aria-hidden="true">↗</span></span>
         </a>
         <a class="pinterest-link" href="https://pin.it/614Wbjj9F" target="_blank" rel="noopener noreferrer" aria-label="Open KHANYIbehindthefits Mr Price Pinterest board">
-          <span class="p-logo" aria-hidden="true">P</span>
+          <img class="p-logo" src="/assets/brand/pinterest.svg" width="59" height="59" alt="" aria-hidden="true">
           <span class="content"><span class="type">02 / Pinterest board</span><span class="name">KHANYIbehindthefits | Mr Price</span><span class="description">Styling and creative references</span></span>
           <span class="action">View board <span class="arrow" aria-hidden="true">↗</span></span>
         </a>
