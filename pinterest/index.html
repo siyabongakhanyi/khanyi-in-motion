@@ -62,6 +62,12 @@
       .arrow{font-size:26px;margin-left:0}
     }
     @media(prefers-reduced-motion:reduce){.pinterest-link{transition:none}}
+  
+    /* Precision outline icons — no font-dependent symbol arrows. */
+    .line-icon{display:inline-block;width:1em;height:1em;vertical-align:-.16em;stroke:currentColor;fill:none}
+    .back .line-icon{width:13px;height:13px;margin-left:5px}
+    .action .line-icon{width:22px;height:22px}
+    @media(max-width:700px){.action .line-icon{width:24px;height:24px}}
   </style>
 </head>
 <body>
@@ -69,7 +75,7 @@
 <div class="shell">
   <header class="header">
     <a class="brand" href="/" aria-label="Khanyi in Motion home"><span class="mark">K</span><span>KHANYI IN MOTION</span></a>
-    <a class="back" href="/">Back to the world ↗</a>
+    <a class="back" href="/">Back to the world <svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
   </header>
   <main>
     <section class="intro" aria-labelledby="page-title">
@@ -83,12 +89,12 @@
         <a class="pinterest-link" href="https://www.pinterest.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer" aria-label="Open Siya Khanyi's Pinterest profile">
           <img class="p-logo" src="/assets/brand/pinterest.svg" width="59" height="59" alt="" aria-hidden="true">
           <span class="content"><span class="type">01 / Pinterest profile</span><span class="name">Siya Khanyi | In Motion</span><span class="description">@khanyiinmotion</span></span>
-          <span class="action">View profile <span class="arrow" aria-hidden="true">↗</span></span>
+          <span class="action">View profile <svg class="arrow line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
         </a>
         <a class="pinterest-link" href="https://pin.it/614Wbjj9F" target="_blank" rel="noopener noreferrer" aria-label="Open KHANYIbehindthefits Mr Price Pinterest board">
           <img class="p-logo" src="/assets/brand/pinterest.svg" width="59" height="59" alt="" aria-hidden="true">
           <span class="content"><span class="type">02 / Pinterest board</span><span class="name">KHANYIbehindthefits | Mr Price</span><span class="description">Styling and creative references</span></span>
-          <span class="action">View board <span class="arrow" aria-hidden="true">↗</span></span>
+          <span class="action">View board <svg class="arrow line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
         </a>
       </div>
       <p class="note">These links open Pinterest directly. No empty embeds or sign-in is required on this page.</p>
