@@ -26,7 +26,7 @@ function pinterestResource(url) {
   const parts = url.pathname.split("/").filter(Boolean).map(decodeURIComponent);
   if (!parts.length) return null;
   let kind;
-  if (parts[0].toLowerCase() === "pin" && parts[1] && /^\\d+$/.test(parts[1])) {
+  if (parts[0].toLowerCase() === "pin" && parts[1] && /^\d+$/.test(parts[1])) {
     kind = "pin";
   } else if (EXCLUDED_PATHS.has(parts[0].toLowerCase())) {
     return null;
