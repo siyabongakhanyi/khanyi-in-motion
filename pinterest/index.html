@@ -1,95 +1,100 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f6f3eb">
-<meta name="description" content="Khanyi in Motion — connected Pinterest profile and boards.">
-<title>Pinterest — Khanyi in Motion</title>
-<style>
-:root{--paper:#f6f3eb;--ink:#171613;--muted:#6b695f;--orange:#e65426;--white:#fffdf7;--line:#b9b3a6}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-.shell{max-width:1400px;margin:0 auto;padding:0 clamp(20px,5vw,72px)}
-.skip{position:absolute;left:-9999px}
-.skip:focus{left:15px;top:10px;background:#fff;padding:12px;z-index:100}
-.site-header{height:86px;border-bottom:1px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:20px}
-.wordmark{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:900;letter-spacing:.13em;text-decoration:none}
-.mark{display:grid;place-items:center;width:43px;height:43px;border-radius:50%;background:var(--ink);color:var(--paper);font-size:18px;letter-spacing:-.09em}
-.home-link{font-size:11px;letter-spacing:.13em;font-weight:900;text-decoration:none;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:5px}
-.home-link:hover,.external:hover{color:var(--orange)}
-.hero{padding:85px 0 55px;border-bottom:1px solid var(--ink)}
-.eyebrow{display:flex;align-items:center;gap:15px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:900}
-.eyebrow::before{content:"";width:30px;height:2px;background:var(--orange)}
-h1,h2,h3,p{margin-top:0}
-h1{font-size:clamp(64px,10vw,144px);line-height:.85;letter-spacing:-.09em;font-weight:900;margin:32px 0 0}
-h1 span{color:var(--orange)}
-.section{padding:48px 0 78px}
-.section-title{font-size:clamp(27px,3vw,42px);line-height:1.04;letter-spacing:-.065em;margin:14px 0 0}
-.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}
-.profile-card,.featured-pinterest-card{padding:26px;background:var(--white);border:1px solid var(--ink);min-width:0;overflow:hidden}
-.profile-card{grid-column:1 / -1}
-.card-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
-.board-meta{font-size:10px;color:var(--orange);font-weight:900;letter-spacing:.15em;text-transform:uppercase}
-.profile-card h3,.featured-pinterest-card h3{font-size:clamp(26px,3.1vw,42px);letter-spacing:-.06em;line-height:1.05;margin:13px 0 8px}
-.external{display:inline-flex;align-items:center;gap:6px;font-size:11px;line-height:1.5;font-weight:900;letter-spacing:.06em;text-decoration:underline;text-underline-offset:4px}
-.profile-embed,.featured-pinterest-preview{margin:25px 0 17px;width:100%;overflow:hidden;min-height:90px}
-.profile-embed{min-height:260px}
-.featured-pinterest-help{font-size:13px;line-height:1.5;color:var(--muted);margin-bottom:0}
-.featured-pinterest-placeholder{padding:22px;background:var(--paper);border:1px dashed var(--line);font-size:13px;line-height:1.6;color:var(--muted)}
-footer{border-top:1px solid var(--ink);padding:27px 0 48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:800}
-@media(max-width:720px){
-  .site-header{height:75px}
-  .wordmark{font-size:10px}.mark{width:38px;height:38px}
-  .home-link{font-size:10px}
-  .hero{padding:58px 0 45px}
-  h1{font-size:clamp(56px,14vw,100px)}
-  .section{padding:36px 0 55px}
-  .gallery{grid-template-columns:1fr;gap:14px}
-  .profile-card,.featured-pinterest-card{padding:19px}
-  .profile-card{grid-column:auto}
-  .profile-embed{min-height:180px}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f3eb">
+  <meta name="description" content="Siya Khanyi's Pinterest profile and creative boards, connected to Khanyi in Motion.">
+  <title>Pinterest — Khanyi in Motion</title>
+  <style>
+    :root{--paper:#f6f3eb;--white:#fffdf7;--ink:#171613;--muted:#69665e;--orange:#e65426;--line:#beb7aa}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .shell{max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,68px)}
+    .skip{position:absolute;left:-100vw;top:0;background:var(--white);padding:12px}
+    .skip:focus{left:12px;z-index:10}
+    .header{display:flex;align-items:center;justify-content:space-between;gap:16px;height:85px;border-bottom:1px solid var(--ink)}
+    .brand{display:flex;align-items:center;gap:13px;font-size:11px;font-weight:900;letter-spacing:.13em;text-decoration:none}
+    .mark{width:43px;height:43px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:var(--paper);font-size:19px;letter-spacing:-.07em}
+    .back{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px}
+    .back:hover{color:var(--orange)}
+    .intro{padding:80px 0 57px;border-bottom:1px solid var(--ink)}
+    .eyebrow{display:flex;gap:14px;align-items:center;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.19em}
+    .eyebrow:before{content:"";width:30px;height:2px;background:var(--orange)}
+    h1{font-size:clamp(62px,10vw,142px);line-height:.84;font-weight:900;letter-spacing:-.09em;margin:28px 0 23px}
+    h1 span{color:var(--orange)}
+    .intro p{max-width:550px;margin:0;font-size:16px;line-height:1.5;color:var(--muted)}
+    .connections{padding:48px 0 90px}
+    .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;margin-bottom:22px}
+    h2{font-size:clamp(26px,4vw,43px);letter-spacing:-.065em;margin:0;line-height:1.02}
+    .count{font-size:11px;font-weight:900;letter-spacing:.13em;color:var(--muted);white-space:nowrap}
+    .links{display:grid;gap:12px}
+    .pinterest-link{display:flex;align-items:center;gap:22px;min-height:120px;padding:24px 28px;background:var(--white);border:1px solid var(--ink);text-decoration:none;transition:background .2s,color .2s,transform .2s}
+    .pinterest-link:hover{background:var(--ink);color:var(--white);transform:translateY(-2px)}
+    .pinterest-link:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+    .p-logo{flex:none;display:grid;place-items:center;width:59px;height:59px;border-radius:50%;background:#e60023;color:#fff;font-family:Georgia,serif;font-size:37px;font-weight:bold;font-style:italic;letter-spacing:-.09em}
+    .content{flex:1;min-width:0}
+    .type{display:block;margin-bottom:8px;font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
+    .name{display:block;font-size:clamp(22px,3vw,32px);line-height:1.13;font-weight:900;letter-spacing:-.055em}
+    .description{display:block;color:var(--muted);font-size:13px;margin-top:6px;line-height:1.35}
+    .pinterest-link:hover .description{color:#d9d4ca}
+    .action{flex:none;font-size:13px;font-weight:900;letter-spacing:.01em;white-space:nowrap}
+    .arrow{display:inline-block;font-size:24px;margin-left:12px;vertical-align:-2px}
+    .note{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.5}
+    footer{border-top:1px solid var(--ink);padding:30px 0 44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    @media(max-width:700px){
+      .header{height:74px}
+      .brand{font-size:10px;gap:9px}
+      .mark{width:38px;height:38px}
+      .back{font-size:9px}
+      .intro{padding:60px 0 43px}
+      h1{font-size:clamp(55px,14vw,100px)}
+      .intro p{font-size:14px}
+      .connections{padding:37px 0 65px}
+      .pinterest-link{padding:19px 16px;gap:14px;min-height:108px}
+      .p-logo{width:44px;height:44px;font-size:29px}
+      .type{font-size:9px}
+      .name{font-size:clamp(18px,5vw,24px)}
+      .description{font-size:12px}
+      .action{font-size:0}
+      .arrow{font-size:26px;margin-left:0}
+    }
+    @media(prefers-reduced-motion:reduce){.pinterest-link{transition:none}}
+  </style>
 </head>
 <body>
-<a class="skip" href="#connected">Skip to connected Pinterest</a>
+<a class="skip" href="#connected">Skip to Pinterest links</a>
 <div class="shell">
-  <header class="site-header">
-    <a class="wordmark" href="/" aria-label="Khanyi in Motion home"><span class="mark">K</span><span>KHANYI IN MOTION</span></a>
-    <a class="home-link" href="/">Back to the world ↗</a>
+  <header class="header">
+    <a class="brand" href="/" aria-label="Khanyi in Motion home"><span class="mark">K</span><span>KHANYI IN MOTION</span></a>
+    <a class="back" href="/">Back to the world ↗</a>
   </header>
-  <main id="connected">
-    <section class="hero" aria-labelledby="page-title">
+  <main>
+    <section class="intro" aria-labelledby="page-title">
       <div class="eyebrow">The connected visual archive</div>
       <h1 id="page-title">PINTEREST<span>.</span></h1>
+      <p>My boards, my references, my creative world. Open each collection directly on Pinterest.</p>
     </section>
-    <section class="section" aria-labelledby="connected-title">
-      <div class="eyebrow">Live connections</div>
-      <h2 class="section-title" id="connected-title">THE CONNECTED THINGS.</h2>
-      <div class="gallery">
-        <article class="profile-card">
-          <div class="card-heading">
-            <div><span class="board-meta">Pinterest / profile</span><h3>@khanyiinmotion</h3></div>
-            <a class="external" href="https://www.pinterest.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer">Open profile ↗</a>
-          </div>
-          <div class="profile-embed" aria-label="Public Pinterest profile">
-            <a data-pin-do="embedUser"
-               data-pin-board-width="880"
-               data-pin-scale-height="320"
-               data-pin-scale-width="95"
-               href="https://www.pinterest.com/khanyiinmotion/">View @khanyiinmotion on Pinterest</a>
-          </div>
-        </article>
-        <div id="featured-pinterest" style="display:contents" aria-label="Connected Pinterest links"></div>
+    <section class="connections" id="connected" aria-labelledby="connections-title">
+      <div class="section-head"><h2 id="connections-title">THE CONNECTED THINGS.</h2><span class="count">02 / LINKS</span></div>
+      <div class="links">
+        <a class="pinterest-link" href="https://www.pinterest.com/khanyiinmotion/" target="_blank" rel="noopener noreferrer" aria-label="Open Siya Khanyi's Pinterest profile">
+          <span class="p-logo" aria-hidden="true">P</span>
+          <span class="content"><span class="type">01 / Pinterest profile</span><span class="name">Siya Khanyi | In Motion</span><span class="description">@khanyiinmotion</span></span>
+          <span class="action">View profile <span class="arrow" aria-hidden="true">↗</span></span>
+        </a>
+        <a class="pinterest-link" href="https://pin.it/614Wbjj9F" target="_blank" rel="noopener noreferrer" aria-label="Open KHANYIbehindthefits Mr Price Pinterest board">
+          <span class="p-logo" aria-hidden="true">P</span>
+          <span class="content"><span class="type">02 / Pinterest board</span><span class="name">KHANYIbehindthefits | Mr Price</span><span class="description">Styling and creative references</span></span>
+          <span class="action">View board <span class="arrow" aria-hidden="true">↗</span></span>
+        </a>
       </div>
+      <p class="note">These links open Pinterest directly. No empty embeds or sign-in is required on this page.</p>
     </section>
   </main>
   <footer><span>KHANYI IN MOTION © 2026</span><span>NOT A NICHE. A LIFE IN MOTION.</span></footer>
 </div>
-<script async defer src="https://assets.pinterest.com/js/pinit.js" data-pinterest-script="1"></script>
-<script defer src="/pinterest/live-links.js"></script>
 </body>
 </html>
