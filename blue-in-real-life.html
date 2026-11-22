@@ -74,6 +74,25 @@ html,body{max-width:100%;overflow-x:clip}
  .chapter .photo-card{min-width:0}
 }
 @media(max-width:420px){.chapter>.shell{max-width:calc(100% - 28px)}}
+
+/* Compact collage layout for phones: all original frames stay in a two-column
+   contact sheet, without a scrolling row extending the page's canvas. */
+@media(max-width:700px){
+ .chapter .photo-gallery,.chapter .photo-gallery.gallery-two{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  justify-content:center;align-items:start;gap:14px!important;
+  overflow:hidden!important;contain:layout paint;width:100%!important;
+  padding:25px 12px 42px!important;max-width:100%!important
+ }
+ .chapter .photo-gallery .photo-card{width:100%!important;max-width:154px;min-width:0!important;flex:none!important;justify-self:center;transform:none!important}
+ .chapter .photo-gallery .photo-card:nth-child(2n){transform:rotate(2deg) translateY(10px)!important}
+ .chapter .photo-gallery .photo-card:nth-child(2n+1){transform:rotate(-2deg)!important}
+ .chapter .carousel-controls{display:none!important}
+}
+@media(max-width:350px){
+ .chapter .photo-gallery,.chapter .photo-gallery.gallery-two{gap:9px!important;padding-inline:8px!important}
+ .chapter .photo-gallery .photo-card{max-width:130px}
+}
 </style></head><body>
 <header class="site-header"><nav class="shell site-nav" aria-label="Page navigation"><a class="brand" href="/#top" aria-label="Khanyi In Motion homepage">K<span>/</span>IM</a><a class="return" href="/#chapter-lived">BACK TO LIVED</a></nav></header>
 <main><section class="hero" aria-labelledby="story-title"><div class="shell hero-grid"><div class="hero-copy"><span class="eyebrow">K/IM / LIVED / SOME BLUES / 002</span>
