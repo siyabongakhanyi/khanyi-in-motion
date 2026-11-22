@@ -1,0 +1,32 @@
+/* BLUE, IN REAL LIFE / Khanyi In Motion — WORN personal archive */
+.kim-blue-real{position:relative;margin:clamp(36px,5vw,74px) 0 18px;padding:clamp(28px,4vw,58px);border:1px solid #5d6f91;background:linear-gradient(137deg,#12254b 0%,#122e66 54%,#193a7c 100%);color:#f5f6fc;overflow:hidden;isolation:isolate}
+.kim-blue-real:before{content:"";position:absolute;width:70vw;max-width:770px;aspect-ratio:1;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-24%;top:-45%;z-index:-1;box-shadow:0 0 0 90px rgba(255,255,255,.024),0 0 0 180px rgba(255,255,255,.014)}
+#the-world[data-active-chapter]:not([data-active-chapter="worn"]) .kim-blue-real{display:none}
+.kim-blue-kicker{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#d5e0ff}
+.kim-blue-kicker:before{content:"";height:2px;width:28px;background:#9cb5f5}
+.kim-blue-heading{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(250px,.8fr);gap:clamp(28px,5vw,95px);align-items:end;padding:22px 0 35px;border-bottom:1px solid rgba(237,242,255,.35)}
+.kim-blue-heading h3{font-family:var(--display);font-size:clamp(68px,9vw,138px);letter-spacing:-.053em;line-height:.85;margin:0;font-weight:900}
+.kim-blue-heading h3 em{font-style:normal;color:#96b8ff}
+.kim-blue-heading p{max-width:420px;font-size:clamp(16px,1.7vw,21px);line-height:1.47;letter-spacing:-.018em;color:#e4eaff;margin:0}
+.kim-blue-moments{display:flex;flex-wrap:wrap;gap:12px 28px;list-style:none;padding:20px 0 23px;margin:0;font-size:11px;letter-spacing:.11em;font-weight:750;text-transform:uppercase;color:#dfe7ff}
+.kim-blue-moments li{display:flex;align-items:baseline;gap:9px}
+.kim-blue-moments b{font-weight:800;color:#92baff}
+.kim-blue-viewer{border:1px solid rgba(237,243,255,.3);background:#0d1831;overflow:hidden}
+.kim-blue-viewer-head{display:flex;gap:14px;justify-content:space-between;padding:13px 17px;align-items:center;border-bottom:1px solid rgba(237,243,255,.27);color:#eff4ff;font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase}
+.kim-blue-viewer-head span:last-child{color:#b2c8ee;text-align:right}
+.kim-blue-embed{display:block;width:100%;height:auto;aspect-ratio:16/9;min-height:300px;border:0;background:#111d3a}
+.kim-blue-viewer-foot{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px;flex-wrap:wrap}
+.kim-blue-viewer-foot p{max-width:490px;margin:0;color:#ccd9f5;font-size:12px;line-height:1.65}
+.kim-blue-link{display:inline-flex;align-items:center;gap:14px;padding:13px 17px;border:1.5px solid #dce8ff;color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;transition:background .2s,color .2s}
+.kim-blue-link svg{height:18px;width:18px;flex:none}
+.kim-blue-link:hover{background:#f3f6ff;color:#11264e}
+.kim-blue-process{padding:24px 0 2px;border-bottom:1px solid rgba(237,243,255,.3)}
+.kim-blue-process summary{display:flex;gap:14px;align-items:center;justify-content:space-between;cursor:pointer;font-weight:800;letter-spacing:.07em;text-transform:uppercase;font-size:12px;padding-bottom:22px;list-style:none;color:#f7f8ff}
+.kim-blue-process summary::-webkit-details-marker{display:none}
+.kim-blue-process summary:after{content:"+";font-size:26px;font-weight:400;line-height:.7}
+.kim-blue-process[open] summary:after{content:"–"}
+.kim-blue-process p{font-size:14px;line-height:1.8;color:#e0e8fb;max-width:850px;margin:0 0 23px}
+.kim-blue-real a:focus-visible,.kim-blue-real summary:focus-visible{outline:3px solid #fff;outline-offset:4px}
+@media(max-width:850px){.kim-blue-heading{grid-template-columns:1fr;gap:20px}.kim-blue-embed{min-height:240px}.kim-blue-heading h3{font-size:clamp(67px,13vw,110px)}}
+@media(max-width:560px){.kim-blue-real{padding:21px;margin:28px -7px 12px}.kim-blue-heading{padding-top:22px;padding-bottom:24px}.kim-blue-heading h3{font-size:clamp(62px,14vw,92px)}.kim-blue-moments{gap:11px 16px;font-size:10px}.kim-blue-viewer-head{font-size:9px;align-items:flex-start;flex-direction:column}.kim-blue-embed{min-height:220px}.kim-blue-viewer-foot{padding:15px}.kim-blue-link{width:100%;justify-content:space-between}}
+@media(prefers-reduced-motion:reduce){.kim-blue-link{transition:none}}
