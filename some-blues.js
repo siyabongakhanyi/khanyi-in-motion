@@ -98,9 +98,10 @@
   const share=moodPanel.querySelector("[data-kim-share]");
   const feedback=moodPanel.querySelector(".kim-share-feedback");
   share.addEventListener("click",async()=>{
-   const url="https://khanyi-in-motion.vercel.app/the-blueprint.html";
-   const title="THE BLUEPRINT — Four States of Blue | Siya Khanyi";
-   const summary="Blue isn't one feeling. Stillness, memory, defiance, release. Explore the independent denim editorial.";
+   const state=emotionalStates[moodIndex];
+   const url="https://khanyi-in-motion.vercel.app/the-blueprint.html#state-"+state.tone;
+   const title="THE BLUEPRINT — "+state.name+" | Siya Khanyi";
+   const summary="“"+state.quote+"” A blue story in four emotional states. See The Blueprint.";
    if(navigator.share){
     try{await navigator.share({title,text:summary,url});feedback.textContent="Story ready to share.";return}
     catch(error){if(error.name==="AbortError")return}
