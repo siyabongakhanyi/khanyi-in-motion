@@ -12,6 +12,31 @@
   const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>';
 
   function init() {
+    // Fallback navigation until the main HTML performance repair is deployed.
+    // Guard every insertion so server-rendered links remain the single source.
+    const mainNav = document.getElementById('main-nav');
+    if (mainNav && !mainNav.querySelector('a[href="/for-brands.html"]')) {
+      const brandLink = document.createElement('a');
+      brandLink.href = '/for-brands.html';
+      brandLink.className = 'kim-for-brands-nav';
+      brandLink.textContent = 'For brands';
+      const aboutLink = mainNav.querySelector('a[href="#about"]');
+      if (aboutLink) mainNav.insertBefore(brandLink, aboutLink);
+      else mainNav.appendChild(brandLink);
+    }
+    const collaboration = document.querySelector('#collaborate .wrap');
+    if (collaboration && !collaboration.querySelector('a[href="/for-brands.html"]')) {
+      const brandLink = document.createElement('a');
+      brandLink.href = '/for-brands.html';
+      brandLink.className = 'kim-partner-start';
+      brandLink.innerHTML = 'FOR BRANDS — SEE THE WORK &amp; CAPABILITIES ' + arrow;
+      const para = collaboration.querySelector('p');
+      if (para) para.insertAdjacentElement('afterend',brandLink);
+      else collaboration.appendChild(brandLink);
+      const style = document.createElement('style');
+      style.textContent = '.kim-partner-start{display:inline-flex;align-items:center;gap:14px;min-height:46px;padding:11px 15px;margin:8px 0 18px;border:1px solid currentColor;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.06em;color:inherit}.kim-partner-start svg{width:18px;height:18px;flex:none}.kim-partner-start:focus-visible{outline:3px solid #e8793d;outline-offset:4px}@media(max-width:570px){.kim-partner-start{width:100%;font-size:10px}}';
+      document.head.appendChild(style);
+    }
     const current = document.querySelector('#collaborate a.pill[href*="instagram.com"]');
     if (!current || document.getElementById('contact-channel-dialog')) return;
 
