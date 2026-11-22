@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://khanyi-in-motion.vercel.app/sitemap.xml
