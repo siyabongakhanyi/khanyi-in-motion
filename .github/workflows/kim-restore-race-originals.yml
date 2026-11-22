@@ -1,0 +1,92 @@
+name: Restore verified original MOVED race photography
+on:
+  push:
+    paths:
+      - '.github/workflows/kim-restore-race-originals.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  restore-real-photos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out original website
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+      - name: Install image optimiser
+        run: python3 -m pip install 'Pillow>=10,<13'
+      - name: Fetch exactly the owner's original photographs, checksum-verified
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageOps
+          from io import BytesIO
+          import urllib.request,hashlib,re
+          manifest=[["race-01-celebrate.jpg","https://cdn.gamma.app/9l6rs28s14a545s/2c03552c84c246fe8d424905af255687/original/IMG_4493.jpeg","26b508df284b76f61e35aaff8ac4023e1b4b731b77511856cb567e0ae18e6490"],["race-02-on-course.jpg","https://cdn.gamma.app/9l6rs28s14a545s/agent-uploads/lIBP7k-2frGpJRHIKifgy.jpg","4df7f5b7d7c3f0b80c9d687aaa0d156e0a48ba44a7987cb464405fda026423ea"],["race-03-running.jpg","https://cdn.gamma.app/9l6rs28s14a545s/934c0dce5c604c2a916807fe7e9f0652/original/IMG_4487.jpeg","cd10e2aac92a1baf5cfdc685f75d9bd99812dc4f21f846c66c0f4ba41710777c"],["race-04-thumbs-up.jpg","https://cdn.gamma.app/9l6rs28s14a545s/agent-uploads/Yd2zYQe51yzc96r-EREUS.jpg","85fe4443806ca22f31ead6544d9d78d005f1f0d14336623f08730d61b56cc507"],["race-05-finish.jpg","https://cdn.gamma.app/9l6rs28s14a545s/agent-uploads/UlNGDDcbyUwp224lIu_dx.jpg","1e9b4cf7b43b3f870a214f37f0b0019403c537d2ce48f15a847665d9802a94e8"],["race-06-afterglow.jpg","https://cdn.gamma.app/9l6rs28s14a545s/agent-uploads/sUXV5N0S7Ao7eJaWBnab5.jpg","eb23415ccc6bd36c01b587778838ce2f3b90728f219e1eb3bbc5f877399c8a51"],["race-07-medal.jpg","https://cdn.gamma.app/9l6rs28s14a545s/agent-uploads/QAMaz9oDKVNITEpWlaIZ7.jpg","e93d37b96dab6a97fdaa5e901d5221e7650efdf18a1cca777b140fb345b9b27f"]]
+          folder=Path("assets/work/blue-real-life/race")
+          thumbs=folder/"thumbs"
+          thumbs.mkdir(parents=True, exist_ok=True)
+          for filename,url,expected in manifest:
+              request=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0"})
+              with urllib.request.urlopen(request,timeout=35) as resp:
+                  data=resp.read()
+              if hashlib.sha256(data).hexdigest()!=expected:
+                  raise RuntimeError("Source photo is not byte-for-byte the uploaded original: "+filename)
+              image=ImageOps.exif_transpose(Image.open(BytesIO(data)).convert("RGB"))
+              if min(image.size)<700:
+                  raise RuntimeError("Too-small original media: "+filename+str(image.size))
+              (folder/filename).write_bytes(data)
+              thumbnail=image.copy()
+              thumbnail.thumbnail((460,690),Image.Resampling.LANCZOS)
+              thumb_path=thumbs/(Path(filename).stem+".webp")
+              thumbnail.save(thumb_path,format="WEBP",quality=84,method=6)
+              print(filename,"ORIGINAL",image.size,len(data),"THUMBNAIL",thumbnail.size,thumb_path.stat().st_size)
+              if filename=="race-01-celebrate.jpg":
+                  hero=image.copy()
+                  hero.thumbnail((830,1240),Image.Resampling.LANCZOS)
+                  hero.save(folder/"race-hero.webp",format="WEBP",quality=84,method=6)
+          # Keep click-to-expand and social-preview sources high resolution.
+          # Only <img> uses a lightweight real-photo derivative.
+          for file in [Path("blue-on-the-move.html"),Path("for-brands.html"),Path("the-blueprint.html")]:
+              text=file.read_text()
+              def thumbs_src(match):
+                  return match.group(1)+"thumbs/"+match.group(2)+".webp"+match.group(3)
+              text=re.sub(r'(<img[^>]+src="/assets/work/blue-real-life/race/)(race-0[1-7]-[^".]+)\.jpg(")',thumbs_src,text)
+              if file.name=="blue-on-the-move.html":
+                  text=text.replace('<figure class="hero-feature"><img src="/assets/work/blue-real-life/race/thumbs/race-01-celebrate.webp"', '<figure class="hero-feature"><img src="/assets/work/blue-real-life/race/race-hero.webp"')
+              if file.name=="the-blueprint.html":
+                  text=text.replace('/assets/work/blue-real-life/race/race-02-on-course.jpg','/assets/work/blue-real-life/race/thumbs/race-02-on-course.webp')
+              file.write_text(text)
+          # Do not alter the actual source files, authored stories, alt text or thumbnails in LIVED.
+          PY
+      - name: Verify original gallery and lightweight page assets
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          base=Path('assets/work/blue-real-life/race')
+          assert all((base/f'race-0{i}-'+suffix).is_file() for i,suffix in enumerate(['celebrate.jpg','on-course.jpg','running.jpg','thumbs-up.jpg','finish.jpg','afterglow.jpg','medal.jpg'],1))
+          for i,stem in enumerate(['celebrate','on-course','running','thumbs-up','finish','afterglow','medal'],1):
+              assert (base/'thumbs'/f'race-0{i}-{stem}.webp').is_file()
+          html=Path('blue-on-the-move.html').read_text()
+          assert html.count('data-view data-src="/assets/work/blue-real-life/race/race-')>=7
+          assert html.count('/assets/work/blue-real-life/race/thumbs/')>=7
+          assert 'race-hero.webp' in html
+          print('Original photo sources retained for expansion; compact real-photo previews linked.')
+          PY
+      - name: Commit originals and optimised thumbnails
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/work/blue-real-life/race/ blue-on-the-move.html for-brands.html the-blueprint.html
+          if git diff --cached --quiet; then
+            echo 'Original photo quality already restored.'
+            exit 0
+          fi
+          git commit -m 'Restore seven checksum-verified race originals and light thumbnails'
+          git pull --rebase origin main
+          git push origin HEAD:main
