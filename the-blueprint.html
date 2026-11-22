@@ -119,75 +119,167 @@
 .pinterest-story-link .kim-story-line-icon{width:15px;height:15px;flex:none}
 </style>
 <style>
+
+/* K/IM: kinetic editorial archive card — photographic assets are original, never generated. */
 .kim-lived-story{
   position:relative;isolation:isolate;display:grid;
-  grid-template-columns:minmax(0,1fr) 158px;gap:clamp(16px,3vw,34px);
-  align-items:center;width:min(100%,900px);max-width:900px;min-width:0;
-  margin:clamp(32px,5vw,56px) auto 48px;padding:22px 24px 22px 28px;
-  overflow:hidden;color:#f8faff;
-  border:1px solid #4d70a8;
-  background:linear-gradient(120deg,#112b59 0%,#17396f 65%,#214787 100%);
-  box-shadow:0 14px 40px rgba(3,11,34,.16);
+  grid-template-columns:minmax(0,1fr) minmax(230px,32%);
+  gap:clamp(12px,2.5vw,28px);align-items:center;
+  width:min(calc(100% - 32px),980px);max-width:980px;
+  margin:clamp(58px,7vw,88px) auto clamp(56px,7vw,84px);
+  padding:32px clamp(22px,3.5vw,45px);min-height:320px;
+  color:#fff;border:1px solid rgba(130,177,246,.7);
+  background:radial-gradient(ellipse at 74% 70%,rgba(77,136,235,.22),transparent 49%),
+             linear-gradient(112deg,#101f44 4%,#10295b 54%,#15356b 100%);
+  box-shadow:0 20px 65px rgba(2,10,34,.24);
+  border-radius:9px;overflow:visible;
 }
 .kim-lived-story::before{
   content:"";position:absolute;z-index:-1;pointer-events:none;
-  width:260px;height:260px;right:42px;top:-100px;border-radius:50%;
-  border:1px solid rgba(188,213,255,.18);
-  box-shadow:0 0 0 36px rgba(188,213,255,.035),0 0 0 74px rgba(188,213,255,.025);
+  inset:-1px 8px;border:1px solid rgba(160,199,255,.42);
+  border-radius:11px;transform:skewX(-8deg);
 }
 .kim-lived-story::after{
-  content:"002 / LIVED";position:absolute;right:207px;top:18px;
-  color:#b2cafa;font:700 9px/1.2 Arial,sans-serif;letter-spacing:.17em;
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  right:26px;bottom:-12px;width:31%;height:24px;
+  background:linear-gradient(100deg,#467bdf,#1d4386);
+  transform:skewX(-18deg);opacity:.85;
 }
-.kim-lived-story-copy{position:relative;z-index:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
-.kim-lived-story-kicker{font-size:10px;letter-spacing:.12em;font-weight:800;color:#c4d5ff}
+.kim-lived-story-orbit{
+  position:absolute;z-index:1;pointer-events:none;left:49%;top:39%;
+  width:48%;height:46%;border:1px solid rgba(184,212,255,.68);
+  border-radius:50%;transform:rotate(-22deg);
+  animation:kim-lived-orbit 10s ease-in-out infinite alternate;
+}
+@keyframes kim-lived-orbit{
+  from{transform:translate3d(-6px,5px,0) rotate(-22deg)}
+  to{transform:translate3d(7px,-5px,0) rotate(-15deg)}
+}
+.kim-lived-story-hairline{
+  position:absolute;z-index:1;pointer-events:none;left:48%;top:39px;
+  width:20%;height:1px;background:linear-gradient(90deg,#b8d1ff,rgba(184,209,255,.06));
+}
+.kim-lived-story-corner{
+  position:absolute;z-index:4;right:18px;top:20px;
+  width:24px;height:24px;color:#d4e3ff;
+  transition:transform .3s ease;
+}
+.kim-lived-story-tracks{
+  position:absolute;z-index:4;bottom:16px;right:20px;
+  color:#8eb9ff;font-size:18px;letter-spacing:2px;
+  font-family:Arial,sans-serif;font-weight:300;transform:skewX(-14deg);
+}
+.kim-lived-story-copy{
+  position:relative;z-index:3;min-width:0;display:flex;
+  flex-direction:column;align-items:flex-start;justify-content:center;
+  max-width:530px;
+}
+.kim-lived-story-kicker{
+  color:#cedfff;font-size:10px;line-height:1.5;
+  font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+}
 .kim-lived-story h2{
-  font:900 clamp(36px,4.3vw,53px)/.95 Impact,"Arial Narrow",sans-serif;
-  letter-spacing:-.023em;margin:12px 0 10px;color:#fff;text-wrap:balance;
+  font:900 clamp(46px,5.8vw,72px)/.87 Impact,"Arial Narrow",sans-serif;
+  letter-spacing:-.022em;margin:21px 0 17px;color:#fff;
+  text-transform:uppercase;text-wrap:balance;
+  text-shadow:0 4px 18px rgba(9,19,47,.2);
 }
-.kim-lived-story h2 em{font-style:normal;color:#a4c2ff}
+.kim-lived-story h2 em{font-style:normal;color:#a8c5ff}
 .kim-lived-story p{
-  max-width:510px;margin:0;font-size:13px;line-height:1.5;
-  color:#e1ebff;
+  max-width:450px;margin:0;color:#e5eeff;
+  font-size:clamp(12px,1.2vw,15px);line-height:1.55;
 }
 .kim-lived-story-link{
-  display:inline-flex;align-items:center;gap:9px;min-height:36px;
-  padding:7px 0 3px;margin-top:10px;
-  border:0;border-bottom:1px solid #aec8f8;
-  color:#fff;text-decoration:none;font-size:10px;
-  letter-spacing:.08em;font-weight:800;transition:color .2s,border-color .2s;
+  display:inline-flex;align-items:center;gap:17px;min-height:43px;
+  margin-top:21px;padding:10px 15px;
+  border:1px solid rgba(224,236,255,.85);
+  color:#fff;background:rgba(6,22,53,.22);
+  text-decoration:none;font-size:10px;font-weight:800;
+  letter-spacing:.065em;line-height:1.35;
+  transition:background .2s ease,transform .25s ease,border-color .2s ease;
 }
-.kim-lived-story-link:hover{background:transparent;color:#b2cfff;border-color:#fff}
-.kim-lived-story-link .line-icon{width:15px;height:15px;flex:none}
-.kim-lived-story-link:focus-visible,.kim-lived-story-photo:focus-visible{outline:3px solid #ffb86e;outline-offset:4px}
+.kim-lived-story-link .line-icon{flex:none;width:16px;height:16px}
+.kim-lived-story-link:hover{color:#fff;background:#234b91;border-color:#fff;transform:translateX(4px)}
+.kim-lived-story-link:focus-visible,.kim-lived-story-photo:focus-visible{
+  outline:3px solid #ffbf73;outline-offset:5px;
+}
 .kim-lived-story-photo{
-  position:relative;z-index:1;display:block;overflow:hidden;
-  width:158px;height:206px;min-width:0;min-height:0;
-  background:#112550;border:1px solid rgba(217,231,255,.26);
+  position:relative;z-index:3;display:block;min-width:0;
+  width:100%;height:340px;
+  margin-top:-32px;margin-bottom:-32px;
+  background:transparent;overflow:visible;outline-offset:4px;
+  transition:transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.kim-lived-story-photo-backing{
+  position:absolute;inset:13px -10px -5px 13px;
+  background:linear-gradient(140deg,#84aafa 0%,#3565b4 62%,#0c2759 100%);
+  clip-path:polygon(17% 0,100% 0,85% 100%,0 100%);
+  transform:translate(8px,12px);
+  box-shadow:0 10px 18px rgba(4,15,39,.2);
 }
 .kim-lived-story-photo img{
-  display:block;width:100%;height:100%;min-height:0;max-height:none;
-  object-fit:cover;object-position:center 37%;
+  position:absolute;z-index:2;inset:0;display:block;
+  width:100%;height:100%;min-height:0;max-height:none;
+  object-fit:cover;object-position:center 43%;
+  clip-path:polygon(15% 0,100% 0,86% 100%,0 100%);
+  filter:drop-shadow(0 14px 22px rgba(0,0,0,.22));
 }
-@media(max-width:720px){
-  .kim-lived-story{grid-template-columns:minmax(0,1fr) 112px;gap:16px;padding:18px}
-  .kim-lived-story::after{display:none}
-  .kim-lived-story h2{font-size:clamp(30px,6vw,43px)}
-  .kim-lived-story-photo{width:112px;height:174px}
+.kim-lived-story-photo-echo{
+  position:absolute;z-index:1;pointer-events:none;
+  right:-17px;bottom:28px;width:34%;height:44%;
+  background:linear-gradient(rgba(72,115,202,.46),rgba(25,63,126,.46)),
+    url("/assets/work/blue-real-life/hero-cap.webp") center 58% / cover no-repeat;
+  clip-path:polygon(20% 0,100% 0,78% 100%,0 100%);
+  opacity:.8;
+  transform:translateX(20px);
+}
+.kim-lived-story:hover .kim-lived-story-photo{transform:translateY(-5px)}
+.kim-lived-story:hover .kim-lived-story-corner{transform:translate(3px,-3px)}
+@media(max-width:820px){
+  .kim-lived-story{grid-template-columns:minmax(0,1fr) 225px;min-height:280px;padding:23px 26px}
+  .kim-lived-story h2{font-size:clamp(40px,6.3vw,55px);margin:17px 0 13px}
   .kim-lived-story p{font-size:12px}
+  .kim-lived-story-photo{height:285px;margin-top:-24px;margin-bottom:-24px}
+  .kim-lived-story-orbit{left:42%;width:56%}
+  .kim-lived-story-hairline{display:none}
 }
-@media(max-width:480px){
-  .kim-lived-story{grid-template-columns:minmax(0,1fr) 93px;gap:12px;margin:28px auto 36px;padding:14px}
-  .kim-lived-story-kicker{font-size:8px;letter-spacing:.08em}
-  .kim-lived-story h2{font-size:clamp(28px,8.7vw,36px);margin:10px 0 8px}
-  .kim-lived-story p{font-size:11px;line-height:1.44}
-  .kim-lived-story-link{font-size:9px;letter-spacing:.03em;margin-top:6px;min-height:32px}
-  .kim-lived-story-photo{width:93px;height:156px}
-  .kim-lived-story::before{right:-130px}
+@media(max-width:600px){
+  .kim-lived-story{
+    width:calc(100% - 14px);grid-template-columns:minmax(0,1fr) minmax(104px,34%);
+    gap:4px;min-height:240px;padding:17px 12px 17px 18px;
+    margin:35px auto 49px;border-radius:5px;
+  }
+  .kim-lived-story::before{inset:-1px 5px;transform:skewX(-3deg)}
+  .kim-lived-story::after{height:14px;bottom:-7px}
+  .kim-lived-story-kicker{font-size:8px;letter-spacing:.06em}
+  .kim-lived-story h2{font-size:clamp(31px,7.4vw,44px);line-height:.92;margin:13px 0 11px}
+  .kim-lived-story p{font-size:11px;line-height:1.44;max-width:250px}
+  .kim-lived-story-link{min-height:34px;margin-top:12px;padding:6px 8px;gap:6px;font-size:9px;letter-spacing:0}
+  .kim-lived-story-link .line-icon{width:12px;height:12px}
+  .kim-lived-story-photo{height:232px;margin-top:-21px;margin-bottom:-21px}
+  .kim-lived-story-photo-backing{inset:6px -8px -7px 6px}
+  .kim-lived-story-photo-echo{right:-6px;bottom:18px;transform:translateX(8px)}
+  .kim-lived-story-orbit{left:39%;top:39%;width:58%;height:36%}
+  .kim-lived-story-tracks{right:9px;bottom:7px;font-size:13px}
+  .kim-lived-story-corner{width:15px;height:15px;right:10px;top:10px}
+}
+@media(max-width:365px){
+  .kim-lived-story{grid-template-columns:minmax(0,1fr) 97px;padding-left:13px;gap:2px}
+  .kim-lived-story h2{font-size:28px}
+  .kim-lived-story-kicker{font-size:7px}
+  .kim-lived-story p{font-size:10px}
+  .kim-lived-story-link{font-size:8px}
+  .kim-lived-story-photo{height:212px}
 }
 @media(orientation:landscape) and (max-height:530px){
-  .kim-lived-story{margin-block:24px;padding-block:16px}
-  .kim-lived-story-photo{height:160px}
+  .kim-lived-story{margin-top:25px;margin-bottom:28px;padding-block:18px}
+  .kim-lived-story-photo{height:230px;margin-block:-20px}
+}
+@media(prefers-reduced-motion:reduce){
+  .kim-lived-story-orbit{animation:none}
+  .kim-lived-story-photo,.kim-lived-story-corner,.kim-lived-story-link{transition:none}
+  .kim-lived-story:hover .kim-lived-story-photo,
+  .kim-lived-story:hover .kim-lived-story-corner{transform:none}
 }
 </style>
 </head>
@@ -214,13 +306,21 @@
 
 <details class="credits" id="outfit-credits"><summary><span class="kicker">THE DETAILS / FIVE PIECES</span><strong>WHAT I WORE</strong><span class="mood-plus" aria-hidden="true"><svg class="line-icon kim-story-line-icon kim-story-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="line-icon kim-story-line-icon kim-story-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></span></summary><div class="credits-panel"><div><span class="tag">mr price</span><p>Thrifted cap · Mr Price shirt · thrifted denim half-jersey · Mr Price × Artclub &amp; Friends Burnout Laser Print Jeans · Vans sneakers.</p><p>First explored as my take on Mr Price’s Be the Next creator concept. This is an independent personal editorial; no paid partnership or official endorsement is implied.</p><a class="pinterest-story-link" href="https://pin.it/614Wbjj9F" target="_blank" rel="noopener noreferrer" aria-label="Explore KHANYIbehindthefits Mr Price inspiration board on Pinterest (opens in a new tab)"><img src="/assets/brand/pinterest.svg" width="24" height="24" alt="" aria-hidden="true"><span>EXPLORE THE PINTEREST MOODBOARD</span><svg class="line-icon kim-story-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div><a class="cta" href="/#work">RETURN TO WORK IN MOTION <svg class="line-icon kim-story-line-icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div></details>
 <section class="kim-lived-story" aria-labelledby="kim-lived-title">
+  <span class="kim-lived-story-orbit" aria-hidden="true"></span>
+  <span class="kim-lived-story-hairline" aria-hidden="true"></span>
+  <svg class="kim-lived-story-corner" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M7 5h12v12"/></svg>
   <div class="kim-lived-story-copy">
     <span class="kim-lived-story-kicker">SOME BLUES / LIVED / PERSONAL ARCHIVE / 002</span>
-    <h2 id="kim-lived-title">BLUE, <em>IN REAL LIFE.</em></h2>
-    <p>Beyond the concept: blue in cafés, mirrors, nights out and everyday life. Twelve photographs. Four moods.</p>
-    <a href="/blue-in-real-life.html" class="kim-lived-story-link">EXPLORE THE LIVED ARCHIVE <svg class="line-icon kim-story-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+    <h2 id="kim-lived-title">BLUE,<br><em>IN REAL LIFE.</em></h2>
+    <p>Some Blues was a concept. The colour kept going into cafés, mirrors, nights out and ordinary days. Twelve personal photographs. Four blue moods. One lived story.</p>
+    <a href="/blue-in-real-life.html" class="kim-lived-story-link">STEP INTO THE LIVED ARCHIVE <svg class="line-icon kim-story-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
   </div>
-  <a class="kim-lived-story-photo" href="/blue-in-real-life.html" aria-label="View twelve real-life blue outfit photographs"><img src="/assets/work/blue-real-life/photo-11.png" alt="Casual blue and white outfit photographed in a pink ice cream café" loading="lazy" width="459" height="825"></a>
+  <a class="kim-lived-story-photo" href="/blue-in-real-life.html" aria-label="Open the original Blue, In Real Life photo archive">
+    <span class="kim-lived-story-photo-backing" aria-hidden="true"></span>
+    <span class="kim-lived-story-photo-echo" aria-hidden="true"></span>
+    <img src="/assets/work/blue-real-life/hero-cap.webp" alt="Original portrait wearing a blue cap, light-blue shirt, denim waistcoat and navy printed trousers" loading="lazy" width="1024" height="1536">
+  </a>
+  <span class="kim-lived-story-tracks" aria-hidden="true">///</span>
 </section>
 </main>
 <footer class="footer wrap"><span>KHANYI IN MOTION / ORIGINAL STYLE &amp; CREATIVE DIRECTION</span><a href="/#collaborate">START A CONVERSATION <svg class="line-icon kim-story-line-icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></footer>
