@@ -93,6 +93,16 @@ html,body{max-width:100%;overflow-x:clip}
  .chapter .photo-gallery,.chapter .photo-gallery.gallery-two{gap:9px!important;padding-inline:8px!important}
  .chapter .photo-gallery .photo-card{max-width:130px}
 }
+
+/* Final narrow-phone constraint: long invitation copy must wrap within viewport. */
+.outro-inner,.outro-inner>*,.outro-actions{min-width:0;max-width:100%}
+.outro h2,.outro p,.outro .eyebrow{max-width:100%;overflow-wrap:anywhere}
+.outro-actions a,.outro-actions button{max-width:100%;overflow-wrap:anywhere;white-space:normal;text-align:center}
+@media(max-width:700px){
+ .outro-inner{display:grid;grid-template-columns:minmax(0,1fr)!important}
+ .outro-actions{display:grid;grid-template-columns:minmax(0,1fr);width:100%}
+ .outro-actions>*{display:block;min-width:0;width:100%;box-sizing:border-box;overflow-wrap:anywhere}
+}
 </style></head><body>
 <header class="site-header"><nav class="shell site-nav" aria-label="Page navigation"><a class="brand" href="/#top" aria-label="Khanyi In Motion homepage">K<span>/</span>IM</a><a class="return" href="/#chapter-lived">BACK TO LIVED</a></nav></header>
 <main><section class="hero" aria-labelledby="story-title"><div class="shell hero-grid"><div class="hero-copy"><span class="eyebrow">K/IM / LIVED / SOME BLUES / 002</span>
