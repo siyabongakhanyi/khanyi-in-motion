@@ -43,25 +43,25 @@ else:
 
 for filename in names[1:]:
     src = f'src="/assets/home/{filename}"'
-    if src in HTML and not re.search(re.escape(src) + r'[^>]*\\bloading=', HTML):
+    if src in HTML and not re.search(re.escape(src) + r'[^>]*\bloading=', HTML):
         HTML = HTML.replace(src, src + ' loading="lazy" decoding="async"')
 first = f'src="/assets/home/{names[0]}"'
-if first in HTML and not re.search(re.escape(first) + r'[^>]*\\bdecoding=',HTML):
+if first in HTML and not re.search(re.escape(first) + r'[^>]*\bdecoding=',HTML):
     HTML = HTML.replace(first, first + ' decoding="async"')
 if "assets/home/world-worn.webp" not in HTML:
     raise SystemExit("Missing the first real image after extraction.")
 
 if 'property="og:image"' not in HTML:
     meta = (
-        '  <link rel="canonical" href="https://khanyi-in-motion.vercel.app/" />\\n'
-        '  <meta name="robots" content="index,follow,max-image-preview:large" />\\n'
-        '  <meta property="og:url" content="https://khanyi-in-motion.vercel.app/" />\\n'
-        '  <meta property="og:image" content="https://khanyi-in-motion.vercel.app/assets/home/world-worn.webp" />\\n'
-        '  <meta property="og:image:alt" content="Siya Khanyi wearing an original blue outfit and cap" />\\n'
-        '  <meta name="twitter:card" content="summary_large_image" />\\n'
-        '  <meta name="twitter:title" content="Khanyi in Motion — Siya Khanyi" />\\n'
-        '  <meta name="twitter:description" content="Style, systems, strength and stories. Original creative work by Siya Khanyi." />\\n'
-        '  <meta name="twitter:image" content="https://khanyi-in-motion.vercel.app/assets/home/world-worn.webp" />\\n'
+        '  <link rel="canonical" href="https://khanyi-in-motion.vercel.app/" />\n'
+        '  <meta name="robots" content="index,follow,max-image-preview:large" />\n'
+        '  <meta property="og:url" content="https://khanyi-in-motion.vercel.app/" />\n'
+        '  <meta property="og:image" content="https://khanyi-in-motion.vercel.app/assets/home/world-worn.webp" />\n'
+        '  <meta property="og:image:alt" content="Siya Khanyi wearing an original blue outfit and cap" />\n'
+        '  <meta name="twitter:card" content="summary_large_image" />\n'
+        '  <meta name="twitter:title" content="Khanyi in Motion — Siya Khanyi" />\n'
+        '  <meta name="twitter:description" content="Style, systems, strength and stories. Original creative work by Siya Khanyi." />\n'
+        '  <meta name="twitter:image" content="https://khanyi-in-motion.vercel.app/assets/home/world-worn.webp" />\n'
     )
     target = '  <link rel="icon" '
     if target not in HTML:
@@ -72,7 +72,7 @@ nav_marker = '      <a href="#about">About</a>'
 if 'href="/for-brands.html"' not in HTML:
     if nav_marker not in HTML:
         raise SystemExit("Missing nav insertion point.")
-    HTML = HTML.replace(nav_marker, '      <a href="/for-brands.html">For brands</a>\\n' + nav_marker, 1)
+    HTML = HTML.replace(nav_marker, '      <a href="/for-brands.html">For brands</a>\n' + nav_marker, 1)
 
 collab_marker = "If there's a story to tell or an idea to explore, let's talk.</p>"
 if 'class="kim-partner-start"' not in HTML:
@@ -81,7 +81,7 @@ if 'class="kim-partner-start"' not in HTML:
     HTML = HTML.replace(
         collab_marker,
         collab_marker +
-        '\\n      <a class="kim-partner-start" href="/for-brands.html">'
+        '\n      <a class="kim-partner-start" href="/for-brands.html">'
         'FOR BRANDS — EXPLORE MY WORK AND CAPABILITIES'
         ' <svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" aria-hidden="true">'
         '<path d="M7 17 17 7M7 7h10v10"/></svg></a>',
@@ -113,7 +113,7 @@ brand = 'https://khanyi-in-motion.vercel.app/for-brands.html'
 if brand not in sm:
     if "</urlset>" not in sm:
         raise SystemExit("Sitemap is malformed.")
-    sm = sm.replace("</urlset>", '  <url><loc>' + brand + '</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\\n</urlset>')
+    sm = sm.replace("</urlset>", '  <url><loc>' + brand + '</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\n</urlset>')
     sitemap.write_text(sm,encoding="utf-8")
 
 new_size = len(HTML.encode("utf-8"))
