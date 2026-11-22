@@ -66,6 +66,7 @@
  // Preserve Work in Motion heading. Remove all earlier repeated imagery and pitch sections.
  const keep=new Set([host.querySelector(".section-head"),heading]);
  Array.from(host.children).forEach(node=>{if(!keep.has(node))node.remove();});
+ document.documentElement.classList.add("kim2-ready");
  heading.insertAdjacentElement("afterend",article);
  document.getElementById("kim-story-dialog")?.remove();
  const intro=host.querySelector(".kim-work-intro");
