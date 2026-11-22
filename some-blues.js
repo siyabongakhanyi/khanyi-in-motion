@@ -16,6 +16,23 @@
   const closingNote=wornDetails.querySelector(".v12-foot");
   if(closingNote)closingNote.before(wornLink);else wornDetails.appendChild(wornLink);
  }
+ // MOVED's race narrative gets its own page, matching LIVED's separate photo archive.
+ const movedDetails=document.querySelector("#panel-moved .v12-feature-right");
+ if(movedDetails && !movedDetails.querySelector(".kim-moved-entry")){
+  const movedLink=document.createElement("a");
+  movedLink.className="kim-moved-entry";
+  movedLink.href="/blue-on-the-move.html";
+  movedLink.setAttribute("aria-label","Explore Blue On The Move, the original race-day photography story in MOVED");
+  movedLink.innerHTML='BLUE ON THE MOVE / RACE-DAY STORY <svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>';
+  const foot=movedDetails.querySelector(".v12-foot");
+  if(foot)foot.before(movedLink);else movedDetails.appendChild(movedLink);
+  const threads=movedDetails.querySelector(".v15-threads ul");
+  if(threads && !threads.textContent.includes("HOKA Half")){
+   const li=document.createElement("li");
+   li.textContent="HOKA Half / Blue On The Move";
+   threads.appendChild(li);
+  }
+ }
  const article=document.createElement("article");
  article.id="kim-edit-clean";
  article.className="kim2-editorial";
