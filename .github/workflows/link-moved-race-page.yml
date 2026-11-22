@@ -1,0 +1,62 @@
+name: Place BLUE ON THE MOVE in MOVED world
+on:
+  push:
+    paths:
+      - '.github/workflows/link-moved-race-page.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  link-movement-story:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out existing main site
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+      - name: Attach the race page to MOVED, not LIVED
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          if 'class="kim-moved-entry"' in s:
+              print('MOVED already links to the dedicated movement page; no change needed.')
+              raise SystemExit(0)
+          start=s.find('id="panel-moved"')
+          if start < 0:
+              raise RuntimeError("Could not find main MOVED panel. No changes made.")
+          end=s.find('</article>',start)
+          if end < 0:
+              raise RuntimeError("Could not find MOVED closing panel.")
+          part=s[start:end]
+          foot='<span class="v12-foot">PROGRESS HAS A PULSE.</span>'
+          if part.count(foot)!=1:
+              raise RuntimeError("Unexpected MOVED panel structure. Aborting to protect the main website.")
+          arrow='<svg class="line-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>'
+          entry='<a class="kim-moved-entry" href="/blue-on-the-move.html" aria-label="Explore Blue On The Move, the original race-day photo story under MOVED">BLUE ON THE MOVE / RACE-DAY STORY '+arrow+'</a>'
+          part=part.replace(foot,entry+foot)
+          part=part.replace('<li>HYROX Johannesburg</li>','<li>HYROX Johannesburg</li><li>HOKA Half / Blue On The Move</li>')
+          s=s[:start]+part+s[end:]
+          if s.count('class="kim-moved-entry"')!=1:
+              raise RuntimeError('MOVED link could not be verified.')
+          # Ensure the separate LIVED entry is preserved and unchanged.
+          if 'id="panel-lived"' not in s or 'href="/blue-in-real-life.html"' not in s:
+              raise RuntimeError('Original LIVED chapter link went missing.')
+          p.write_text(s,encoding='utf-8')
+          print('Added standalone MOVED story link; preserved LIVED.')
+          PY
+      - name: Commit the targeted index.html update
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          if git diff --cached --quiet; then
+            echo 'No index change needed.'
+            exit 0
+          fi
+          git commit -m 'Feature BLUE ON THE MOVE under MOVED without nesting it in LIVED'
+          git pull --rebase origin main
+          git push
