@@ -158,6 +158,10 @@
 .comfort-reel-loading a:focus-visible{outline:3px solid #ffbc76;outline-offset:4px}
 .comfort-native-reel{display:block;width:auto;max-width:100%;height:auto;max-height:min(72vh,625px);aspect-ratio:9/16;object-fit:contain;background:#050c1b;box-shadow:0 12px 32px #03112e82}
 @media(max-width:475px){.comfort-reel-loading{min-height:310px}.comfort-native-reel{max-height:72svh}}
+
+/* Accessibility remediation: caption and supporting labels meet contrast on white. */
+.frame figcaption span{color:#254b82!important}
+.gallery-note{color:#334b72!important}
 </style></head><body>
 <header class="site-head"><nav class="shell" aria-label="Page navigation"><a class="brand" href="/" aria-label="Khanyi in Motion homepage">K<span>/</span>IM.</a><a class="back" href="/#chapter-moved">BACK TO MOVED</a></nav></header>
 <main><section class="hero" aria-labelledby="page-title">
@@ -187,7 +191,7 @@
 <figure class="frame"><button class="image-open" type="button" data-view data-src="/assets/work/blue-real-life/race/race-06-afterglow.jpg" data-alt="Hands on hips on the grass with race medal, black cycling shorts and light blue trainers" aria-label="Expand photo 6, The afterglow"><img src="/assets/work/blue-real-life/race/race-06-afterglow.jpg" alt="Hands on hips on the grass with race medal, black cycling shorts and light blue trainers" width="133" height="200" loading="lazy" decoding="async"><span class="expand" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></span></button><figcaption><span>06 / 07</span><strong>The afterglow</strong></figcaption></figure>
 <figure class="frame"><button class="image-open" type="button" data-view data-src="/assets/work/blue-real-life/race/race-07-medal.jpg" data-alt="Close-up of the finish medal in front of a blue running outfit" aria-label="Expand photo 7, One to remember"><img src="/assets/work/blue-real-life/race/race-07-medal.jpg" alt="Close-up of the finish medal in front of a blue running outfit" width="133" height="200" loading="lazy" decoding="async"><span class="expand" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></span></button><figcaption><span>07 / 07</span><strong>One to remember</strong></figcaption></figure>
  <figure class="frame frame-film"><button class="image-open" type="button" data-view data-src="/assets/work/blue-real-life/race/race-film-poster.jpg" data-alt="A genuine still from the supplied race film" aria-label="Expand race-film still"><img src="/assets/work/blue-real-life/race/race-film-poster.jpg" alt="Original race-film still" width="200" height="355" loading="lazy"><span class="film-tag">FILM FRAME</span><span class="expand" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></span></button><video hidden id="race-video" playsinline controls preload="none" poster="/assets/work/blue-real-life/race/race-film-poster.jpg"><source src="/assets/work/blue-real-life/race/hoka-half-film.mp4" type="video/mp4">Your browser does not support this video.</video><figcaption><span>08 / MOTION</span><strong>On film</strong></figcaption></figure>
- </div><p class="gallery-note">Personal archive / genuine photographs. Images open at their actual available resolution; never stretched. The film plays here when the original web version is published.</p></div>
+ </div><p class="gallery-note">Personal archive / genuine photographs. Images open at their actual available resolution; never stretched. The original race film will be available when its web video is published.</p></div>
 </div></section>
 
 <section class="comfort-case kim-comfort-signal-v2" id="comfort-has-mileage" aria-labelledby="comfort-title">
@@ -244,7 +248,7 @@
   </div>
   <div class="comfort-final">
    <div><span class="eyebrow">COLLABORATE WITH A CREATOR WHO THINKS BEYOND THE POST</span><h4>STORY. CULTURE.<br><em>USEFUL INSIGHT.</em></h4></div>
-   <a class="comfort-contact" href="/#collaborate">WORK WITH KHANYI IN MOTION <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+   <a class="comfort-contact" href="/for-brands.html">EXPLORE BRAND PARTNERSHIPS <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
   </div>
   <p class="comfort-fineprint">Original, independent creator concept by Siyabonga Khanyi. No Crocs partnership, brand endorsement, product approval, scientific testing result or footwear performance claim is implied.</p>
  </div>
@@ -266,7 +270,7 @@
  dialog.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();show(current+1)}else if(e.key==="ArrowLeft"){e.preventDefault();show(current-1)}});
  document.querySelectorAll("[data-share]").forEach(b=>b.addEventListener("click",async()=>{const url=location.href.split("#")[0];if(navigator.share){try{await navigator.share({title:"Blue On The Move — Khanyi in Motion",url});return}catch(e){if(e.name==="AbortError")return}}try{await navigator.clipboard.writeText(url);b.textContent="LINK COPIED"}catch(e){b.textContent="SHARE THIS PAGE URL"}}));
  const video=document.getElementById("race-video"),image=document.querySelector(".frame-film .image-open");
- if(video&&image){fetch("/assets/work/blue-real-life/race/hoka-half-film.mp4",{method:"HEAD",cache:"no-store"}).then(r=>{if(r.ok&&(r.headers.get("content-type")||"").toLowerCase().includes("video/mp4")){image.hidden=true;video.hidden=false}}).catch(()=>{})}
+ if(video&&image&&document.documentElement.dataset.hokaFilmReady==="true"){image.hidden=true;video.hidden=false;video.load()}
 })();</script><script>
 (()=>{"use strict";
  const host=document.getElementById("comfort-instagram-embed");
