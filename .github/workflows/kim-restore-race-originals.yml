@@ -68,7 +68,7 @@ jobs:
           from pathlib import Path
           import re
           base=Path('assets/work/blue-real-life/race')
-          assert all((base/f'race-0{i}-'+suffix).is_file() for i,suffix in enumerate(['celebrate.jpg','on-course.jpg','running.jpg','thumbs-up.jpg','finish.jpg','afterglow.jpg','medal.jpg'],1))
+          assert all((base/(f'race-0{i}-'+suffix)).is_file() for i,suffix in enumerate(['celebrate.jpg','on-course.jpg','running.jpg','thumbs-up.jpg','finish.jpg','afterglow.jpg','medal.jpg'],1))
           for i,stem in enumerate(['celebrate','on-course','running','thumbs-up','finish','afterglow','medal'],1):
               assert (base/'thumbs'/f'race-0{i}-{stem}.webp').is_file()
           html=Path('blue-on-the-move.html').read_text()
