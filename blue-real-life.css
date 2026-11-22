@@ -30,3 +30,26 @@
 @media(max-width:850px){.kim-blue-heading{grid-template-columns:1fr;gap:20px}.kim-blue-embed{min-height:240px}.kim-blue-heading h3{font-size:clamp(67px,13vw,110px)}}
 @media(max-width:560px){.kim-blue-real{padding:21px;margin:28px -7px 12px}.kim-blue-heading{padding-top:22px;padding-bottom:24px}.kim-blue-heading h3{font-size:clamp(62px,14vw,92px)}.kim-blue-moments{gap:11px 16px;font-size:10px}.kim-blue-viewer-head{font-size:9px;align-items:flex-start;flex-direction:column}.kim-blue-embed{min-height:220px}.kim-blue-viewer-foot{padding:15px}.kim-blue-link{width:100%;justify-content:space-between}}
 @media(prefers-reduced-motion:reduce){.kim-blue-link{transition:none}}
+/* LIVED chapter link — the personal photo archive now has its own page,
+   rather than a large second campaign on the landing page. */
+#panel-lived .kim-lived-entry{
+ display:inline-flex;align-items:center;justify-content:space-between;gap:13px;
+ padding:12px 15px;min-height:46px;max-width:100%;
+ margin:14px 0 11px;border:1.5px solid currentColor;
+ color:inherit;background:transparent;font-weight:850;
+ font-size:clamp(10px,.9vw,12px);letter-spacing:.06em;
+ text-decoration:none;line-height:1.45;
+}
+#panel-lived .kim-lived-entry .line-icon{width:19px;height:19px;flex:none}
+#panel-lived .kim-lived-entry:hover{background:#e0e9ff;color:#0e2959;border-color:#94afd7}
+#panel-lived .kim-lived-entry:focus-visible{outline:3px solid #ffb86e;outline-offset:4px}
+/* Cross-device resilience: preserve the existing editorial design,
+   but let all grid children and illustrations shrink without sideways scroll. */
+#the-world .v12-chapter,#the-world .v12-feature-left,
+#the-world .v12-feature-right,#work .kim-gallery,
+#work .kim-feature,#work .kim-feature-copy{min-width:0}
+@media(max-width:1024px){#panel-lived .kim-lived-entry{width:max-content;max-width:100%;white-space:normal}}
+@media(max-width:760px){#panel-lived .kim-lived-entry{width:100%;justify-content:space-between}#the-world .v12-chapter{max-width:100%}}
+@media(max-width:440px){#panel-lived .kim-lived-entry{font-size:10px;padding:13px 12px;letter-spacing:.02em}}
+@media(orientation:landscape) and (max-height:540px){#panel-lived .kim-lived-entry{min-height:44px}}
+@media(prefers-reduced-motion:reduce){#panel-lived .kim-lived-entry{transition:none}}
