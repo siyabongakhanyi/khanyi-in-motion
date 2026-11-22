@@ -5,6 +5,17 @@
  if(!host || document.getElementById("kim-edit-clean"))return;
  const heading=host.querySelector(".heading-grid");
  if(!heading)return;
+ // The WORN world introduces the styling work; give that chapter a direct path.
+ const wornDetails=document.querySelector("#panel-worn .v12-feature-right");
+ if(wornDetails){
+  const wornLink=document.createElement("a");
+  wornLink.className="kim-worn-work-link";
+  wornLink.href="#work";
+  wornLink.setAttribute("aria-label","Explore The Blueprint in Work in Motion");
+  wornLink.innerHTML='<span>SEE THE WORN EDITORIAL<small>THE BLUEPRINT / WORK IN MOTION</small></span><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>';
+  const closingNote=wornDetails.querySelector(".v12-foot");
+  if(closingNote)closingNote.before(wornLink);else wornDetails.appendChild(wornLink);
+ }
  const article=document.createElement("article");
  article.id="kim-edit-clean";
  article.className="kim2-editorial";
