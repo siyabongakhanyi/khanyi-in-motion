@@ -1,5 +1,5 @@
 Khanyi In Motion — responsive smoke test
-Generated 2026-11-22T15:19:22.009Z
+Generated 2026-11-22T15:24:27.337Z
 Source: https://khanyi-in-motion.vercel.app
 
 PASS | mobile-small-portrait   HOME                | 320/320
