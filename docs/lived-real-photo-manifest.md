@@ -29,3 +29,18 @@ real-new-08: IMG_4813_jpg(1).jpeg
 real-new-09: IMG_4776(1).jpeg
 
 The separate camera/editorial campaign has not been modified. Do not reintroduce generated visual diary spreads into this archive.
+
+## Published photo resolution / restoration (2026-11-22)
+The site currently uses Canva-transferred preview thumbnails (approximately 200 px tall) for the
+18 named photos. They are faithful copies of the user's actual photographs, not generated
+substitutes, but cannot remain large without softness.
+
+The LIVED page now uses small, uncropped native-ratio contact-sheet collages and a viewer that
+does not upscale the intrinsic pixel dimensions. The higher-resolution originals are available
+in the user-provided photo pack under the exact same asset paths.
+
+To replace the 18 thumbnails without modifying HTML, upload
+`khanyi_blue_real_life_originals_ready_for_github.zip` to the GitHub repository's main-branch
+root. The workflow `.github/workflows/restore-blue-originals.yml` validates the 18 expected
+JPEG paths, replaces the thumbnails, commits the full images and removes the one-time ZIP.
+The connected Vercel project deploys from main automatically.
