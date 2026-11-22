@@ -39,16 +39,16 @@ try {
      headingCount:document.querySelectorAll("h1").length,
      mainCount:document.querySelectorAll("main").length,
      canvaEmbeds:document.querySelectorAll('iframe[src*="canva.com"]').length,
-     photos:document.querySelectorAll('button[data-archive-view][data-src*="photo-"], button[data-archive-view][data-src*="lived-extra-"]').length,
+     photos:document.querySelectorAll('button[data-archive-view]').length,
      slides:document.querySelectorAll('button[data-archive-view][data-src*="story-"]').length
     }));
     if(!response||response.status()!==200)issues.push("http "+response?.status());
     if(d.docWidth>d.width+3||d.bodyWidth>d.width+3){const offenders=await page.evaluate(()=>Array.from(document.querySelectorAll("body *")).map(el=>({el,r:el.getBoundingClientRect(),s:getComputedStyle(el)})).filter(x=>x.r.width>0&&x.r.right>window.innerWidth+2&&x.s.position!=="absolute"&&x.s.position!=="fixed"&&x.s.display!=="none").sort((a,b)=>b.r.right-a.r.right).slice(0,8).map(x=>x.el.tagName.toLowerCase()+(x.el.id?"#"+x.el.id:"")+(x.el.className&&typeof x.el.className==="string"?"."+x.el.className.split(" ").slice(0,2).join("."):"")+":"+Math.round(x.r.right)));issues.push("horizontal overflow "+d.docWidth+"/"+d.bodyWidth+" > "+d.width+" offenders "+offenders.join(","));}
     if(d.headingCount!==1)issues.push("expected one h1, found "+d.headingCount);
-    if(p.path==="/"&&d.canvaEmbeds)issues.push("broken Canva embed remains");
-    if(p.gallery&&(d.photos!==22||d.slides!==7))issues.push("gallery media count mismatch "+d.photos+"/"+d.slides);
+    if(d.canvaEmbeds)issues.push("broken Canva embed remains");
+    if(p.gallery&&(d.photos!==18||d.slides!==0))issues.push("gallery media count mismatch "+d.photos+"/"+d.slides);
     if(p.gallery){
-     const additions=await page.locator('img[src*="lived-extra-"]').evaluateAll(async images=>{
+     const additions=await page.locator('img[src*="lived-extra-"], img[src*="real-new-"]').evaluateAll(async images=>{
        const loaded=await Promise.all(images.map(img=>new Promise(resolve=>{
          const probe=new Image();
          probe.onload=()=>resolve({src:img.getAttribute("src"),ok:true});
@@ -57,7 +57,7 @@ try {
        })));
        return loaded;
      });
-     if(additions.length!==10||additions.some(x=>!x.ok))issues.push("missing added photo asset(s) "+additions.filter(x=>!x.ok).map(x=>x.src).join(","));
+     if(additions.length!==18||additions.some(x=>!x.ok))issues.push("missing added photo asset(s) "+additions.filter(x=>!x.ok).map(x=>x.src).join(","));
      const first=page.locator("button[data-archive-view]").first();
      await first.click({timeout:7000});
      if(!(await page.locator("#archive-dialog").evaluate(x=>x.open)))issues.push("photo viewer did not open");
