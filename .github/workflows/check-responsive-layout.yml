@@ -51,18 +51,14 @@ jobs:
         id: smoke
         continue-on-error: true
         run: node tests/responsive-smoke.cjs
-      - name: Preserve responsive audit results
+      - name: Print responsive audit results without writing to main
         if: always()
+        shell: bash
         run: |
           if [ -f docs/responsive-smoke-report.txt ]; then
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add docs/responsive-smoke-report.txt
-            if ! git diff --cached --quiet; then
-              git commit -m "Record cross-device responsive smoke checks"
-              git pull --rebase origin main
-              git push
-            fi
+            cat docs/responsive-smoke-report.txt
+          else
+            echo "No responsive report was created."
           fi
       - name: Require smoke tests to pass
         if: always()
