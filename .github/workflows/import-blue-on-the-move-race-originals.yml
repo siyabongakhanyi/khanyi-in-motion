@@ -51,13 +51,21 @@ jobs:
                   target.write_bytes(payload)
                   print('Published:', target, len(payload), 'bytes')
           archive.unlink()
+          # Only enable the player after the actual MP4 has been validated and written.
+          page = Path('blue-on-the-move.html')
+          markup = page.read_text(encoding='utf-8')
+          if 'data-hoka-film-ready="true"' not in markup:
+              if '<html lang="en-ZA">' not in markup:
+                  raise RuntimeError('Cannot locate the HOKA page root for film activation.')
+              markup = markup.replace('<html lang="en-ZA">', '<html lang="en-ZA" data-hoka-film-ready="true">', 1)
+              page.write_text(markup, encoding='utf-8')
           PY
       - name: Commit the media without changing the archive design
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A assets/work/blue-real-life/race
+          git add -A assets/work/blue-real-life/race blue-on-the-move.html
           if git ls-files --error-unmatch khanyi_blue_on_the_move_race_originals.zip >/dev/null 2>&1; then
             git add -u khanyi_blue_on_the_move_race_originals.zip
           fi
