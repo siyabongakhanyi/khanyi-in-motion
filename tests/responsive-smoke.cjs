@@ -60,13 +60,13 @@ try {
      if(additions.length!==18||additions.some(x=>!x.ok))issues.push("missing added photo asset(s) "+additions.filter(x=>!x.ok).map(x=>x.src).join(","));
      const first=page.locator("button[data-archive-view]").first();
      await first.click({timeout:7000});
-     if(!(await page.locator("#archive-dialog").evaluate(x=>x.open)))issues.push("photo viewer did not open");
-     const before=await page.locator("#modal-image").getAttribute("src");
+     if(!(await page.locator("#photo-dialog").evaluate(x=>x.open)))issues.push("photo viewer did not open");
+     const before=await page.locator("#large-photo").getAttribute("src");
      await page.keyboard.press("ArrowRight");
-     const after=await page.locator("#modal-image").getAttribute("src");
+     const after=await page.locator("#large-photo").getAttribute("src");
      if(before===after)issues.push("keyboard navigation did not advance");
      await page.keyboard.press("Escape");
-     if(await page.locator("#archive-dialog").evaluate(x=>x.open))issues.push("Escape did not close viewer");
+     if(await page.locator("#photo-dialog").evaluate(x=>x.open))issues.push("Escape did not close viewer");
     }
     const label=(issues.length?"FAIL":"PASS")+" | "+v.name.padEnd(23)+" "+p.name.padEnd(19)+" | "+d.docWidth+"/"+d.width;
     report.push(label+(issues.length?" | "+issues.join("; "):""));
