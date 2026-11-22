@@ -17,6 +17,9 @@
 @media(max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(190px,.62fr)}.cases{grid-template-columns:repeat(2,minmax(0,1fr))}.cases .case:last-child{grid-column:1/-1}.cases .case:last-child img{height:225px}.process{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.top .shell{min-height:64px}.toplinks{gap:10px}.toplinks a{font-size:10px}.hero-grid{grid-template-columns:1fr;gap:25px;padding:42px 0}.hero h1{font-size:clamp(57px,11vw,80px)}.hero-photo{max-width:230px;margin:0;transform:rotate(2deg)}.hero-photo img{max-height:285px}.capabilities,.cases,.process{grid-template-columns:1fr}.cases .case:last-child{grid-column:auto}.case img{height:260px}.capability{min-height:auto}.capability h3{margin:15px 0 9px}.section{padding:49px 0}.section-head{display:block}.section-head p{margin-top:20px}.process article{padding:17px 19px}.action{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.case{transition:none}.case:hover{transform:none}}
+
+/* Narrow phones: keep the contact headline inside the layout, no clipping. */
+@media(max-width:360px){.contact h2{font-size:clamp(35px,10.5vw,43px);overflow-wrap:break-word}}
 </style></head><body>
 <header class="top"><nav class="shell" aria-label="Site navigation"><a class="brand" href="/" aria-label="Khanyi In Motion homepage">K<span>/</span>IM.</a><div class="toplinks"><a href="/#work">Selected work</a><a href="#contact">Get in touch</a></div></nav></header>
 <main>
