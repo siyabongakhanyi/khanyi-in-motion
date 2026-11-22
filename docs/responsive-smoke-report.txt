@@ -1,174 +1,48 @@
 Khanyi In Motion — responsive smoke test
-Generated 2026-11-22T19:00:59.369Z
+Generated 2026-11-22T19:02:59.509Z
 Source: http://127.0.0.1:8765
 
-ERROR | mobile-small-portrait HOME: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/
-Call log:
-  - navigating to "http://127.0.0.1:8765/", waiting until "domcontentloaded"
+PASS | mobile-small-portrait   HOME                | 320/320
+PASS | mobile-small-portrait   SOME BLUES STORY    | 320/320
+PASS | mobile-small-portrait   LIVED PHOTO ARCHIVE | 320/320
+PASS | mobile-small-portrait   MOVED RACE STORY    | 320/320
+PASS | mobile-small-portrait   BRAND PARTNERSHIPS  | 320/320
+PASS | mobile-small-portrait   PINTEREST STUDIO    | 320/320
+PASS | mobile-portrait         HOME                | 390/390
+PASS | mobile-portrait         SOME BLUES STORY    | 390/390
+PASS | mobile-portrait         LIVED PHOTO ARCHIVE | 390/390
+PASS | mobile-portrait         MOVED RACE STORY    | 390/390
+PASS | mobile-portrait         BRAND PARTNERSHIPS  | 390/390
+PASS | mobile-portrait         PINTEREST STUDIO    | 390/390
+PASS | mobile-landscape        HOME                | 844/844
+PASS | mobile-landscape        SOME BLUES STORY    | 844/844
+PASS | mobile-landscape        LIVED PHOTO ARCHIVE | 844/844
+PASS | mobile-landscape        MOVED RACE STORY    | 844/844
+PASS | mobile-landscape        BRAND PARTNERSHIPS  | 844/844
+PASS | mobile-landscape        PINTEREST STUDIO    | 844/844
+PASS | tablet-portrait         HOME                | 768/768
+PASS | tablet-portrait         SOME BLUES STORY    | 768/768
+PASS | tablet-portrait         LIVED PHOTO ARCHIVE | 768/768
+PASS | tablet-portrait         MOVED RACE STORY    | 768/768
+PASS | tablet-portrait         BRAND PARTNERSHIPS  | 768/768
+PASS | tablet-portrait         PINTEREST STUDIO    | 768/768
+PASS | tablet-landscape        HOME                | 1024/1024
+PASS | tablet-landscape        SOME BLUES STORY    | 1024/1024
+PASS | tablet-landscape        LIVED PHOTO ARCHIVE | 1024/1024
+PASS | tablet-landscape        MOVED RACE STORY    | 1024/1024
+PASS | tablet-landscape        BRAND PARTNERSHIPS  | 1024/1024
+PASS | tablet-landscape        PINTEREST STUDIO    | 1024/1024
+PASS | desktop                 HOME                | 1440/1440
+PASS | desktop                 SOME BLUES STORY    | 1440/1440
+PASS | desktop                 LIVED PHOTO ARCHIVE | 1440/1440
+PASS | desktop                 MOVED RACE STORY    | 1440/1440
+PASS | desktop                 BRAND PARTNERSHIPS  | 1440/1440
+PASS | desktop                 PINTEREST STUDIO    | 1440/1440
+PASS | wide-desktop            HOME                | 1920/1920
+PASS | wide-desktop            SOME BLUES STORY    | 1920/1920
+PASS | wide-desktop            LIVED PHOTO ARCHIVE | 1920/1920
+PASS | wide-desktop            MOVED RACE STORY    | 1920/1920
+PASS | wide-desktop            BRAND PARTNERSHIPS  | 1920/1920
+PASS | wide-desktop            PINTEREST STUDIO    | 1920/1920
 
-ERROR | mobile-small-portrait SOME BLUES STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/the-blueprint.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/the-blueprint.html", waiting until "domcontentloaded"
-
-ERROR | mobile-small-portrait LIVED PHOTO ARCHIVE: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-in-real-life.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-in-real-life.html", waiting until "domcontentloaded"
-
-ERROR | mobile-small-portrait MOVED RACE STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-on-the-move.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-on-the-move.html", waiting until "domcontentloaded"
-
-ERROR | mobile-small-portrait BRAND PARTNERSHIPS: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/for-brands.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/for-brands.html", waiting until "domcontentloaded"
-
-ERROR | mobile-small-portrait PINTEREST STUDIO: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/pinterest/
-Call log:
-  - navigating to "http://127.0.0.1:8765/pinterest/", waiting until "domcontentloaded"
-
-ERROR | mobile-portrait HOME: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/
-Call log:
-  - navigating to "http://127.0.0.1:8765/", waiting until "domcontentloaded"
-
-ERROR | mobile-portrait SOME BLUES STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/the-blueprint.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/the-blueprint.html", waiting until "domcontentloaded"
-
-ERROR | mobile-portrait LIVED PHOTO ARCHIVE: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-in-real-life.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-in-real-life.html", waiting until "domcontentloaded"
-
-ERROR | mobile-portrait MOVED RACE STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-on-the-move.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-on-the-move.html", waiting until "domcontentloaded"
-
-ERROR | mobile-portrait BRAND PARTNERSHIPS: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/for-brands.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/for-brands.html", waiting until "domcontentloaded"
-
-ERROR | mobile-portrait PINTEREST STUDIO: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/pinterest/
-Call log:
-  - navigating to "http://127.0.0.1:8765/pinterest/", waiting until "domcontentloaded"
-
-ERROR | mobile-landscape HOME: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/
-Call log:
-  - navigating to "http://127.0.0.1:8765/", waiting until "domcontentloaded"
-
-ERROR | mobile-landscape SOME BLUES STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/the-blueprint.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/the-blueprint.html", waiting until "domcontentloaded"
-
-ERROR | mobile-landscape LIVED PHOTO ARCHIVE: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-in-real-life.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-in-real-life.html", waiting until "domcontentloaded"
-
-ERROR | mobile-landscape MOVED RACE STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-on-the-move.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-on-the-move.html", waiting until "domcontentloaded"
-
-ERROR | mobile-landscape BRAND PARTNERSHIPS: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/for-brands.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/for-brands.html", waiting until "domcontentloaded"
-
-ERROR | mobile-landscape PINTEREST STUDIO: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/pinterest/
-Call log:
-  - navigating to "http://127.0.0.1:8765/pinterest/", waiting until "domcontentloaded"
-
-ERROR | tablet-portrait HOME: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/
-Call log:
-  - navigating to "http://127.0.0.1:8765/", waiting until "domcontentloaded"
-
-ERROR | tablet-portrait SOME BLUES STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/the-blueprint.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/the-blueprint.html", waiting until "domcontentloaded"
-
-ERROR | tablet-portrait LIVED PHOTO ARCHIVE: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-in-real-life.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-in-real-life.html", waiting until "domcontentloaded"
-
-ERROR | tablet-portrait MOVED RACE STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-on-the-move.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-on-the-move.html", waiting until "domcontentloaded"
-
-ERROR | tablet-portrait BRAND PARTNERSHIPS: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/for-brands.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/for-brands.html", waiting until "domcontentloaded"
-
-ERROR | tablet-portrait PINTEREST STUDIO: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/pinterest/
-Call log:
-  - navigating to "http://127.0.0.1:8765/pinterest/", waiting until "domcontentloaded"
-
-ERROR | tablet-landscape HOME: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/
-Call log:
-  - navigating to "http://127.0.0.1:8765/", waiting until "domcontentloaded"
-
-ERROR | tablet-landscape SOME BLUES STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/the-blueprint.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/the-blueprint.html", waiting until "domcontentloaded"
-
-ERROR | tablet-landscape LIVED PHOTO ARCHIVE: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-in-real-life.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-in-real-life.html", waiting until "domcontentloaded"
-
-ERROR | tablet-landscape MOVED RACE STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-on-the-move.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-on-the-move.html", waiting until "domcontentloaded"
-
-ERROR | tablet-landscape BRAND PARTNERSHIPS: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/for-brands.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/for-brands.html", waiting until "domcontentloaded"
-
-ERROR | tablet-landscape PINTEREST STUDIO: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/pinterest/
-Call log:
-  - navigating to "http://127.0.0.1:8765/pinterest/", waiting until "domcontentloaded"
-
-ERROR | desktop HOME: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/
-Call log:
-  - navigating to "http://127.0.0.1:8765/", waiting until "domcontentloaded"
-
-ERROR | desktop SOME BLUES STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/the-blueprint.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/the-blueprint.html", waiting until "domcontentloaded"
-
-ERROR | desktop LIVED PHOTO ARCHIVE: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-in-real-life.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-in-real-life.html", waiting until "domcontentloaded"
-
-ERROR | desktop MOVED RACE STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-on-the-move.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-on-the-move.html", waiting until "domcontentloaded"
-
-ERROR | desktop BRAND PARTNERSHIPS: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/for-brands.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/for-brands.html", waiting until "domcontentloaded"
-
-ERROR | desktop PINTEREST STUDIO: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/pinterest/
-Call log:
-  - navigating to "http://127.0.0.1:8765/pinterest/", waiting until "domcontentloaded"
-
-ERROR | wide-desktop HOME: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/
-Call log:
-  - navigating to "http://127.0.0.1:8765/", waiting until "domcontentloaded"
-
-ERROR | wide-desktop SOME BLUES STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/the-blueprint.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/the-blueprint.html", waiting until "domcontentloaded"
-
-ERROR | wide-desktop LIVED PHOTO ARCHIVE: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-in-real-life.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-in-real-life.html", waiting until "domcontentloaded"
-
-ERROR | wide-desktop MOVED RACE STORY: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/blue-on-the-move.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/blue-on-the-move.html", waiting until "domcontentloaded"
-
-ERROR | wide-desktop BRAND PARTNERSHIPS: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/for-brands.html
-Call log:
-  - navigating to "http://127.0.0.1:8765/for-brands.html", waiting until "domcontentloaded"
-
-ERROR | wide-desktop PINTEREST STUDIO: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8765/pinterest/
-Call log:
-  - navigating to "http://127.0.0.1:8765/pinterest/", waiting until "domcontentloaded"
-
-
-RESULT FAIL 42
+RESULT PASS 42 responsive page/viewport checks
