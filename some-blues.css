@@ -227,3 +227,22 @@
 .kim2-board-bridge>a small{font-size:10px;font-weight:650;color:#dfebff}
 .kim2-board-bridge>a .kim2-line-icon{flex:none}
 @media(prefers-reduced-motion:reduce){.kim2-board-bridge>a{transition:none}}
+
+/* Editorial gateway: compact homepage preview; complete states live on the shareable story. */
+.kim2-story-teaser{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:stretch;margin-top:30px;background:#112955;color:#f7f9ff;border-left:5px solid #e32940;scroll-margin-top:28px;overflow:hidden}
+.kim2-story-teaser-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:clamp(21px,3vw,38px)}
+.kim2-story-teaser .kim2-code{color:#b9d4ff}
+.kim2-story-teaser h3{font-family:var(--display,Impact,'Arial Narrow',sans-serif);font-size:clamp(33px,3.7vw,51px);line-height:.95;letter-spacing:-.04em;margin:12px 0}
+.kim2-story-teaser h3 em{font-style:normal;color:#9bbdff}
+.kim2-story-teaser-copy>p{font-size:14px;line-height:1.55;color:#e0eaff;margin:0 0 18px;max-width:480px}
+.kim2-story-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:14px;min-height:44px;padding:12px 15px;background:#f1f5ff;color:#102c63;text-decoration:none;font-size:12px;font-weight:850;letter-spacing:.025em}
+.kim2-story-cta:hover{background:#d4e4ff;color:#102c63}
+.kim2-story-teaser-states{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#6683b4;padding:1px;align-self:stretch}
+.kim2-story-teaser-states>span{display:flex;flex-direction:column;justify-content:flex-end;gap:11px;min-width:0;min-height:95px;background:#1b3d78;padding:17px;color:#fff;font:850 clamp(17px,1.9vw,26px)/1 var(--display,Impact,'Arial Narrow',sans-serif);letter-spacing:.012em}
+.kim2-story-teaser-states>span:nth-child(2){background:#294576}
+.kim2-story-teaser-states>span:nth-child(3){background:#234a98}
+.kim2-story-teaser-states>span:nth-child(4){background:#16506b}
+.kim2-story-teaser-states b{font:850 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#c7dcff;letter-spacing:.07em}
+@media(max-width:730px){.kim2-story-teaser{grid-template-columns:1fr}.kim2-story-teaser-copy{padding:25px 22px}.kim2-story-teaser-states>span{min-height:80px}}
+@media(max-width:460px){.kim2-story-teaser{margin-top:20px}.kim2-story-teaser h3{font-size:38px}.kim2-story-teaser-states>span{min-height:78px;padding:13px}.kim2-story-cta{width:100%;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.kim2-story-cta{transition:none}}
