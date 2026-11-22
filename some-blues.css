@@ -313,3 +313,164 @@
  .kim-emotions-share p{font-size:19px}
 }
 @media(prefers-reduced-motion:reduce){.kim-emotion-photo>img,.kim-emotions-controls button{transition:none}}
+
+
+/* K/IM — CLEAN EDIT: purposeful imagery, fewer repeats, details on demand. */
+.kim2-editorial{--ink:#0a1230;--blue:#315ce3;--red:#e52b44;--mist:#eaf0fb;--muted:#596783;scroll-margin-top:70px;margin:22px 0 0;color:var(--ink)}
+.kim2-editorial *{box-sizing:border-box}
+.kim2-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.91fr);background:#0a1230;color:#f4f7ff;overflow:hidden;min-height:570px}
+.kim2-hero-text{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:clamp(26px,4.5vw,63px);background:radial-gradient(ellipse at 5% 8%,#2450b8,transparent 62%),repeating-linear-gradient(0deg,transparent 0,transparent 68px,rgba(220,238,255,.055) 69px),#08132f}
+.kim2-eyebrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font:800 10px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;color:#bbceef}
+.kim2-eyebrow i{display:inline-block;width:8px;height:8px;background:var(--red);box-shadow:0 0 0 4px #e52b4440;border-radius:50%;flex:0 0 auto}
+.kim2-eyebrow span{color:#ec3856}
+.kim2-hero-text h3{font-family:var(--display,Impact,'Arial Narrow',sans-serif);font-size:clamp(65px,8vw,132px);letter-spacing:-.065em;line-height:.84;text-transform:uppercase;margin:clamp(48px,6.3vw,84px) 0 30px}
+.kim2-hero-text h3 span{display:block;color:#96b9ff}
+.kim2-declaration{font-family:Georgia,'Times New Roman',serif;font-size:clamp(23px,2.9vw,43px);font-style:italic;letter-spacing:-.03em;line-height:1.12;margin:0 0 14px}
+.kim2-opening{font-size:clamp(14px,1.35vw,18px);line-height:1.58;color:#d3def5;max-width:425px;margin:0}
+.kim2-hero-links{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 37px}
+.kim2-hero-links a,.kim2-hero-links button{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;padding:13px 15px;background:#e52b44;color:#fff;border:1px solid #e52b44;font-size:10px;font-weight:850;letter-spacing:.065em;text-decoration:none;cursor:pointer;transition:background .2s,transform .2s}
+.kim2-hero-links button{background:transparent;border-color:#b2c1ed}
+.kim2-hero-links a:hover,.kim2-hero-links button:hover{transform:translateY(-2px)}
+.kim2-hero-links button:hover{background:#f3f6ff;color:#08132f}
+.kim2-signature{font:700 10px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;color:#aabce1;margin-top:auto;padding-top:18px;border-top:1px solid #6074a7;width:100%}
+.kim2-signature span{color:#e52b44;padding:0 5px}
+.kim2-hero-image{margin:0;background:linear-gradient(145deg,#2b59c9,#081b56 75%);display:flex;flex-direction:column;align-items:center;min-width:0;padding:28px}
+.kim2-hero-image .kim2-image-button{position:relative;min-height:0;display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:transparent;border:1px solid rgba(229,237,255,.28);padding:30px;cursor:zoom-in;color:white;overflow:hidden}
+.kim2-hero-image img{max-width:100%;max-height:560px;width:auto;height:auto;object-fit:contain;box-shadow:14px 14px 0 rgba(5,12,36,.45);transition:transform .3s}
+.kim2-image-button:hover img{transform:scale(1.018)}
+.kim2-fig-top,.kim2-fig-bottom{display:flex;align-items:center;justify-content:space-between;position:absolute;left:16px;right:16px;font:750 9px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;z-index:1}
+.kim2-fig-top{top:14px}.kim2-fig-bottom{bottom:14px}
+.kim2-hero-image>figcaption{padding-top:14px;color:#c9d9f8;text-align:center;font:700 9px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.055em}
+.kim2-states,.kim2-more{scroll-margin-top:32px}
+.kim2-section-intro{display:flex;align-items:flex-end;flex-wrap:wrap;gap:20px;padding:clamp(38px,5vw,70px) 0 24px;border-bottom:1px solid #bdc9db}
+.kim2-code{font:850 10px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.13em;color:#315cca}
+.kim2-section-intro>.kim2-code{width:100%}
+.kim2-section-intro h3{font-family:var(--display,Impact,'Arial Narrow',sans-serif);font-size:clamp(42px,5vw,73px);line-height:.92;letter-spacing:-.04em;margin:0;flex:1 1 400px;text-transform:uppercase}
+.kim2-section-intro h3 em{font-style:normal;color:#325ecb}
+.kim2-section-intro>p{font-size:13px;line-height:1.55;color:#5b6480;max-width:290px;margin:0 0 3px}
+.kim2-accordion{scroll-margin-top:18px;border-bottom:1px solid #aebbd3}
+.kim2-accordion summary{list-style:none;display:flex;align-items:center;gap:clamp(14px,3vw,45px);min-height:100px;padding:14px 8px;cursor:pointer;position:relative}
+.kim2-accordion summary::-webkit-details-marker{display:none}
+.kim2-accordion summary::marker{content:""}
+.kim2-accordion summary:hover .kim2-summary-name{color:#2456cb}
+.kim2-n{font:800 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#3158b0;min-width:28px}
+.kim2-summary-name{display:block;font-family:var(--display,Impact,'Arial Narrow',sans-serif);font-size:clamp(28px,3.25vw,48px);line-height:1;letter-spacing:-.02em;flex:1 1 auto;transition:color .18s}
+.kim2-summary-name small{display:block;font:500 12px/1.45 Arial,Helvetica,sans-serif;letter-spacing:0;color:#63718c;margin-top:8px}
+.kim2-tint{font:800 10px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;text-align:right;color:#67799b;min-width:102px}
+.kim2-plus{display:grid;place-items:center;width:34px;height:34px;border:1px solid #9eafcd;border-radius:50%;color:#1b4caf;flex:0 0 auto;margin-left:3px}
+.kim2-plus:before{content:"+";font-size:20px;font-weight:300;line-height:1}
+.kim2-accordion[open] .kim2-plus:before{content:"−"}
+.kim2-accordion[open]>summary .kim2-summary-name{color:#2456cb}
+.kim2-mood[data-tone=stillness]{--tone:#7ca9d4;--tone-bg:#243e5e}
+.kim2-mood[data-tone=memory]{--tone:#a2a1d7;--tone-bg:#323e71}
+.kim2-mood[data-tone=defiance]{--tone:#4679ec;--tone-bg:#153b99}
+.kim2-mood[data-tone=release]{--tone:#51afc4;--tone-bg:#15516d}
+.kim2-mood[open]>summary{border-left:5px solid var(--tone);padding-left:16px;background:#f0f4fc}
+.kim2-mood-inner{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:0;background:#11234d;color:#fff;margin-bottom:20px}
+.kim2-words{padding:clamp(24px,4vw,60px);display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,var(--tone-bg),#071833);min-height:360px}
+.kim2-words .kim2-code{color:#bad2ff}
+.kim2-words blockquote{font:italic clamp(29px,3.1vw,49px)/1.18 Georgia,'Times New Roman',serif;letter-spacing:-.03em;max-width:550px;margin:38px 0 22px}
+.kim2-words>p{font-size:14px;line-height:1.68;color:#d4dff4;max-width:420px;margin:0}
+.kim2-mood-image,.kim2-process-detail figure{margin:0;display:flex;align-items:stretch;flex-direction:column;min-width:0;background:linear-gradient(150deg,#2b59be,#0b2356);padding:28px}
+.kim2-mood-image .kim2-image-button,.kim2-process-detail .kim2-image-button{display:flex;justify-content:center;align-items:center;min-height:0;flex:1;border:1px solid #c4d4f956;background:transparent;cursor:zoom-in;padding:20px}
+.kim2-mood-image img,.kim2-process-detail img{display:block;width:auto;height:auto;max-width:100%;max-height:490px;object-fit:contain;box-shadow:12px 12px 0 #03102c63;transition:transform .3s}
+.kim2-mood-image figcaption,.kim2-process-detail figcaption{padding-top:14px;color:#d5e3ff;font:750 9px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;text-align:center}
+.kim2-more-intro{padding-top:56px}
+.kim2-extra summary{min-height:88px}
+.kim2-extra[open]>summary{background:#f3f6fc;padding-left:15px}
+.kim2-what-detail{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:25px;background:#eaf1fd;padding:clamp(20px,3.5vw,40px);margin-bottom:16px}
+.kim2-what-detail>p{font:italic clamp(18px,2vw,25px)/1.45 Georgia,'Times New Roman',serif;color:#314567;margin:0;max-width:300px}
+.kim2-garments{margin:0}
+.kim2-garments>div{display:grid;grid-template-columns:minmax(95px,.65fr) minmax(0,1.35fr);gap:12px;border-top:1px solid #bfcbdf;padding:12px 0}
+.kim2-garments dt{font:800 10px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.055em;color:#66758d}
+.kim2-garments dd{margin:0;font-size:14px;font-weight:800;line-height:1.4;overflow-wrap:anywhere}
+.kim2-garments dd a{display:block;margin-top:5px;font-size:11px;font-weight:650;color:#234eac;text-decoration:underline;text-underline-offset:4px}
+.kim2-mrp{display:inline-flex;background:#e32940;color:#fff;font:950 21px/1 Arial,Helvetica,sans-serif;letter-spacing:-.07em;padding:5px 9px;text-transform:lowercase;white-space:nowrap}
+.kim2-process-detail{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#eaf1fd;margin-bottom:16px}
+.kim2-process-detail>div{padding:clamp(22px,4vw,54px);display:flex;flex-direction:column;justify-content:center}
+.kim2-process-detail h4{font-family:var(--display,Impact,'Arial Narrow',sans-serif);font-size:clamp(36px,4.5vw,65px);line-height:.92;letter-spacing:-.05em;margin:18px 0}
+.kim2-process-detail p{font-size:14px;line-height:1.7;color:#45536c;max-width:410px}
+.kim2-process-detail figure{background:#1a3d9a}
+.kim2-brand-detail{background:#0b1836;color:#f7f9ff;padding:clamp(23px,4vw,53px);margin-bottom:16px}
+.kim2-brand-head{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.kim2-brand-head .kim2-code{color:#bdd0f9}
+.kim2-brand-detail h4{font-family:var(--display,Impact,'Arial Narrow',sans-serif);font-size:clamp(38px,5.7vw,80px);line-height:.9;letter-spacing:-.05em;margin:35px 0 18px}
+.kim2-brand-detail h4 em{font-style:normal;color:#f04962}
+.kim2-brand-lede{max-width:650px;color:#d2dbef;font-size:clamp(15px,1.6vw,20px);line-height:1.55;margin:0 0 36px}
+.kim2-brand-ideas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#4e6296}
+.kim2-brand-ideas>div{background:#172b55;padding:24px}
+.kim2-brand-ideas span{display:block;color:#f36b80;font:800 10px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em}
+.kim2-brand-ideas strong{display:block;font-family:var(--display,Impact,'Arial Narrow',sans-serif);font-size:clamp(22px,2.25vw,33px);margin:22px 0 12px}
+.kim2-brand-ideas p{font-size:13px;color:#ccdaef;line-height:1.6;margin:0}
+.kim2-brand-action{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;margin-top:27px}
+.kim2-brand-action span{font:700 9px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:#b2c4e7;max-width:380px}
+.kim2-brand-action a{background:#e52b44;color:#fff;padding:15px 18px;text-decoration:none;font-size:11px;font-weight:850}
+.kim2-footer{display:flex;align-items:center;flex-wrap:wrap;justify-content:space-between;gap:24px;margin-top:38px;border-top:1px solid #b7c2d5;padding:24px 0 8px}
+.kim2-footer>div:first-child{display:flex;flex-direction:column;gap:6px}
+.kim2-footer strong{font:850 11px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em}
+.kim2-footer>div:first-child span{font-size:11px;color:#667089}
+.kim2-footer-action{display:flex;flex-wrap:wrap;gap:10px}
+.kim2-footer-action a,.kim2-footer-action button{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #9bacd0;background:transparent;color:#172b51;font-size:10px;font-weight:850;letter-spacing:.05em;padding:12px 15px;min-height:44px;cursor:pointer}
+.kim2-footer-action button{background:#153a8d;color:white;border-color:#153a8d}
+.kim2-share-status{font-size:12px;color:#3157a9;flex-basis:100%}
+.kim2-viewer{max-width:min(880px,calc(100vw - 24px));max-height:calc(100dvh - 24px);width:min(880px,calc(100vw - 24px));background:#08132f;color:#fff;border:1px solid #5776ba;padding:56px 24px 20px;box-shadow:0 30px 80px #0009}
+.kim2-viewer::backdrop{background:#000c;backdrop-filter:blur(6px)}
+.kim2-viewer figure{display:flex;flex-direction:column;align-items:center;gap:10px;margin:0}
+.kim2-viewer img{display:block;max-width:100%;max-height:calc(100dvh - 165px);width:auto;height:auto;object-fit:contain}
+.kim2-viewer figcaption{font-size:11px;text-align:center;color:#cbd7ef}
+.kim2-viewer-close{position:absolute;right:15px;top:15px;background:none;border:1px solid #98a9cf;color:#fff;font-size:11px;font-weight:800;padding:9px 12px;cursor:pointer}
+.kim2-editorial button:focus-visible,.kim2-editorial a:focus-visible,.kim2-editorial summary:focus-visible,.kim2-viewer button:focus-visible{outline:3px solid #e94762;outline-offset:3px}
+@media(max-width:910px){
+ .kim2-hero{grid-template-columns:1fr 1fr;min-height:0}
+ .kim2-hero-text h3{font-size:clamp(58px,8vw,83px);margin:45px 0 25px}
+ .kim2-hero-image{padding:18px}
+ .kim2-mood-inner{grid-template-columns:1fr 1fr}
+ .kim2-words{min-height:0}
+ .kim2-words blockquote{font-size:clamp(26px,3.5vw,38px)}
+}
+@media(max-width:730px){
+ .kim2-hero{grid-template-columns:1fr}
+ .kim2-hero-text{padding:35px 25px}
+ .kim2-hero-text h3{font-size:clamp(62px,12vw,102px)}
+ .kim2-hero-image{padding:20px;min-height:0}
+ .kim2-hero-image .kim2-image-button{padding:44px 20px}
+ .kim2-hero-image img{max-height:510px}
+ .kim2-section-intro{padding-top:44px}
+ .kim2-mood-inner,.kim2-process-detail,.kim2-what-detail{grid-template-columns:1fr}
+ .kim2-words{min-height:300px}
+ .kim2-mood-image{padding:25px}
+ .kim2-brand-ideas{grid-template-columns:1fr}
+ .kim2-brand-ideas>div{padding:22px}
+ .kim2-brand-ideas strong{margin:11px 0}
+ .kim2-section-intro h3{flex-basis:100%}
+}
+@media(max-width:460px){
+ .kim2-hero-text{padding:25px 19px}
+ .kim2-hero-text h3{font-size:clamp(56px,14.5vw,76px);margin:43px 0 25px}
+ .kim2-declaration{font-size:29px}
+ .kim2-hero-links{flex-direction:column;width:100%}
+ .kim2-hero-links>a,.kim2-hero-links>button{width:100%}
+ .kim2-hero-image{padding:15px}
+ .kim2-hero-image img{max-height:410px}
+ .kim2-accordion summary{gap:13px;min-height:86px;padding:11px 3px}
+ .kim2-summary-name{font-size:clamp(25px,6vw,34px)}
+ .kim2-summary-name small{font-size:11px}
+ .kim2-n{font-size:10px;min-width:19px}
+ .kim2-tint{display:none}
+ .kim2-plus{width:30px;height:30px}
+ .kim2-words{padding:30px 21px;min-height:0}
+ .kim2-words blockquote{font-size:clamp(28px,7vw,37px);margin:25px 0 17px}
+ .kim2-mood-image{padding:20px}
+ .kim2-mood-image img{max-height:440px}
+ .kim2-what-detail{padding:24px 18px}
+ .kim2-garments>div{grid-template-columns:minmax(85px,.7fr) minmax(0,1.3fr)}
+ .kim2-process-detail>div{padding:27px 21px}
+ .kim2-process-detail figure{padding:20px}
+ .kim2-brand-detail{padding:28px 19px}
+ .kim2-brand-detail h4{font-size:clamp(37px,10vw,55px)}
+ .kim2-footer-action{width:100%}
+ .kim2-footer-action a,.kim2-footer-action button{flex:1}
+}
+@media(prefers-reduced-motion:reduce){
+ .kim2-hero-image img,.kim2-mood-image img,.kim2-process-detail img,.kim2-hero-links a,.kim2-hero-links button{transition:none}
+}
