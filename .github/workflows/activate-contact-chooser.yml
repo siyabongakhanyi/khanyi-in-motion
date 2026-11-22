@@ -1,0 +1,44 @@
+name: Activate contact channel selector
+on:
+  push:
+    paths:
+      - '.github/workflows/activate-contact-chooser.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Validate contact selector
+        run: |
+          node --check contact-chooser.js
+          test -f assets/brand/whatsapp.svg
+      - name: Connect selector to the existing website
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("index.html")
+          content = page.read_text(encoding="utf-8")
+          tag = '  <script src="/contact-chooser.js" defer></script>'
+          if tag not in content:
+              assert content.count("</body>") == 1, "Expected exactly one closing body tag"
+              content = content.replace("</body>", tag + "\n</body>", 1)
+              page.write_text(content, encoding="utf-8")
+          assert tag in page.read_text(encoding="utf-8")
+          PY
+      - name: Commit the small HTML integration
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Enable choose-your-channel contact button"
+            git push
+          fi
