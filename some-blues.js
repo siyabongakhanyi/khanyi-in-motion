@@ -28,13 +28,13 @@
    '<h3 id="kim2-heading">THE <span>BLUEPRINT.</span></h3>',
    '<p class="kim2-declaration">Blue isn’t one feeling.</p>',
    '<p class="kim2-opening">I wear it when I need to breathe, when I’m remembering, when I want to be seen, and when I just want to move.</p>',
-   '<div class="kim2-hero-links"><a href="#kim2-states">EXPLORE THE FOUR STATES <span aria-hidden="true">↗</span></a><button type="button" data-kim2-open="kim2-what">WHAT I WORE <span aria-hidden="true">+</span></button></div>',
+   '<div class="kim2-hero-links"><a href="#kim2-states">EXPLORE THE FOUR STATES <span aria-hidden="true"><svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a><button type="button" data-kim2-open="kim2-what">WHAT I WORE <span aria-hidden="true"><svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></span></button></div>',
    '<div class="kim2-signature">SIYA KHANYI <span>/</span> STYLE. STORY. MOTION.</div>',
   '</div><figure class="kim2-hero-image">',
    '<button type="button" class="kim2-image-button" data-kim2-image="/assets/work/some-blues/frame-03.webp" data-kim2-alt="THE BLUEPRINT / FULL FIT" aria-label="Enlarge the complete Blueprint outfit photograph">',
     '<span class="kim2-fig-top">FIG 01 / THE COMPLETE LOOK</span>',
     '<img decoding="async" width="400" height="500" src="/assets/work/some-blues/frame-03.webp" alt="The full blue layered denim outfit styled by Siya Khanyi">',
-    '<span class="kim2-fig-bottom">THE FULL FIT <span>EXPAND ↗</span></span>',
+    '<span class="kim2-fig-bottom">THE FULL FIT <span>EXPAND <svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></span>',
    '</button><figcaption>THE COMPLETE LOOK / ONE PURPOSEFUL HERO IMAGE</figcaption>',
   '</figure></section>',
   '<section id="kim2-states" class="kim2-states" aria-labelledby="kim2-states-heading">',
@@ -46,7 +46,7 @@
    '<div class="kim2-accordion-list">',
     '<details class="kim2-accordion kim2-extra" id="kim2-what"><summary><span class="kim2-n">01</span><span class="kim2-summary-name">WHAT I WORE<small>Five pieces, one personal uniform</small></span><span class="kim2-plus" aria-hidden="true"></span></summary>',
      '<div class="kim2-what-detail"><p>Different origins, one colour story. The thrifted pieces make it mine; the denim brings it together.</p>',
-      '<dl class="kim2-garments"><div><dt>CAP</dt><dd>Thrifted</dd></div><div><dt>SHIRT</dt><dd><span class="kim2-mrp">mr price</span></dd></div><div><dt>DENIM HALF-JERSEY</dt><dd>Thrifted</dd></div><div><dt>JEANS</dt><dd>Mr Price × Artclub &amp; Friends <a target="_blank" rel="noopener noreferrer" href="https://www.mrp.com/artclub-and-friends-burnout-laser-print-jeans-104679814">Burnout Laser Print Jeans ↗</a></dd></div><div><dt>SNEAKERS</dt><dd>Vans</dd></div></dl>',
+      '<dl class="kim2-garments"><div><dt>CAP</dt><dd>Thrifted</dd></div><div><dt>SHIRT</dt><dd><span class="kim2-mrp">mr price</span></dd></div><div><dt>DENIM HALF-JERSEY</dt><dd>Thrifted</dd></div><div><dt>JEANS</dt><dd>Mr Price × Artclub &amp; Friends <a target="_blank" rel="noopener noreferrer" href="https://www.mrp.com/artclub-and-friends-burnout-laser-print-jeans-104679814">Burnout Laser Print Jeans <svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></dd></div><div><dt>SNEAKERS</dt><dd>Vans</dd></div></dl>',
      '</div></details>',
     '<details class="kim2-accordion kim2-extra" id="kim2-process"><summary><span class="kim2-n">02</span><span class="kim2-summary-name">BEHIND THE LOOK<small>From the first mood to the finished fit</small></span><span class="kim2-plus" aria-hidden="true"></span></summary>',
      '<div class="kim2-process-detail"><div><span class="kim2-code">CONCEPT / STYLING / EDITORIAL</span><h4>AN IDEA<br>YOU CAN WEAR.</h4><p>I started with blue, then built the outfit around texture, contrast and movement. The thrifted layers carry their own histories. The fit becomes a story when they meet.</p></div><figure><button type="button" class="kim2-image-button" data-kim2-image="/assets/work/some-blues/frame-06.webp" data-kim2-alt="CONCEPT TO CAMERA / THE CREATIVE PROCESS" aria-label="Enlarge the creative-process editorial image"><img loading="lazy" decoding="async" width="400" height="500" src="/assets/work/some-blues/frame-06.webp" alt="Concept to Camera original mood-to-production creative direction frame"></button><figcaption>FRAME 06 / CONCEPT TO CAMERA</figcaption></figure></div>',
@@ -56,11 +56,11 @@
       '<h4>DON’T JUST WEAR<br>THE BRAND. <em>MOVE IT.</em></h4>',
       '<p class="kim2-brand-lede">Fashion isn’t only about how a product looks on a rack. It’s how it becomes part of somebody’s life, feeling and movement.</p>',
       '<div class="kim2-brand-ideas"><div><span>01 / THE STORY</span><strong>EMOTION FIRST</strong><p>Four emotional meanings give one denim look multiple entry points for an audience.</p></div><div><span>02 / THE PRODUCT</span><strong>DENIM IN CONTEXT</strong><p>Verified Mr Price × Artclub &amp; Friends jeans styled alongside accessible and thrifted pieces.</p></div><div><span>03 / THE NEXT FORMATS</span><strong>READY TO EXPAND</strong><p>Existing editorial photography; vertical transition Reel and close-up cutdowns proposed for a future brief.</p></div></div>',
-      '<div class="kim2-brand-action"><span>ORIGINAL CREATOR STUDY. NO PAID PARTNERSHIP IMPLIED.</span><a href="#collaborate">START A CONVERSATION ↗</a></div>',
+      '<div class="kim2-brand-action"><span>ORIGINAL CREATOR STUDY. NO PAID PARTNERSHIP IMPLIED.</span><a href="#collaborate">START A CONVERSATION <svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>',
      '</div></details>',
    '</div>',
   '</section>',
-  '<footer class="kim2-footer"><div><strong>THE BLUEPRINT / 001</strong><span>PERSONAL STYLE, FOUR EMOTIONAL STATES.</span></div><div class="kim2-footer-action"><a href="/the-blueprint.html">OPEN SHAREABLE STORY ↗</a><button type="button" data-kim2-share>SHARE ↗</button></div><span class="kim2-share-status" role="status" aria-live="polite"></span></footer>'
+  '<footer class="kim2-footer"><div><strong>THE BLUEPRINT / 001</strong><span>PERSONAL STYLE, FOUR EMOTIONAL STATES.</span></div><div class="kim2-footer-action"><a href="/the-blueprint.html">OPEN SHAREABLE STORY <svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a><button type="button" data-kim2-share>SHARE <svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></button></div><span class="kim2-share-status" role="status" aria-live="polite"></span></footer>'
  ].join("");
 
  // Preserve Work in Motion heading. Remove all earlier repeated imagery and pitch sections.
@@ -83,7 +83,7 @@
  const viewer=document.createElement("dialog");
  viewer.className="kim2-viewer";
  viewer.setAttribute("aria-label","Expanded editorial image");
- viewer.innerHTML='<button type="button" class="kim2-viewer-close" aria-label="Close image viewer">CLOSE ×</button><figure><img alt=""><figcaption></figcaption></figure>';
+ viewer.innerHTML='<button type="button" class="kim2-viewer-close" aria-label="Close image viewer">CLOSE <svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 5 19 19M19 5 5 19"/></svg></button><figure><img alt=""><figcaption></figcaption></figure>';
  document.body.appendChild(viewer);
  let opener=null;
  const large=viewer.querySelector("img");
