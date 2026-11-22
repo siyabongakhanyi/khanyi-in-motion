@@ -110,11 +110,14 @@
 :where(.mood summary,.credits summary,.hero-actions a,.hero-actions button,.nav a,.credits-panel a,.footer a):focus-visible{outline:3px solid #ff9bad;outline-offset:4px}
 @media(max-width:740px){.mood summary .mood-num{min-width:125px}.credits summary .kicker{min-width:125px}}
 @media(max-width:460px){.mood summary .mood-num{min-width:78px;max-width:82px;font-size:10px}.credits summary .kicker{font-size:10px;min-width:78px;max-width:90px}.mood-plus{min-width:40px;width:40px;min-height:44px;height:44px}.hero-actions a,.hero-actions button{justify-content:space-between;text-align:left}}
+
+.skip-to-content{position:absolute;left:14px;top:-120px;z-index:1000;display:inline-flex;align-items:center;background:#fff;color:#0a1230;font-size:14px;font-weight:800;padding:13px 18px;min-height:44px;box-shadow:0 5px 18px #0008}
+.skip-to-content:focus,.skip-to-content:focus-visible{top:12px;outline:3px solid #c51b34;outline-offset:3px}
 </style>
 </head>
-<body>
+<body><a class="skip-to-content" href="#main-content">Skip to main content</a>
 <header class="top wrap"><a href="/" class="mark" aria-label="Khanyi in Motion homepage">K<span>/</span>IM.</a><nav class="nav" aria-label="Page navigation"><a href="#four-states">FOUR STATES</a><a href="/#work" class="back">BACK TO THE PORTFOLIO <svg class="line-icon kim-story-line-icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></nav></header>
-<main class="wrap">
+<main class="wrap" id="main-content">
 <section class="hero" aria-labelledby="hero-heading">
 <div class="hero-copy">
 <span class="kicker"><i class="pulse" aria-hidden="true"></i> SOME BLUES / LOOK 001 / PERSONAL EDITORIAL</span>
