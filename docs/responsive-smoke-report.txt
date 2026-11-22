@@ -1,10 +1,10 @@
 Khanyi In Motion — responsive smoke test
-Generated 2026-11-22T14:47:54.333Z
+Generated 2026-11-22T14:49:05.579Z
 Source: https://khanyi-in-motion.vercel.app
 
 PASS | mobile-small-portrait   HOME                | 320/320
 PASS | mobile-small-portrait   SOME BLUES STORY    | 320/320
-FAIL | mobile-small-portrait   LIVED PHOTO ARCHIVE | 346/320 | horizontal overflow 346/346 > 320
+FAIL | mobile-small-portrait   LIVED PHOTO ARCHIVE | 346/320 | horizontal overflow 346/346 > 320 offenders 
 PASS | mobile-portrait         HOME                | 390/390
 PASS | mobile-portrait         SOME BLUES STORY    | 390/390
 PASS | mobile-portrait         LIVED PHOTO ARCHIVE | 390/390
