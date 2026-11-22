@@ -1,13 +1,13 @@
 Khanyi In Motion — responsive smoke test
-Generated 2026-11-22T15:17:37.682Z
+Generated 2026-11-22T15:19:22.009Z
 Source: https://khanyi-in-motion.vercel.app
 
 PASS | mobile-small-portrait   HOME                | 320/320
 PASS | mobile-small-portrait   SOME BLUES STORY    | 320/320
-FAIL | mobile-small-portrait   LIVED PHOTO ARCHIVE | 320/320 | horizontal overflow 320/401 > 320 offenders div:401,h2:401,p:401,div.outro-actions:401,a:371,span.eyebrow:330
+PASS | mobile-small-portrait   LIVED PHOTO ARCHIVE | 320/320
 PASS | mobile-portrait         HOME                | 390/390
 PASS | mobile-portrait         SOME BLUES STORY    | 390/390
-FAIL | mobile-portrait         LIVED PHOTO ARCHIVE | 390/390 | horizontal overflow 390/401 > 390 offenders div:401,h2:401,p:401,div.outro-actions:401
+PASS | mobile-portrait         LIVED PHOTO ARCHIVE | 390/390
 PASS | mobile-landscape        HOME                | 844/844
 PASS | mobile-landscape        SOME BLUES STORY    | 844/844
 PASS | mobile-landscape        LIVED PHOTO ARCHIVE | 844/844
@@ -24,4 +24,4 @@ PASS | wide-desktop            HOME                | 1920/1920
 PASS | wide-desktop            SOME BLUES STORY    | 1920/1920
 PASS | wide-desktop            LIVED PHOTO ARCHIVE | 1920/1920
 
-RESULT FAIL 2
+RESULT PASS 21 responsive page/viewport checks
