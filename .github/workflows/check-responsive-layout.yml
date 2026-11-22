@@ -1,0 +1,59 @@
+name: Check responsive layouts
+on:
+  push:
+    paths:
+      - '.github/workflows/check-responsive-layout.yml'
+      - 'tests/responsive-smoke.cjs'
+      - 'blue-in-real-life.html'
+      - 'the-blueprint.html'
+      - 'index.html'
+      - 'some-blues.css'
+      - 'blue-real-life.css'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  responsive-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out website
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: true
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+      - name: Install headless browser test tools
+        run: |
+          npm install --no-save --no-audit --no-fund playwright-core@1.56.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo "CHROME_PATH=$(command -v google-chrome)" >> "$GITHUB_ENV"
+          elif command -v chromium >/dev/null 2>&1; then
+            echo "CHROME_PATH=$(command -v chromium)" >> "$GITHUB_ENV"
+          else
+            echo "Chrome is not installed on this runner."
+            exit 1
+          fi
+      - name: Test desktop, tablet and mobile portrait and landscape
+        id: smoke
+        continue-on-error: true
+        run: node tests/responsive-smoke.cjs
+      - name: Preserve responsive audit results
+        if: always()
+        run: |
+          if [ -f docs/responsive-smoke-report.txt ]; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add docs/responsive-smoke-report.txt
+            if ! git diff --cached --quiet; then
+              git commit -m "Record cross-device responsive smoke checks"
+              git pull --rebase origin main
+              git push
+            fi
+          fi
+      - name: Require smoke tests to pass
+        if: always()
+        env:
+          OUTCOME: ${{ steps.smoke.outcome }}
+        run: test "$OUTCOME" = "success"
