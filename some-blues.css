@@ -232,3 +232,84 @@
  .kim-pitch-footer>a{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.kim-bp-visual>img,.kim-bp-actions>a,.kim-bp-actions>button,.kim-pitch-cta,.kim-pitch-footer>a{transition:none}}
+
+
+/* K/IM / FOUR STATES OF BLUE — creator's written voice and interactive emotional palette. */
+.kim-emotions{--kim-feel:#7bb1fa;--kim-emotional-bg:#152c4d;--kim-emotional-rgb:124,177,250;position:relative;margin:24px 0 0;background:#0b1630;color:#eef4ff;overflow:hidden;isolation:isolate;scroll-margin-top:60px}
+.kim-emotions[data-tone=stillness]{--kim-feel:#accdf6;--kim-emotional-bg:#213d64;--kim-emotional-rgb:172,205,246}
+.kim-emotions[data-tone=memory]{--kim-feel:#a7b0e7;--kim-emotional-bg:#383c70;--kim-emotional-rgb:167,176,231}
+.kim-emotions[data-tone=defiance]{--kim-feel:#548bff;--kim-emotional-bg:#1038a2;--kim-emotional-rgb:84,139,255}
+.kim-emotions[data-tone=release]{--kim-feel:#86def5;--kim-emotional-bg:#0d526c;--kim-emotional-rgb:134,222,245}
+.kim-emotions:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 88% 26%,rgba(var(--kim-emotional-rgb),.22),transparent 53%),repeating-linear-gradient(90deg,transparent 0,transparent 62px,rgba(221,239,255,.043) 63px),repeating-linear-gradient(0deg,transparent 0,transparent 62px,rgba(221,239,255,.043) 63px);transition:background .45s}
+.kim-emotions-header{padding:clamp(25px,4.1vw,54px);display:flex;justify-content:space-between;align-items:end;gap:22px;border-bottom:1px solid #3b5075}
+.kim-emotions .kim-bp-kicker{color:var(--kim-feel)}
+.kim-emotions-header h3{font-family:var(--display,Impact,'Arial Narrow',sans-serif);font-size:clamp(42px,5.4vw,87px);line-height:.87;letter-spacing:-.055em;margin:16px 0 0;color:#fff}
+.kim-emotions-header>p{max-width:350px;margin:0;font-size:clamp(15px,1.3vw,19px);line-height:1.45;color:#c6d5ee;font-style:italic}
+.kim-emotions-body{display:grid;grid-template-columns:minmax(170px,.64fr) minmax(0,1.2fr) minmax(180px,.92fr);gap:1px;background:rgba(134,166,223,.35)}
+.kim-emotions-controls{background:#0d1c3c;display:grid;grid-template-rows:repeat(4,minmax(98px,1fr))}
+.kim-emotions-controls button{min-width:0;display:grid;grid-template-columns:35px 1fr;grid-template-rows:auto auto;align-content:center;gap:6px 8px;text-align:left;padding:20px clamp(14px,2vw,27px);color:#b4c5e6;border:0;border-bottom:1px solid #3d5178;background:transparent;cursor:pointer;transition:background .2s,color .2s;position:relative}
+.kim-emotions-controls button:last-child{border-bottom:0}
+.kim-emotions-controls button span{grid-row:1/3;align-self:center;font:750 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#7f9ac5}
+.kim-emotions-controls strong{font-family:var(--display,Impact,'Arial Narrow',sans-serif);font-size:clamp(19px,2.1vw,30px);font-weight:900;letter-spacing:-.02em;line-height:.96}
+.kim-emotions-controls small{font:650 9px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.07em}
+.kim-emotions-controls button:hover{background:#1b315c;color:#fff}
+.kim-emotions-controls button[aria-pressed=true]{background:var(--kim-emotional-bg);color:#fff;box-shadow:inset 5px 0 0 var(--kim-feel)}
+.kim-emotions-controls button[aria-pressed=true] span,.kim-emotions-controls button[aria-pressed=true] small{color:var(--kim-feel)}
+.kim-emotion-stage{min-width:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(23px,3vw,50px);background:linear-gradient(130deg,var(--kim-emotional-bg),#0b1a3d);position:relative;transition:background .35s}
+.kim-emotion-stage:before{content:'“';position:absolute;top:5px;left:20px;font-family:Georgia,serif;font-size:145px;line-height:1;color:rgba(var(--kim-emotional-rgb),.19);pointer-events:none}
+.kim-emotion-stage-index{position:relative;font:700 10px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:var(--kim-feel)}
+.kim-emotion-stage blockquote{position:relative;border:0;margin:31px 0 21px;padding:0;font-family:Georgia,'Times New Roman',serif;font-size:clamp(25px,3.1vw,49px);font-weight:400;line-height:1.17;letter-spacing:-.024em;color:#fff;max-width:16em}
+.kim-emotion-reflection{max-width:360px;font-size:13px;line-height:1.6;color:#bdcce9;margin:0}
+.kim-emotion-stage-footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(201,222,255,.22);padding-top:17px;margin-top:45px;font:700 9px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;color:var(--kim-feel)}
+.kim-emotion-photo{background:#1747b0;position:relative;min-width:0;border:0;padding:32px 21px;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:zoom-in;color:white}
+.kim-emotion-photo:before{position:absolute;content:"";inset:20px 14px;border:1px solid rgba(var(--kim-emotional-rgb),.57)}
+.kim-emotion-photo>img{position:relative;max-width:100%;width:auto;height:auto;max-height:445px;object-fit:contain;box-shadow:12px 12px 0 #0a204a;transition:transform .3s ease}
+.kim-emotion-photo:hover>img{transform:translateY(-4px) scale(1.02)}
+.kim-emotion-photo-label{position:absolute;bottom:18px;left:20px;right:20px;text-align:center;font:750 8px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em}
+.kim-emotions-share{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:23px clamp(25px,4.1vw,54px);background:#080f22;border-top:1px solid #4165a0}
+.kim-emotions-share p{margin:0;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:clamp(16px,1.6vw,23px);line-height:1.3}
+.kim-emotions-share>div{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.kim-emotion-permalink,.kim-emotion-share-button{display:inline-flex;align-items:center;justify-content:center;gap:13px;padding:13px 15px;min-height:44px;text-decoration:none;border:1px solid #839bd4;color:#fff;background:transparent;font-size:10px;font-weight:850;letter-spacing:.06em;cursor:pointer}
+.kim-emotion-share-button{background:#e52640;border-color:#e52640}
+.kim-emotion-permalink:hover{background:#fff;color:#0b1731}
+.kim-emotion-share-button:hover{background:#ff4660}
+.kim-share-feedback{font-size:11px;color:#accdf6;line-height:1.5}
+.kim-emotions button:focus-visible,.kim-emotions a:focus-visible{outline:3px solid #f7d2dd;outline-offset:3px}
+@media(max-width:1070px){
+ .kim-emotions-body{grid-template-columns:minmax(135px,.56fr) minmax(0,1.23fr) minmax(150px,.85fr)}
+ .kim-emotions-controls button{padding:17px 11px;grid-template-columns:24px 1fr}
+ .kim-emotions-controls strong{font-size:20px}
+ .kim-emotions-controls small{font-size:8px}
+ .kim-emotion-stage{padding:25px}
+ .kim-emotion-stage blockquote{font-size:clamp(25px,3.3vw,37px)}
+}
+@media(max-width:780px){
+ .kim-emotions-header{flex-direction:column;align-items:start}
+ .kim-emotions-body{grid-template-columns:1fr 1fr}
+ .kim-emotions-controls{grid-column:1/-1;grid-row:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:none}
+ .kim-emotions-controls button{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px 12px;min-height:105px;border-bottom:1px solid #3d5178;border-right:1px solid #3d5178}
+ .kim-emotions-controls button[aria-pressed=true]{box-shadow:inset 0 5px 0 var(--kim-feel)}
+ .kim-emotions-controls strong{font-size:clamp(17px,2.7vw,22px)}
+ .kim-emotion-stage{grid-column:1;grid-row:2}
+ .kim-emotion-photo{grid-column:2;grid-row:2;min-height:370px}
+ .kim-emotion-stage blockquote{font-size:clamp(24px,4vw,36px)}
+ .kim-emotion-stage-footer{margin-top:26px}
+}
+@media(max-width:520px){
+ .kim-emotions-header{padding:30px 20px 24px}
+ .kim-emotions-header h3{font-size:clamp(42px,11vw,58px)}
+ .kim-emotions-header>p{font-size:15px}
+ .kim-emotions-body{grid-template-columns:1fr}
+ .kim-emotions-controls{grid-template-columns:repeat(2,minmax(0,1fr));grid-column:1;grid-row:1}
+ .kim-emotions-controls button{min-height:84px;padding:12px 15px}
+ .kim-emotions-controls strong{font-size:22px}
+ .kim-emotion-stage{grid-column:1;grid-row:2;min-height:350px;padding:30px 21px}
+ .kim-emotion-stage blockquote{font-size:clamp(31px,8vw,42px)}
+ .kim-emotion-photo{grid-column:1;grid-row:3;min-height:0;padding:35px 25px}
+ .kim-emotion-photo>img{max-height:460px}
+ .kim-emotions-share{padding:23px 20px}
+ .kim-emotions-share>div{width:100%}
+ .kim-emotion-permalink,.kim-emotion-share-button{width:100%}
+ .kim-emotions-share p{font-size:19px}
+}
+@media(prefers-reduced-motion:reduce){.kim-emotion-photo>img,.kim-emotions-controls button{transition:none}}
