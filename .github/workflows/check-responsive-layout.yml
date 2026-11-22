@@ -5,6 +5,11 @@ on:
       - '.github/workflows/check-responsive-layout.yml'
       - 'tests/responsive-smoke.cjs'
       - 'blue-in-real-life.html'
+      - 'blue-on-the-move.html'
+      - 'for-brands.html'
+      - 'pinterest/index.html'
+      - 'contact-chooser.js'
+      - 'assets/work/blue-real-life/race/**'
       - 'the-blueprint.html'
       - 'index.html'
       - 'some-blues.css'
@@ -35,6 +40,13 @@ jobs:
             echo "Chrome is not installed on this runner."
             exit 1
           fi
+      - name: Serve checked-out production files for repeatable predeployment testing
+        shell: bash
+        run: |
+          nohup python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/kim-smoke-http.log 2>&1 < /dev/null &
+          sleep 2
+          curl -fsSI http://127.0.0.1:8765/for-brands.html >/dev/null
+          curl -fsSI http://127.0.0.1:8765/assets/work/blue-real-life/race/thumbs/race-01-celebrate.webp >/dev/null
       - name: Test desktop, tablet and mobile portrait and landscape
         id: smoke
         continue-on-error: true
