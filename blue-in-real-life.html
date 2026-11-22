@@ -22,14 +22,60 @@
 @media(max-width:335px){.hero-copy h1{font-size:52px}.intro h2{font-size:38px}.chapter h2{font-size:41px}.photo-card{flex-basis:86vw}.jump-nav a{flex-basis:100%}}
 @media(orientation:landscape) and (max-height:550px){.hero-grid{padding-block:24px}.hero-copy h1{font-size:clamp(50px,8vw,90px)}.hero-media{max-width:310px}.viewer{max-height:97dvh}.viewer img{max-height:calc(97dvh - 110px)}.viewer-body{padding-top:45px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.photo-card img{transition:none}}
+
+/* LIVED PHOTO CONTACT SHEETS — use actual images without distortion or excessive scaling.
+   The currently published image sources are small thumbnails; we cap CSS display widths
+   to preserve perceived sharpness until the originals replace the same file paths. */
+.hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)}
+.hero-contact-sheet{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:center;justify-content:center;padding:clamp(18px,3vw,38px) 9px 48px;min-width:0;isolation:isolate}
+.hero-contact-sheet::before{content:"";position:absolute;inset:9% 2% 5%;border:1px solid rgba(255,255,255,.3);background:repeating-linear-gradient(45deg,rgba(255,255,255,.025) 0 2px,transparent 2px 12px);z-index:-1}
+.hero-contact-sheet figure{min-width:0;margin:0;padding:7px 7px 10px;background:#f2f4fc;border:1px solid #ced7ea;box-shadow:0 15px 30px rgba(0,10,34,.25);color:#112952;max-width:180px;width:100%;justify-self:center}
+.hero-contact-sheet figure figcaption{font:800 9px/1.5 var(--body);letter-spacing:.07em;padding:9px 1px 0;color:#1c3b73;white-space:normal}
+.hero-contact-sheet .hero-contact-main{transform:rotate(-4deg) translateY(-8px)}
+.hero-contact-sheet .hero-contact-cap{transform:rotate(4deg) translateY(34px)}
+.hero-contact-sheet .hero-contact-denim{transform:rotate(-3deg) translateY(-18px)}
+.hero-contact-sheet .photo-open{aspect-ratio:auto!important;width:100%;padding:0;background:transparent;border:0;overflow:visible;cursor:zoom-in}
+.hero-contact-sheet .photo-open img{width:100%;height:auto;max-height:none;object-fit:contain;object-position:center}
+.hero-contact-photo{display:block;width:100%;aspect-ratio:3/4;background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#e2e8f6}
+.hero-contact-stamp{position:absolute;bottom:0;right:6%;padding:9px 12px;border:1px solid #e3eeff;color:#e3eeff;font:800 10px/1.45 var(--body);letter-spacing:.13em;text-align:right;transform:rotate(3deg)}
+/* Gallery as a contact-sheet collage, not a full-width stretched photography grid. */
+.chapter{overflow:hidden}
+.photo-gallery,.photo-gallery.gallery-two{width:min(100%,860px);max-width:860px;margin-inline:auto;position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,185px));justify-content:center;align-items:center;gap:clamp(15px,2vw,29px);padding:clamp(30px,4vw,50px) 20px clamp(46px,6vw,75px);background:linear-gradient(140deg,rgba(32,69,133,.045),rgba(130,160,207,.09));border:1px solid rgba(79,112,171,.27);overflow:visible}
+.photo-gallery.gallery-two{grid-template-columns:repeat(2,minmax(0,185px));max-width:690px;gap:clamp(25px,4vw,70px)}
+.photo-gallery::before{content:"";position:absolute;top:12px;left:15px;width:40px;height:2px;background:#6386bc}
+.photo-gallery::after{content:"KHANYI / ORIGINAL FRAMES";position:absolute;bottom:12px;right:16px;color:#5c7baa;font-size:10px;letter-spacing:.12em;font-weight:800}
+.photo-card{min-width:0;width:100%;max-width:185px;background:#fff;padding:7px 7px 12px;box-shadow:0 11px 25px rgba(9,30,70,.13);border:1px solid rgba(65,96,154,.17);align-self:center}
+.photo-card:nth-child(3n+1){transform:rotate(-3deg) translateY(-13px)}
+.photo-card:nth-child(3n+2){transform:rotate(3deg) translateY(23px)}
+.photo-card:nth-child(3n){transform:rotate(-1deg) translateY(-2px)}
+.gallery-two .photo-card:first-child{transform:rotate(-3deg) translateY(-8px)}
+.gallery-two .photo-card:last-child{transform:rotate(3deg) translateY(20px)}
+.photo-card .photo-open{display:block;width:100%;padding:0;border:0;aspect-ratio:auto;overflow:visible;background:#edf2fa}
+.photo-card .photo-open img{width:100%;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important;display:block;max-height:none;transition:none}
+.photo-card .photo-open:hover img{transform:none}
+.photo-card .photo-expand{right:4px;bottom:4px;width:30px;height:30px;opacity:.9}
+.photo-card .photo-expand svg{width:17px;height:17px}
+.photo-card figcaption{display:block;padding:8px 2px 0;font-size:11px;line-height:1.5}
+.photo-card figcaption span{display:block;margin-bottom:2px}
+/* Keep full image viewers at their real natural pixel size: no browser upscaling. */
+.viewer-body img{width:auto!important;max-width:100%;height:auto!important;max-height:calc(95dvh - 130px);object-fit:contain;margin-inline:auto}
+@media(max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,.9fr)}.hero-contact-sheet{gap:7px;padding:15px 0 43px}.hero-contact-sheet figure{padding:5px 5px 9px}.hero-contact-stamp{font-size:8px;right:0}.photo-gallery,.photo-gallery.gallery-two{padding-inline:15px}}
+@media(max-width:700px){.hero-grid{grid-template-columns:1fr}.hero-contact-sheet{max-width:530px;width:100%;margin-inline:auto;gap:11px;padding:18px 5px 44px}.hero-contact-sheet figure{max-width:170px}.photo-gallery,.photo-gallery.gallery-two{display:flex;flex-wrap:nowrap;justify-content:flex-start;width:100%;max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;gap:24px;padding:29px 20px 44px;scroll-padding-inline:20px;-webkit-overflow-scrolling:touch}.photo-card{flex:0 0 min(41vw,165px);max-width:165px;scroll-snap-align:center}.photo-card:nth-child(n){transform:none}.photo-card:nth-child(even){transform:rotate(2deg) translateY(8px)}.photo-card:nth-child(odd){transform:rotate(-2deg) translateY(-5px)}.carousel-controls{display:flex;justify-content:space-between}.carousel-controls>span{font-size:9px}}
+@media(max-width:420px){.hero-contact-sheet{gap:7px;padding-inline:0}.hero-contact-sheet figure{padding:4px 4px 7px}.hero-contact-sheet figure figcaption{font-size:8px}.hero-contact-stamp{font-size:7px;bottom:1px}.photo-card{flex:0 0 min(42vw,148px);max-width:148px}.photo-gallery,.photo-gallery.gallery-two{gap:16px}.photo-card figcaption{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.photo-gallery{scroll-behavior:auto}}
 </style></head><body>
 <header class="site-header"><nav class="shell site-nav" aria-label="Page navigation"><a class="brand" href="/#top" aria-label="Khanyi In Motion homepage">K<span>/</span>IM</a><a class="return" href="/#chapter-lived">BACK TO LIVED</a></nav></header>
 <main><section class="hero" aria-labelledby="story-title"><div class="shell hero-grid"><div class="hero-copy"><span class="eyebrow">K/IM / LIVED / SOME BLUES / 002</span>
 <h1 id="story-title">BLUE,<br><em>IN REAL<br>LIFE.</em></h1>
 <p>Blue didn't stay on the moodboard. It followed me into ordinary days, evenings out, festival fields and the spaces in between.</p>
 <p>Some frames were considered. Others just happened. This is the story as it was lived.</p><div class="hero-links"><a href="#chapters">EXPLORE THE FRAMES <span aria-hidden="true">↓</span></a><button type="button" data-share>SHARE THIS STORY <span aria-hidden="true">↗</span></button></div>
-</div><figure class="hero-media"><button type="button" class="photo-open" data-archive-view data-src="/assets/work/blue-real-life/real-new-01.jpg" data-alt="Full-body personal streetwear portrait in a cream knit vest with blue trim, powder-blue shirt, navy trousers and white sneakers" aria-label="Open the lead original Blue In Real Life outfit photograph"><img src="/assets/work/blue-real-life/real-new-01.jpg" width="1272" height="1536" alt="Full-body personal streetwear portrait in a cream knit vest with blue trim, powder-blue shirt, navy trousers and white sneakers" fetchpriority="high" decoding="async"><span class="photo-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M7 7h10v10"/></svg></span></button><figcaption>01 / 18 — THE KNIT / THE CITY / EVERYDAY BLUE</figcaption></figure></div>
-<div class="shell hero-meta"><span>18 ORIGINAL PHOTOGRAPHS</span><span>7 REAL-LIFE CHAPTERS</span><span>PERSONAL STYLE / PORTRAITS / CAMERA</span><span>NO GENERATED PEOPLE OR IMAGES</span></div></section>
+</div><div class="hero-contact-sheet" aria-label="Three real moments of blue, arranged as a personal contact sheet">
+ <figure class="hero-media hero-contact-main"><button type="button" class="photo-open" data-archive-view data-src="/assets/work/blue-real-life/real-new-01.jpg" data-alt="Cream knit vest, powder-blue shirt, navy tailored trousers and white sneakers" aria-label="View original knit outfit photograph at available resolution"><img src="/assets/work/blue-real-life/real-new-01.jpg" width="165" height="200" alt="Real knit-vest and tailored-blue-trouser outfit" fetchpriority="high" decoding="async"></button><figcaption>01 / THE KNIT</figcaption></figure>
+ <figure class="hero-contact-side hero-contact-cap"><div role="img" class="hero-contact-photo" aria-label="Real portrait in a faded blue cap and denim vest" style="background-image:url('/assets/work/blue-real-life/real-new-05.jpg')"></div><figcaption>02 / THE CAP</figcaption></figure>
+ <figure class="hero-contact-side hero-contact-denim"><div role="img" class="hero-contact-photo" aria-label="Real smiling portrait in denim at a blue café sofa" style="background-image:url('/assets/work/blue-real-life/real-new-09.jpg')"></div><figcaption>03 / THE DAY</figcaption></figure>
+ <span class="hero-contact-stamp" aria-hidden="true">A PERSONAL<br>CONTACT SHEET</span>
+ </div></div>
+<div class="shell hero-meta"><span>18 REAL PHOTO MOMENTS</span><span>7 REAL-LIFE CHAPTERS</span><span>PERSONAL STYLE / PORTRAITS / CAMERA</span><span>A PERSONAL, NON-COMMISSIONED ARCHIVE</span></div></section>
 <section class="intro shell" id="chapters" aria-labelledby="intro-title"><div class="intro-layout"><div><span class="eyebrow">THE PERSONAL ARCHIVE / REAL PHOTOGRAPHS</span><h2 id="intro-title">BLUE ISN'T<br><em>ONE FEELING.</em></h2></div><div><p>This is the unpolished and occasionally carefully edited part of the story: blue worn, found, photographed and remembered.</p><p>The independent Some Blues / Be The Next concept stays in <strong>Work in Motion</strong>. This archive lives here, on its own terms.</p></div></div><nav class="jump-nav" aria-label="Browse the seven personal blue photo stories"><a href="#blue-in-the-everyday"><b>01</b> STYLED, NOT STAGED</a><a href="#the-blue-cap"><b>02</b> THE BLUE CAP</a><a href="#blue-on-the-move"><b>03</b> BLUE ON THE MOVE</a><a href="#through-the-lens"><b>04</b> THROUGH THE LENS</a><a href="#portraiture"><b>05</b> THE PORTRAIT STUDY</a><a href="#blue-in-the-details"><b>06</b> BLUE IN THE DETAILS</a><a href="#an-afternoon-in-denim"><b>07</b> AN AFTERNOON IN DENIM</a></nav></section>
 <section class="chapter chapter-cream" id="blue-in-the-everyday" aria-labelledby="heading-blue-in-the-everyday">
  <div class="shell"><header class="chapter-head"><div><span class="section-index">CHAPTER 01 / LIVED IN SOME BLUES</span><h2 id="heading-blue-in-the-everyday">STYLED, NOT STAGED.</h2></div><div class="chapter-intro"><strong>A little tailoring. A lot of personality.</strong><p>A powder-blue shirt, navy trousers, a cream knit vest and the confidence of wearing pieces my own way. A familiar outfit, seen from three different angles.</p></div></header>
