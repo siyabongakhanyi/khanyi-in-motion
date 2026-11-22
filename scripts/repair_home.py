@@ -88,7 +88,7 @@ if 'class="kim-partner-start"' not in HTML:
         1
     )
 
-css_marker = "/* KIM_HOME_REPAIR_V1 */"
+css_marker = "/* KIM_HOME_REPAIR_V1:"
 if css_marker not in HTML:
     css = """
 /* KIM_HOME_REPAIR_V1: contrast + direct partner discovery; retain original system. */
