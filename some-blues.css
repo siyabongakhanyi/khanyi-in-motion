@@ -1,5 +1,5 @@
 /* Hide the legacy static gallery during initial parse; the consolidated script removes it. */
-.kim-work-editorial>.kim-feature,.kim-work-editorial>.kim-gallery,.kim-work-editorial>.kim-story-note{display:none!important}
+.kim2-ready .kim-work-editorial>.kim-feature,.kim2-ready .kim-work-editorial>.kim-gallery,.kim2-ready .kim-work-editorial>.kim-story-note{display:none!important}
 .kim-work-editorial{scroll-margin-top:80px}
 .kim-work-editorial .kim-work-intro{max-width:370px}
 /* K/IM — CLEAN EDIT: purposeful imagery, fewer repeats, details on demand. */
@@ -160,4 +160,55 @@
 }
 @media(prefers-reduced-motion:reduce){
  .kim2-hero-image img,.kim2-mood-image img,.kim2-process-detail img,.kim2-hero-links a,.kim2-hero-links button{transition:none}
+}
+
+
+/* A11Y POLISH — vector affordances, contrast-safe colour choices and readable captions. */
+.kim2-editorial .line-icon{display:inline-block;fill:none;stroke:currentColor;vertical-align:middle;flex:none}
+.kim2-editorial .kim2-line-icon{width:16px;height:16px;stroke-width:1.8}
+.kim2-hero-links a,.kim2-hero-links button,.kim2-brand-action a,.kim2-footer-action a,.kim2-footer-action button,.kim2-viewer-close{display:inline-flex;align-items:center;justify-content:center;gap:10px;line-height:1.4}
+.kim2-fig-bottom .kim2-line-icon{width:14px;height:14px}
+.kim2-hero-links button span{display:inline-flex;align-items:center;justify-content:center}
+.kim2-hero-links button span .kim2-line-icon{width:16px;height:16px}
+.kim2-hero-links a,.kim2-brand-action a{background:#c51b34;border-color:#c51b34;color:#fff}
+.kim2-hero-links a:hover,.kim2-brand-action a:hover{background:#a91830;border-color:#a91830;color:#fff}
+.kim2-hero-links button:hover{background:#f1f5ff;color:#08132f;border-color:#f1f5ff}
+.kim2-hero-image>figcaption{color:#f2f6ff;font-size:12px;letter-spacing:.03em}
+.kim2-fig-top,.kim2-fig-bottom{font-size:12px;letter-spacing:.045em;color:#fff}
+.kim2-eyebrow,.kim2-code,.kim2-tint{font-size:12px;letter-spacing:.045em}
+.kim2-signature{font-size:12px;letter-spacing:.04em}
+.kim2-summary-name small{color:#506580;font-size:13px;line-height:1.5}
+.kim2-accordion[open] .kim2-summary-name small{color:#506580}
+.kim2-mood-image figcaption,.kim2-process-detail figcaption{color:#f3f7ff;font-size:12px;letter-spacing:.025em}
+.kim2-n{color:#244d9d;font-size:13px}
+.kim2-what-detail .kim2-garments dt{font-size:12px;color:#506580}
+.kim2-garments dd a{font-size:13px;color:#194a9e}
+.kim2-brand-action span{font-size:11px;color:#cddafa}
+.kim2-brand-action a{min-height:44px}
+.kim2-brand-ideas span{font-size:12px;color:#ff9eae}
+.kim2-brand-ideas p{font-size:14px;color:#eef4ff}
+.kim2-brand-head .kim2-code{color:#e1e9ff}
+.kim2-footer>div:first-child span{color:#526580;font-size:12px}
+.kim2-footer-action a,.kim2-footer-action button{font-size:12px;min-height:44px}
+.kim2-hero-links a,.kim2-hero-links button{font-size:12px}
+.kim2-share-status{color:#194a9e}
+.kim2-plus{position:relative;border:1.5px solid #526580;color:#153a8d;min-width:44px;width:44px;height:44px}
+.kim2-plus::before,.kim2-plus::after{content:"";display:block;position:absolute;background:currentColor;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:1px}
+.kim2-plus::before{width:16px;height:2px}
+.kim2-plus::after{width:2px;height:16px}
+.kim2-accordion[open] .kim2-plus::before{content:""}
+.kim2-accordion[open] .kim2-plus::after{display:none}
+.kim2-viewer-close{min-height:44px;padding:10px 15px;border-color:#d0def8;color:#fff}
+.kim2-editorial :is(a,button,summary):focus-visible{outline:3px solid #a11634;outline-offset:4px}
+.kim2-editorial .kim2-hero :is(a,button):focus-visible,
+.kim2-editorial .kim2-mood-inner button:focus-visible,
+.kim2-editorial .kim2-brand-detail a:focus-visible,
+.kim2-editorial .kim2-footer-action button:focus-visible,
+.kim2-viewer button:focus-visible{outline:3px solid #ff9bad;outline-offset:4px}
+@media(max-width:460px){
+ .kim2-summary-name small{font-size:12px}
+ .kim2-n,.kim2-tint{font-size:12px}
+ .kim2-plus{min-width:40px;width:40px;height:44px}
+ .kim2-hero-links a,.kim2-hero-links button{font-size:12px}
+ .kim2-fig-top,.kim2-fig-bottom{font-size:11px}
 }
