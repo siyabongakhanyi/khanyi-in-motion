@@ -148,6 +148,16 @@
  .comfort-contact{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.comfort-proof-item,.comfort-instagram-prompt{transition:none}.comfort-proof-item:hover,.comfort-instagram-prompt:hover{transform:none}}
+
+/* Auto-render original Reel; native muted autoplay activates when the original
+   creator-owned MP4 is available, while Instagram embeds remain user-controlled. */
+.comfort-reel-loading{width:100%;max-width:350px;min-height:345px;padding:32px 20px;display:flex;flex-direction:column;gap:17px;align-items:center;justify-content:center;border:1px solid #abc8ff80;background:#102b5a;color:#fff;text-align:center}
+.comfort-reel-loading span{font:900 21px/1.1 var(--display);letter-spacing:.07em}
+.comfort-reel-loading small{color:#dbe8ff;font-size:12px}
+.comfort-reel-loading a{display:inline-flex;align-items:center;min-height:44px;padding:8px 13px;border:1px solid #dbe8ff;color:#fff;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.06em}
+.comfort-reel-loading a:focus-visible{outline:3px solid #ffbc76;outline-offset:4px}
+.comfort-native-reel{display:block;width:auto;max-width:100%;height:auto;max-height:min(72vh,625px);aspect-ratio:9/16;object-fit:contain;background:#050c1b;box-shadow:0 12px 32px #03112e82}
+@media(max-width:475px){.comfort-reel-loading{min-height:310px}.comfort-native-reel{max-height:72svh}}
 </style></head><body>
 <header class="site-head"><nav class="shell" aria-label="Page navigation"><a class="brand" href="/" aria-label="Khanyi in Motion homepage">K<span>/</span>IM.</a><a class="back" href="/#chapter-moved">BACK TO MOVED</a></nav></header>
 <main><section class="hero" aria-labelledby="page-title">
@@ -197,13 +207,12 @@
    <div class="comfort-media">
     <div class="comfort-media-header"><span>ORIGINAL CREATOR CONTENT</span><span>01 / MOTION</span></div>
     <div class="comfort-screen">
-     <div class="comfort-instagram-embed" id="comfort-instagram-embed">
-      <button class="comfort-instagram-prompt" type="button" id="comfort-load-reel" aria-label="Load and play the original Instagram Reel">
-       <span class="prompt-index">K/IM / THE REAL MOMENT</span>
-       <span class="play"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 6 10 6-10 6V6Z"/></svg></span>
-       <strong>SEE IT<br>IN MOTION.</strong>
-       <small>Tap to load the original Instagram Reel.<br>Instagram may require cookies or opening its app.</small>
-      </button>
+     <div class="comfort-instagram-embed" id="comfort-instagram-embed" aria-label="Original creator Reel">
+      <div class="comfort-reel-loading" role="status">
+       <span>ORIGINAL REEL / INSTAGRAM</span>
+       <small>Loading the Reel…</small>
+       <a href="https://www.instagram.com/reel/DfeNFKnNqlr/" target="_blank" rel="noopener noreferrer">OPEN ON INSTAGRAM</a>
+      </div>
      </div>
     </div>
     <div class="comfort-media-footer"><span>REAL FOOTAGE / NO GENERATED IMAGERY</span><a class="comfort-watch-link" href="https://www.instagram.com/reel/DfeNFKnNqlr/" target="_blank" rel="noopener noreferrer">WATCH ON INSTAGRAM <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>
@@ -260,33 +269,75 @@
  if(video&&image){fetch("/assets/work/blue-real-life/race/hoka-half-film.mp4",{method:"HEAD",cache:"no-store"}).then(r=>{if(r.ok&&(r.headers.get("content-type")||"").toLowerCase().includes("video/mp4")){image.hidden=true;video.hidden=false}}).catch(()=>{})}
 })();</script><script>
 (()=>{"use strict";
- const trigger=document.getElementById("comfort-load-reel");
  const host=document.getElementById("comfort-instagram-embed");
- if(!trigger||!host)return;
+ if(!host)return;
  const reel="https://www.instagram.com/reel/DfeNFKnNqlr/";
- trigger.addEventListener("click",()=>{
-  if(host.dataset.loaded==="true")return;
-  host.dataset.loaded="true";
+ // The MP4 is not in this repository yet. If the creator publishes their
+ // original source file at this path, the page upgrades automatically to
+ // true muted inline autoplay; Instagram embeds offer no autoplay control.
+ const original="/assets/work/blue-on-the-move/crocs-10k-reel.mp4";
+ let started=false;
+ const instagramFallback=()=>{
   const quote=document.createElement("blockquote");
   quote.className="instagram-media";
   quote.setAttribute("data-instgrm-permalink",reel);
   quote.setAttribute("data-instgrm-version","14");
-  quote.setAttribute("aria-label","Instagram Reel by the creator");
+  quote.setAttribute("aria-label","Original creator Instagram Reel; select play inside Instagram's embed");
   quote.style.cssText="background:#fff;min-width:0;width:100%;max-width:420px;margin:0 auto;";
-  const link=document.createElement("a");link.href=reel;
-  link.target="_blank";link.rel="noopener noreferrer";
-  link.textContent="View this Reel on Instagram";
+  const link=document.createElement("a");
+  link.href=reel;link.target="_blank";link.rel="noopener noreferrer";
+  link.textContent="Watch this Reel on Instagram";
   quote.appendChild(link);
   host.replaceChildren(quote);
-  const load=()=>{
-   if(window.instgrm?.Embeds?.process){window.instgrm.Embeds.process();return;}
-   const script=document.createElement("script");script.async=true;
-   script.src="https://www.instagram.com/embed.js";
-   script.onload=()=>{window.instgrm?.Embeds?.process?.()};
-   script.onerror=()=>{quote.setAttribute("data-embed-error","true")};
-   document.body.appendChild(script);
-  };
-  load();
- },{once:true});
+  if(window.instgrm?.Embeds?.process){window.instgrm.Embeds.process();return}
+  const existing=document.querySelector('script[data-kim-instagram-embed]');
+  if(existing){existing.addEventListener("load",()=>window.instgrm?.Embeds?.process?.(),{once:true});return}
+  const sdk=document.createElement("script");sdk.async=true;
+  sdk.src="https://www.instagram.com/embed.js";
+  sdk.dataset.kimInstagramEmbed="true";
+  sdk.onload=()=>window.instgrm?.Embeds?.process?.();
+  sdk.onerror=()=>{quote.dataset.embedError="true"};
+  document.body.appendChild(sdk);
+ };
+ const nativePlayer=()=>{
+  const video=document.createElement("video");
+  video.className="comfort-native-reel";
+  video.setAttribute("playsinline","");
+  video.setAttribute("autoplay","");
+  video.setAttribute("muted","");
+  video.setAttribute("loop","");
+  video.setAttribute("preload","metadata");
+  video.setAttribute("aria-label","Original Crocs 10K creator Reel, playing muted. Use controls for sound.");
+  video.muted=true;video.defaultMuted=true;
+  video.autoplay=true;video.loop=true;video.playsInline=true;
+  video.controls=true;
+  video.src=original;
+  host.replaceChildren(video);
+  const observePlayback=new IntersectionObserver(entries=>{
+   if(entries.some(e=>e.isIntersecting))video.play().catch(()=>{});
+   else video.pause();
+  },{threshold:.1});
+  observePlayback.observe(video);
+  video.play().catch(()=>{video.controls=true});
+ };
+ const activate=async()=>{
+  if(started)return;
+  started=true;
+  try{
+   const response=await fetch(original,{method:"HEAD",cache:"no-store"});
+   if(response.ok&&(response.headers.get("content-type")||"").toLowerCase().includes("video/mp4")){
+    nativePlayer();return;
+   }
+  }catch(e){/* No original MP4 hosted yet — use the official Instagram embed. */}
+  instagramFallback();
+ };
+ if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(entries=>{
+   if(entries.some(e=>e.isIntersecting)){
+    observer.disconnect();activate();
+   }
+  },{rootMargin:"350px 0px",threshold:0});
+  observer.observe(host);
+ }else activate();
 })();
 </script></body></html>
