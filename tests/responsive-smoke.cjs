@@ -43,7 +43,7 @@ try {
      slides:document.querySelectorAll('button[data-archive-view][data-src*="story-"]').length
     }));
     if(!response||response.status()!==200)issues.push("http "+response?.status());
-    if(d.docWidth>d.width+3||d.bodyWidth>d.width+3)issues.push("horizontal overflow "+d.docWidth+"/"+d.bodyWidth+" > "+d.width);
+    if(d.docWidth>d.width+3||d.bodyWidth>d.width+3){const offenders=await page.evaluate(()=>Array.from(document.querySelectorAll("body *")).map(el=>({el,r:el.getBoundingClientRect(),s:getComputedStyle(el)})).filter(x=>x.r.width>0&&x.r.right>window.innerWidth+2&&x.s.position!=="absolute"&&x.s.position!=="fixed"&&x.s.display!=="none").sort((a,b)=>b.r.right-a.r.right).slice(0,8).map(x=>x.el.tagName.toLowerCase()+(x.el.id?"#"+x.el.id:"")+(x.el.className&&typeof x.el.className==="string"?"."+x.el.className.split(" ").slice(0,2).join("."):"")+":"+Math.round(x.r.right)));issues.push("horizontal overflow "+d.docWidth+"/"+d.bodyWidth+" > "+d.width+" offenders "+offenders.join(","));}
     if(d.headingCount!==1)issues.push("expected one h1, found "+d.headingCount);
     if(p.path==="/"&&d.canvaEmbeds)issues.push("broken Canva embed remains");
     if(p.gallery&&(d.photos!==12||d.slides!==7))issues.push("gallery media count mismatch "+d.photos+"/"+d.slides);
