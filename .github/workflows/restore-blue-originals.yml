@@ -49,7 +49,9 @@ jobs:
             exit 0
           fi
           git add assets/work/blue-real-life/lived-extra-*.jpg assets/work/blue-real-life/real-new-*.jpg
-          git add -u khanyi_blue_real_life_originals_ready_for_github.zip
+          if git ls-files --error-unmatch khanyi_blue_real_life_originals_ready_for_github.zip >/dev/null 2>&1; then
+            git add -u khanyi_blue_real_life_originals_ready_for_github.zip
+          fi
           if ! git diff --cached --quiet; then
             git commit -m "Restore 18 user-supplied real photos in full web-ready resolution"
             git push
