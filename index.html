@@ -641,6 +641,26 @@ html:not(.kim-js-ready) #the-world :is(#tab-worn,#tab-built,#tab-moved,#tab-live
 .kim-partner-start:hover{background:#cfddf7;color:#0f2655}
 .kim-partner-start:focus-visible{outline:3px solid #e8793d;outline-offset:4px}
 @media(max-width:560px){.kim-partner-start{width:100%;font-size:10px;letter-spacing:.045em;padding:12px}}
+
+/* KIM_BRAND_BRIDGE_V1 */
+.kim-brand-shortcut{display:none;align-items:center;gap:6px;text-decoration:none;border:1px solid #163971;background:#dbe7ff;color:#102b59;font-size:10px;font-weight:900;letter-spacing:.06em;padding:10px 11px;min-height:40px}
+.kim-brand-shortcut:focus-visible,.kim-brands-invite-action:focus-visible{outline:3px solid #d86a2f;outline-offset:4px}
+.kim-brands-invite{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,325px);align-items:center;gap:clamp(14px,4vw,45px);overflow:hidden;min-height:270px;margin-block:34px 52px;padding:clamp(24px,4vw,44px);border:1px solid #6d97d7;background:radial-gradient(circle at 75% 55%,#3d70c88a,transparent 43%),linear-gradient(118deg,#081a3b,#1b3d7c);color:#fff}
+.kim-brands-invite:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:1%;top:-60%;border:1px solid #bad0ff5c;pointer-events:none}
+.kim-brands-invite-copy{position:relative;z-index:2}
+.kim-brands-invite-kicker{display:block;color:#bad3ff;font-size:10px;font-weight:800;letter-spacing:.17em}
+.kim-brands-invite h2{font-family:Impact,"Arial Narrow",sans-serif;font-size:clamp(47px,6vw,86px);letter-spacing:-.02em;line-height:.92;margin:14px 0 11px}
+.kim-brands-invite h2 span{color:#b8d0ff}
+.kim-brands-invite p{color:#e3eeff;font-size:14px;line-height:1.45;max-width:540px;margin:0}
+.kim-brands-invite-action{display:inline-flex;align-items:center;gap:12px;margin-top:19px;padding-bottom:7px;border-bottom:1px solid #bed5ff;color:#fff;text-decoration:none;font-size:10px;letter-spacing:.08em;font-weight:900}
+.kim-brands-invite-action svg{width:18px;height:18px}
+.kim-brands-invite-media{position:relative;min-height:205px}
+.kim-brands-invite-orbit{position:absolute;inset:6% -8% 5% 2%;border-radius:50%;border:1px solid #a6c7ff7b;transform:rotate(-27deg)}
+.kim-brands-invite-media img{position:absolute;width:45%;height:86%;object-fit:cover;object-position:center 25%;border:3px solid #d6e5ff;box-shadow:7px 9px 0 #305da4;max-width:none}
+.kim-brands-invite-media .kim-brands-photo-a{right:38%;top:8%;transform:rotate(-11deg)}
+.kim-brands-invite-media .kim-brands-photo-b{right:11%;top:2%;transform:rotate(9deg)}
+@media(max-width:790px){.kim-brand-shortcut{display:inline-flex}.kim-brands-invite{grid-template-columns:minmax(0,1fr) minmax(130px,33%);min-height:235px}.kim-brands-invite-media{min-height:170px}}
+@media(max-width:520px){.top{gap:6px!important}.kim-brand-shortcut{font-size:9px;padding:8px;letter-spacing:.02em;min-height:35px}.kim-brands-invite{grid-template-columns:1fr;gap:0;min-height:245px;padding:24px;margin-block:28px 34px}.kim-brands-invite-kicker{max-width:240px;font-size:9px}.kim-brands-invite h2{font-size:clamp(47px,13vw,61px);max-width:270px}.kim-brands-invite p{max-width:68%;font-size:12px}.kim-brands-invite-action{font-size:9px;max-width:68%;margin-top:20px}.kim-brands-invite-media{position:absolute;top:30%;right:-14%;width:43%;height:75%;min-height:0;opacity:.8}.kim-brands-invite-media img{width:66%;height:80%;border-width:2px}.kim-brands-invite-media .kim-brands-photo-a{right:44%}.kim-brands-invite-media .kim-brands-photo-b{right:6%}}
 </style>
   <link rel="stylesheet" href="/some-blues.css" />
   <link rel="stylesheet" href="/blue-real-life.css" />
@@ -648,6 +668,7 @@ html:not(.kim-js-ready) #the-world :is(#tab-worn,#tab-built,#tab-moved,#tab-live
 <body>
   <header class="top wrap">
     <a class="logo" href="#top" aria-label="Khanyi in Motion home">K<span>/</span>IM<span class="logo-symbol" aria-hidden="true"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7.5"/></svg></span></a>
+    <a class="kim-brand-shortcut" href="/for-brands.html" aria-label="For brands: creative partnerships">BRANDS <span aria-hidden="true">↗</span></a>
     <button class="nav-trigger" id="menu-button" aria-expanded="false" aria-controls="main-nav"><span class="menu-label">MENU</span><svg class="line-icon menu-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><svg class="line-icon menu-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></button>
     <nav class="nav" id="main-nav" aria-label="Main navigation">
       <a href="#the-world">The world</a>
@@ -868,6 +889,23 @@ html:not(.kim-js-ready) #the-world :is(#tab-worn,#tab-built,#tab-moved,#tab-live
         <button type="button" class="kim-modal-arrow" data-kim-next aria-label="Next frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
     </dialog>
+
+    
+    <section class="kim-brands-invite wrap" aria-labelledby="kim-brands-heading">
+      <div class="kim-brands-invite-copy">
+        <span class="kim-brands-invite-kicker">AN OPEN INVITATION / KIM · 2026</span>
+        <h2 id="kim-brands-heading">FOR <span>BRANDS.</span></h2>
+        <p>Real experiences. Original direction. Stories with a point of view.</p>
+        <a class="kim-brands-invite-action" href="/for-brands.html">EXPLORE CREATIVE PARTNERSHIPS
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10"/></svg>
+        </a>
+      </div>
+      <div class="kim-brands-invite-media" aria-hidden="true">
+        <span class="kim-brands-invite-orbit"></span>
+        <img class="kim-brands-photo-a" src="/assets/home/world-worn.webp" alt="" loading="lazy" decoding="async">
+        <img class="kim-brands-photo-b" src="/assets/work/blue-real-life/race/thumbs/race-01-celebrate.webp" alt="" loading="lazy" decoding="async">
+      </div>
+    </section>
 
     <section class="contact" id="collaborate" aria-labelledby="contact-heading"><div class="wrap">
       <span class="eyebrow">04 / The next movement</span>
