@@ -225,6 +225,10 @@ html,body{max-width:100%;overflow-x:clip}
   .chapter .photo-gallery .photo-open img{transition:none!important}
 }
 
+
+/* 2026 accessibility audit: navigation counters need stronger contrast. */
+.jump-nav a b,.jump-nav a span,.jump-nav a .jump-number{color:#244777!important}
+.chapter .photo-card figcaption span{color:#294e88!important}
 </style></head><body>
 <header class="site-header"><nav class="shell site-nav" aria-label="Page navigation"><a class="brand" href="/#top" aria-label="Khanyi In Motion homepage">K<span>/</span>IM</a><a class="return" href="/#chapter-lived">BACK TO LIVED</a></nav></header>
 <main><section class="hero" aria-labelledby="story-title"><div class="shell hero-grid"><div class="hero-copy"><span class="eyebrow">K/IM / LIVED / SOME BLUES / 002</span>
@@ -277,7 +281,7 @@ html,body{max-width:100%;overflow-x:clip}
  <div class="carousel-controls"><span>SWIPE OR USE THE ARROWS TO SEE THE FRAMES</span><div><button type="button" class="gallery-prev" data-gallery="gallery-07" aria-label="Previous photograph in AN AFTERNOON IN DENIM."><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18 9 12l6-6"/></svg></button><button type="button" class="gallery-next" data-gallery="gallery-07" aria-label="Next photograph in AN AFTERNOON IN DENIM."><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
  </div></section>
 <section class="outro"><div class="shell outro-inner"><div><span class="eyebrow">NOT A CAMPAIGN. A COLOUR THAT STAYS.</span><h2>WORN.<br>SEEN.<br>REMEMBERED.</h2><p>Every photograph here comes from the real images shared for this archive. The styling, selection and colour treatment are part of my creative practice.</p></div><div class="outro-actions"><a href="/the-blueprint.html">EXPLORE THE SEPARATE BLUEPRINT EDITORIAL</a><a href="/#collaborate">START A CONVERSATION</a><button type="button" data-share>SHARE THE ARCHIVE</button></div></div></section>
-</main><footer class="site-footer"><div class="shell"><span>KHANYI IN MOTION / LIVED / 002</span><a href="/#chapter-lived">RETURN TO LIVED</a></div></footer>
+</main><footer class="site-footer"><div class="shell"><span>KHANYI IN MOTION / LIVED / 002</span><a href="/#chapter-lived">RETURN TO LIVED</a></div><div class="kim-brand-footer" style="text-align:center;padding:15px 20px;background:#112650;color:#fff"><a href="/for-brands.html" style="color:#fff;font-size:12px;font-weight:800;text-underline-offset:4px">FOR BRAND PARTNERS — EXPLORE COLLABORATIONS</a></div></footer>
 <dialog class="viewer" id="photo-dialog" aria-label="Expanded original photograph"><button class="viewer-close" id="photo-close" aria-label="Close photo">×</button><div class="viewer-body"><button type="button" id="photo-prev" aria-label="Previous photograph">‹</button><img id="large-photo" alt=""><button type="button" id="photo-next" aria-label="Next photograph">›</button></div><div class="viewer-caption" id="photo-caption" aria-live="polite"></div></dialog>
 <script>(()=>{"use strict";
 const photos=[...document.querySelectorAll("[data-archive-view]")],d=document.getElementById("photo-dialog"),large=document.getElementById("large-photo"),caption=document.getElementById("photo-caption");let index=0,trigger=null;
