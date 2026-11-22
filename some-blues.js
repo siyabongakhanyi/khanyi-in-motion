@@ -5,19 +5,6 @@
  if(!host || document.getElementById("kim-edit-clean"))return;
  const heading=host.querySelector(".heading-grid");
  if(!heading)return;
- const states=[
-  {id:"stillness",title:"STILLNESS",sub:"A little room to breathe",tag:"SOFT BLUE",quote:"Some days I reach for blue because I need a little room to breathe.",note:"I like that quiet confidence. Nothing to prove, nowhere to rush.",file:"05",imageTitle:"DETAILS / THE QUIETER TEXTURES"},
-  {id:"memory",title:"MEMORY",sub:"The things that stay",tag:"FADED BLUE",quote:"Other days, blue feels like a memory I can't quite name.",note:"I like that thrifted pieces have lived before. I get to give them another story.",file:"02",imageTitle:"MOODBOARD / FROM BOARD TO BODY"},
-  {id:"defiance",title:"DEFIANCE",sub:"Taking up space",tag:"ELECTRIC BLUE",quote:"I can be soft and still take up space.",note:"Sometimes getting dressed is how I make a statement before I say anything.",file:"01",imageTitle:"COVER / THE BOLD STATEMENT"},
-  {id:"release",title:"RELEASE",sub:"Leaving the rules behind",tag:"MOVING BLUE",quote:"And sometimes, I just want to move. No reason. No permission.",note:"The look becomes something else when I stop posing and start moving in it.",file:"04",imageTitle:"MOVEMENT / THE LOOK MOVES"}
- ];
- const accHtml=states.map((s,i)=>[
-  '<details class="kim2-accordion kim2-mood" id="state-'+s.id+'" data-tone="'+s.id+'">',
-  '<summary><span class="kim2-n">0'+(i+1)+'</span><span class="kim2-summary-name">'+s.title+'<small>'+s.sub+'</small></span><span class="kim2-tint">'+s.tag+'</span><span class="kim2-plus" aria-hidden="true"></span></summary>',
-  '<div class="kim2-mood-inner"><div class="kim2-words"><span class="kim2-code">PERSONAL NOTES / 0'+(i+1)+'</span><blockquote>“'+s.quote+'”</blockquote><p>'+s.note+'</p></div>',
-  '<figure class="kim2-mood-image"><button type="button" class="kim2-image-button" data-kim2-image="/assets/work/some-blues/frame-'+s.file+'.webp" data-kim2-alt="'+s.imageTitle+'" aria-label="Enlarge '+s.title.toLowerCase()+' editorial image"><img loading="lazy" decoding="async" width="400" height="500" src="/assets/work/some-blues/frame-'+s.file+'.webp" alt="'+s.imageTitle+'"></button><figcaption>FRAME '+s.file+' / '+s.imageTitle+'</figcaption></figure></div>',
-  '</details>'
- ].join('')).join('');
  const article=document.createElement("article");
  article.id="kim-edit-clean";
  article.className="kim2-editorial";
@@ -28,7 +15,7 @@
    '<h3 id="kim2-heading">THE <span>BLUEPRINT.</span></h3>',
    '<p class="kim2-declaration">Blue isn’t one feeling.</p>',
    '<p class="kim2-opening">I wear it when I need to breathe, when I’m remembering, when I want to be seen, and when I just want to move.</p>',
-   '<div class="kim2-hero-links"><a href="#kim2-states">EXPLORE THE FOUR STATES <span aria-hidden="true"><svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a><button type="button" data-kim2-open="kim2-what">WHAT I WORE <span aria-hidden="true"><svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></span></button></div>',
+   '<div class="kim2-hero-links"><a href="/the-blueprint.html#four-states">READ THE FOUR STATES <span aria-hidden="true"><svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a><button type="button" data-kim2-open="kim2-what">WHAT I WORE <span aria-hidden="true"><svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></span></button></div>',
    '<div class="kim2-signature">SIYA KHANYI <span>/</span> STYLE. STORY. MOTION.</div>',
   '</div><figure class="kim2-hero-image">',
    '<button type="button" class="kim2-image-button" data-kim2-image="/assets/work/some-blues/frame-03.webp" data-kim2-alt="THE BLUEPRINT / FULL FIT" aria-label="Enlarge the complete Blueprint outfit photograph">',
@@ -37,9 +24,9 @@
     '<span class="kim2-fig-bottom">THE FULL FIT <span>EXPAND <svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></span>',
    '</button><figcaption>THE COMPLETE LOOK / ONE PURPOSEFUL HERO IMAGE</figcaption>',
   '</figure></section>',
-  '<section id="kim2-states" class="kim2-states" aria-labelledby="kim2-states-heading">',
-   '<header class="kim2-section-intro"><span class="kim2-code">01 / THE FEELING</span><h3 id="kim2-states-heading">FOUR STATES.<br><em>ONE BLUE.</em></h3><p>Every shade says something different. Open the feeling that speaks to you.</p></header>',
-   '<div class="kim2-accordion-list">'+accHtml+'</div>',
+  '<section id="kim2-states" class="kim2-story-teaser" aria-labelledby="kim2-states-heading">',
+   '<div class="kim2-story-teaser-copy"><span class="kim2-code">01 / A STORY IN FOUR FEELINGS</span><h3 id="kim2-states-heading">FOUR STATES.<br><em>ONE BLUE.</em></h3><p>One outfit. Four ways of feeling: the quiet, the memories, the courage and the freedom to move.</p><a class="kim2-story-cta" href="/the-blueprint.html#four-states">READ &amp; SHARE THE FULL STORY <svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>',
+   '<div class="kim2-story-teaser-states" aria-label="Four themes explored in The Blueprint"><span><b>01</b>STILLNESS</span><span><b>02</b>MEMORY</span><span><b>03</b>DEFIANCE</span><span><b>04</b>RELEASE</span></div>',
   '</section>',
   '<section class="kim2-more" aria-labelledby="kim2-more-heading">',
    '<header class="kim2-section-intro kim2-more-intro"><span class="kim2-code">02 / UNDER THE SURFACE</span><h3 id="kim2-more-heading">IF YOU WANT<br><em>TO KNOW MORE.</em></h3><p>A closer look at the styling, creative process and brand possibilities.</p></header>',
@@ -60,7 +47,7 @@
      '</div></details>',
    '</div>',
   '</section>',
-  '<footer class="kim2-footer"><div><strong>THE BLUEPRINT / 001</strong><span>PERSONAL STYLE, FOUR EMOTIONAL STATES.</span></div><div class="kim2-footer-action"><a href="/the-blueprint.html">OPEN SHAREABLE STORY <svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a><button type="button" data-kim2-share>SHARE <svg class="line-icon kim2-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></button></div><span class="kim2-share-status" role="status" aria-live="polite"></span></footer>'
+  '<footer class="kim2-footer"><div><strong>THE BLUEPRINT / 001</strong><span>THE COMPLETE STORY AND SHARE CONTROLS LIVE ON THE EDITORIAL PAGE.</span></div></footer>'
  ].join("");
 
  // Preserve Work in Motion heading. Remove all earlier repeated imagery and pitch sections.
@@ -73,8 +60,6 @@
  if(intro)intro.textContent="One look, four feelings, and the story behind the blue.";
 
  // Native details: meaningful content stays collapsed until requested.
- const moods=Array.from(article.querySelectorAll(".kim2-mood"));
- moods.forEach(item=>item.addEventListener("toggle",()=>{if(item.open)moods.forEach(other=>{if(other!==item)other.open=false;});}));
  article.querySelectorAll("[data-kim2-open]").forEach(button=>button.addEventListener("click",()=>{
   const panel=document.getElementById(button.dataset.kim2Open);
   if(!panel)return;
@@ -98,15 +83,6 @@
  viewer.querySelector(".kim2-viewer-close").addEventListener("click",close);
  viewer.addEventListener("click",e=>{if(e.target===viewer)close();});
  viewer.addEventListener("close",()=>opener?.focus());
- const share=article.querySelector("[data-kim2-share]");
- const feedback=article.querySelector(".kim2-share-status");
- share.addEventListener("click",async()=>{
-  const url="https://khanyi-in-motion.vercel.app/the-blueprint.html";
-  try{
-   if(navigator.share){await navigator.share({title:"The Blueprint — Four States of Blue",text:"Blue isn't one feeling. A personal editorial by Siya Khanyi.",url});return;}
-   if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(url);feedback.textContent="Link copied.";return;}
-  }catch(err){if(err?.name==="AbortError")return;}
-  feedback.textContent="Share: "+url;
- });
+
 })();
 
