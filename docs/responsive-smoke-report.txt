@@ -1,48 +1,27 @@
 Khanyi In Motion — responsive smoke test
-Generated 2026-11-22T15:09:50.000Z
+Generated 2026-11-22T15:15:29.882Z
 Source: https://khanyi-in-motion.vercel.app
 
 PASS | mobile-small-portrait   HOME                | 320/320
 PASS | mobile-small-portrait   SOME BLUES STORY    | 320/320
-ERROR | mobile-small-portrait LIVED PHOTO ARCHIVE: TimeoutError: locator.evaluate: Timeout 30000ms exceeded.
-Call log:
-  - waiting for locator('#archive-dialog')
-
+FAIL | mobile-small-portrait   LIVED PHOTO ARCHIVE | 401/320 | horizontal overflow 401/401 > 320 offenders figure.photo-card.:471,figure.photo-card.:471,figure.photo-card.:471,figcaption:463,figcaption:463,figcaption:463,button.photo-open:461,img:461
 PASS | mobile-portrait         HOME                | 390/390
 PASS | mobile-portrait         SOME BLUES STORY    | 390/390
-ERROR | mobile-portrait LIVED PHOTO ARCHIVE: TimeoutError: locator.evaluate: Timeout 30000ms exceeded.
-Call log:
-  - waiting for locator('#archive-dialog')
-
+FAIL | mobile-portrait         LIVED PHOTO ARCHIVE | 401/390 | horizontal overflow 401/401 > 390 offenders figure.photo-card.:512,figure.photo-card.:512,figure.photo-card.:512,figcaption:504,figcaption:503,figcaption:503,button.photo-open:502,img:502
 PASS | mobile-landscape        HOME                | 844/844
 PASS | mobile-landscape        SOME BLUES STORY    | 844/844
-ERROR | mobile-landscape LIVED PHOTO ARCHIVE: TimeoutError: locator.evaluate: Timeout 30000ms exceeded.
-Call log:
-  - waiting for locator('#archive-dialog')
-
+PASS | mobile-landscape        LIVED PHOTO ARCHIVE | 844/844
 PASS | tablet-portrait         HOME                | 768/768
 PASS | tablet-portrait         SOME BLUES STORY    | 768/768
-ERROR | tablet-portrait LIVED PHOTO ARCHIVE: TimeoutError: locator.evaluate: Timeout 30000ms exceeded.
-Call log:
-  - waiting for locator('#archive-dialog')
-
+PASS | tablet-portrait         LIVED PHOTO ARCHIVE | 768/768
 PASS | tablet-landscape        HOME                | 1024/1024
 PASS | tablet-landscape        SOME BLUES STORY    | 1024/1024
-ERROR | tablet-landscape LIVED PHOTO ARCHIVE: TimeoutError: locator.evaluate: Timeout 30000ms exceeded.
-Call log:
-  - waiting for locator('#archive-dialog')
-
+PASS | tablet-landscape        LIVED PHOTO ARCHIVE | 1024/1024
 PASS | desktop                 HOME                | 1440/1440
 PASS | desktop                 SOME BLUES STORY    | 1440/1440
-ERROR | desktop LIVED PHOTO ARCHIVE: TimeoutError: locator.evaluate: Timeout 30000ms exceeded.
-Call log:
-  - waiting for locator('#archive-dialog')
-
+PASS | desktop                 LIVED PHOTO ARCHIVE | 1440/1440
 PASS | wide-desktop            HOME                | 1920/1920
 PASS | wide-desktop            SOME BLUES STORY    | 1920/1920
-ERROR | wide-desktop LIVED PHOTO ARCHIVE: TimeoutError: locator.evaluate: Timeout 30000ms exceeded.
-Call log:
-  - waiting for locator('#archive-dialog')
+PASS | wide-desktop            LIVED PHOTO ARCHIVE | 1920/1920
 
-
-RESULT FAIL 7
+RESULT FAIL 2
