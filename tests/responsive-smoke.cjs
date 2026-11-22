@@ -45,7 +45,7 @@ try {
      photos:document.querySelectorAll('button[data-archive-view]').length,
      slides:document.querySelectorAll('button[data-archive-view][data-src*="story-"]').length,
      raceThumbs:document.querySelectorAll('img[src*="/race/thumbs/"]').length,
-     raceOriginals:document.querySelectorAll('button[data-view][data-src*="/race/race-"]').length,
+     raceOriginals:document.querySelectorAll('button[data-view][data-src*="/race/race-0"]').length,
      brandCases:document.querySelectorAll('.case[href]').length,
      brandEmail:!!document.querySelector('a[href^="mailto:"]'),
      brandWhatsapp:!!document.querySelector('a[href^="https://wa.me/"]'),
