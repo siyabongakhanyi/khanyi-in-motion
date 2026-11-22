@@ -71,3 +71,10 @@
 @media(max-width:760px){#panel-moved .kim-moved-entry{width:100%}}
 @media(max-width:440px){#panel-moved .kim-moved-entry{font-size:10px;padding:13px 12px;letter-spacing:.02em}}
 @media(prefers-reduced-motion:reduce){#panel-moved .kim-moved-entry{transition:none}}
+
+
+/* Readability fixes from cross-device contrast audit, scoped to home components. */
+#panel-worn .v12-foot{color:#4f4c45!important}
+#work > .section-head > span{color:#4a4942!important}
+.kim2-footer > div > span{color:#c1d4fa!important}
+.kin-quote-important{color:#b83b20!important}
