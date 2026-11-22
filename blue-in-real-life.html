@@ -103,6 +103,127 @@ html,body{max-width:100%;overflow-x:clip}
  .outro-actions{display:grid;grid-template-columns:minmax(0,1fr);width:100%}
  .outro-actions>*{display:block;min-width:0;width:100%;box-sizing:border-box;overflow-wrap:anywhere}
 }
+
+/* BLUE, IN REAL LIFE — compact chapter-by-chapter two-column archive (2026-11-22) */
+@media(min-width:701px){
+  .chapter>.shell{
+    display:grid;grid-template-columns:minmax(0,.91fr) minmax(0,1.09fr);
+    align-items:start;column-gap:clamp(34px,5vw,78px);
+    max-width:1070px;margin-inline:auto;
+  }
+  .chapter .chapter-head{
+    display:block;min-width:0;margin:0;padding:14px 0 0;
+  }
+  .chapter .chapter-head .chapter-intro{
+    margin-top:clamp(18px,2.5vw,30px);max-width:400px;
+  }
+}
+.chapter{padding-block:clamp(27px,3.8vw,48px);overflow:hidden;}
+.chapter .chapter-head{border-top:1px solid var(--line);}
+.chapter .chapter-head h2{
+  font-size:clamp(40px,5vw,72px);
+  letter-spacing:-.024em;line-height:.94;
+  margin:9px 0 0;overflow-wrap:normal;
+}
+.chapter .chapter-intro strong{font-size:clamp(15px,1.4vw,18px)}
+.chapter .chapter-intro p{
+  max-width:370px;font-size:13px;line-height:1.6;margin-top:8px;
+}
+/* Two real-photo columns, rather than a narrow three-column polaroid group
+   floating inside a very large background panel. */
+.chapter .photo-gallery,
+.chapter .photo-gallery.gallery-two{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-items:start!important;justify-content:start!important;
+  gap:clamp(12px,1.5vw,20px)!important;
+  width:100%!important;max-width:430px!important;min-width:0;
+  margin:0!important;padding:0!important;
+  border:0!important;background:transparent!important;
+  overflow:visible!important;contain:none!important;
+  box-shadow:none!important;scroll-snap-type:none!important;
+}
+.chapter .photo-gallery::before,.chapter .photo-gallery::after{display:none!important}
+.chapter .photo-gallery .photo-card,
+.chapter .photo-gallery.gallery-two .photo-card,
+.chapter .photo-gallery .photo-card:nth-child(n){
+  width:100%!important;max-width:205px!important;min-width:0!important;
+  height:auto;flex:none!important;margin:0!important;
+  padding:7px 7px 9px!important;
+  transform:none!important;justify-self:stretch!important;
+  align-self:start!important;
+  background:#fff;border:1px solid rgba(79,112,171,.2);
+  box-shadow:0 4px 15px rgba(11,37,83,.09);
+  scroll-snap-align:none!important;
+}
+.chapter .photo-gallery .photo-open{
+  display:flex!important;align-items:center;justify-content:center;
+  min-width:0;min-height:0;width:100%;aspect-ratio:auto!important;
+  background:#edf2f9;overflow:hidden!important;
+}
+.chapter .photo-gallery .photo-open img{
+  display:block!important;
+  width:auto!important;height:auto!important;
+  max-width:100%!important;max-height:200px!important;
+  object-fit:contain!important;object-position:center!important;
+  aspect-ratio:auto!important;
+  transform:none!important;filter:none!important;
+}
+.chapter .photo-card figcaption{
+  padding:8px 1px 0;line-height:1.35;
+  display:block;font-size:11px;
+}
+.chapter .photo-card figcaption span{
+  display:block;font-size:9px;letter-spacing:.08em;margin-bottom:2px;
+}
+.chapter .photo-card .photo-expand{bottom:5px;right:5px}
+.chapter .carousel-controls{display:none!important}
+.hero-grid{padding-block:clamp(32px,4.5vw,56px)}
+.hero-copy h1{font-size:clamp(65px,8.2vw,112px);margin:17px 0 21px}
+.hero-copy p{font-size:clamp(15px,1.65vw,19px)}
+.intro{padding-block:clamp(30px,4vw,52px)}
+.intro h2{font-size:clamp(43px,5.2vw,72px)}
+.intro p{font-size:clamp(14px,1.4vw,17px);line-height:1.6}
+.intro .jump-nav{margin-top:22px}
+@media(max-width:900px) and (min-width:701px){
+  .chapter>.shell{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:24px}
+  .chapter .chapter-head h2{font-size:clamp(37px,5.1vw,55px)}
+  .chapter .photo-gallery,.chapter .photo-gallery.gallery-two{gap:12px!important}
+}
+@media(max-width:700px){
+  .chapter{padding-block:28px}
+  .chapter>.shell{
+    display:block;max-width:calc(100% - 32px)!important;
+  }
+  .chapter .chapter-head{
+    display:block;margin-bottom:17px;padding-top:13px;
+  }
+  .chapter .chapter-head h2{font-size:clamp(38px,9.4vw,57px)}
+  .chapter .chapter-intro{margin-top:12px}
+  .chapter .chapter-intro p{font-size:12px;line-height:1.5}
+  .chapter .photo-gallery,.chapter .photo-gallery.gallery-two{
+    max-width:440px!important;gap:12px!important;
+    padding:0!important;overflow:visible!important;
+    contain:none!important;
+  }
+  .chapter .photo-gallery .photo-card:nth-child(n){
+    max-width:100%!important;transform:none!important;
+  }
+  .chapter .photo-gallery .photo-open img{max-height:200px!important}
+  .hero-grid{padding-block:30px}
+  .intro{padding-block:32px}
+}
+@media(max-width:420px){
+  .chapter>.shell{max-width:calc(100% - 28px)!important}
+  .chapter .photo-gallery,.chapter .photo-gallery.gallery-two{gap:10px!important}
+  .chapter .photo-gallery .photo-card:nth-child(n){padding:5px 5px 7px!important}
+  .chapter .photo-gallery .photo-open img{max-height:190px!important}
+  .chapter .photo-card figcaption{font-size:10px;padding-top:6px}
+  .chapter .photo-card figcaption span{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  .chapter .photo-gallery .photo-open img{transition:none!important}
+}
 </style></head><body>
 <header class="site-header"><nav class="shell site-nav" aria-label="Page navigation"><a class="brand" href="/#top" aria-label="Khanyi In Motion homepage">K<span>/</span>IM</a><a class="return" href="/#chapter-lived">BACK TO LIVED</a></nav></header>
 <main><section class="hero" aria-labelledby="story-title"><div class="shell hero-grid"><div class="hero-copy"><span class="eyebrow">K/IM / LIVED / SOME BLUES / 002</span>
