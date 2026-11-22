@@ -119,20 +119,76 @@
 .pinterest-story-link .kim-story-line-icon{width:15px;height:15px;flex:none}
 </style>
 <style>
-.kim-lived-story{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.7fr);gap:clamp(22px,5vw,80px);align-items:stretch;margin:clamp(40px,5vw,80px) auto;padding:clamp(22px,5vw,65px);background:linear-gradient(126deg,#102858 0%,#193d7f 100%);border:1px solid #4165a0;color:#f8faff;max-width:1350px;min-width:0}
-.kim-lived-story-copy{min-width:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
-.kim-lived-story-kicker{font-size:11px;letter-spacing:.12em;font-weight:800;color:#c4d5ff}
-.kim-lived-story h2{font:900 clamp(50px,7.2vw,104px)/.85 Impact,"Arial Narrow",sans-serif;letter-spacing:-.028em;margin:26px 0;color:#fff}
-.kim-lived-story h2 em{font-style:normal;color:#9fbdff}
-.kim-lived-story p{max-width:450px;font-size:clamp(15px,1.6vw,20px);line-height:1.55;color:#e3ecff}
-.kim-lived-story-link{display:inline-flex;align-items:center;gap:12px;border:1.5px solid #dce6ff;color:#fff;text-decoration:none;padding:13px 16px;font-size:11px;letter-spacing:.05em;font-weight:800;margin-top:20px;min-height:45px}
-.kim-lived-story-link:hover{background:#f3f6ff;color:#102858}
+.kim-lived-story{
+  position:relative;isolation:isolate;display:grid;
+  grid-template-columns:minmax(0,1fr) 158px;gap:clamp(16px,3vw,34px);
+  align-items:center;width:min(100%,900px);max-width:900px;min-width:0;
+  margin:clamp(32px,5vw,56px) auto 48px;padding:22px 24px 22px 28px;
+  overflow:hidden;color:#f8faff;
+  border:1px solid #4d70a8;
+  background:linear-gradient(120deg,#112b59 0%,#17396f 65%,#214787 100%);
+  box-shadow:0 14px 40px rgba(3,11,34,.16);
+}
+.kim-lived-story::before{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  width:260px;height:260px;right:42px;top:-100px;border-radius:50%;
+  border:1px solid rgba(188,213,255,.18);
+  box-shadow:0 0 0 36px rgba(188,213,255,.035),0 0 0 74px rgba(188,213,255,.025);
+}
+.kim-lived-story::after{
+  content:"002 / LIVED";position:absolute;right:207px;top:18px;
+  color:#b2cafa;font:700 9px/1.2 Arial,sans-serif;letter-spacing:.17em;
+}
+.kim-lived-story-copy{position:relative;z-index:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.kim-lived-story-kicker{font-size:10px;letter-spacing:.12em;font-weight:800;color:#c4d5ff}
+.kim-lived-story h2{
+  font:900 clamp(36px,4.3vw,53px)/.95 Impact,"Arial Narrow",sans-serif;
+  letter-spacing:-.023em;margin:12px 0 10px;color:#fff;text-wrap:balance;
+}
+.kim-lived-story h2 em{font-style:normal;color:#a4c2ff}
+.kim-lived-story p{
+  max-width:510px;margin:0;font-size:13px;line-height:1.5;
+  color:#e1ebff;
+}
+.kim-lived-story-link{
+  display:inline-flex;align-items:center;gap:9px;min-height:36px;
+  padding:7px 0 3px;margin-top:10px;
+  border:0;border-bottom:1px solid #aec8f8;
+  color:#fff;text-decoration:none;font-size:10px;
+  letter-spacing:.08em;font-weight:800;transition:color .2s,border-color .2s;
+}
+.kim-lived-story-link:hover{background:transparent;color:#b2cfff;border-color:#fff}
+.kim-lived-story-link .line-icon{width:15px;height:15px;flex:none}
 .kim-lived-story-link:focus-visible,.kim-lived-story-photo:focus-visible{outline:3px solid #ffb86e;outline-offset:4px}
-.kim-lived-story-photo{min-width:0;min-height:0;display:block;overflow:hidden}
-.kim-lived-story-photo img{display:block;width:100%;height:100%;max-height:510px;min-height:300px;object-fit:cover;object-position:center 45%}
-@media(max-width:720px){.kim-lived-story{grid-template-columns:1fr}.kim-lived-story-photo img{height:280px;min-height:0;max-height:none;object-position:center 37%}.kim-lived-story h2{font-size:clamp(55px,12vw,95px)}}
-@media(max-width:420px){.kim-lived-story{margin-inline:0;padding:20px}.kim-lived-story h2{font-size:clamp(53px,14vw,75px)}.kim-lived-story-link{max-width:100%;font-size:10px}.kim-lived-story-kicker{font-size:10px}}
-@media(orientation:landscape) and (max-height:530px){.kim-lived-story{padding:25px}.kim-lived-story-photo img{max-height:270px}}
+.kim-lived-story-photo{
+  position:relative;z-index:1;display:block;overflow:hidden;
+  width:158px;height:206px;min-width:0;min-height:0;
+  background:#112550;border:1px solid rgba(217,231,255,.26);
+}
+.kim-lived-story-photo img{
+  display:block;width:100%;height:100%;min-height:0;max-height:none;
+  object-fit:cover;object-position:center 37%;
+}
+@media(max-width:720px){
+  .kim-lived-story{grid-template-columns:minmax(0,1fr) 112px;gap:16px;padding:18px}
+  .kim-lived-story::after{display:none}
+  .kim-lived-story h2{font-size:clamp(30px,6vw,43px)}
+  .kim-lived-story-photo{width:112px;height:174px}
+  .kim-lived-story p{font-size:12px}
+}
+@media(max-width:480px){
+  .kim-lived-story{grid-template-columns:minmax(0,1fr) 93px;gap:12px;margin:28px auto 36px;padding:14px}
+  .kim-lived-story-kicker{font-size:8px;letter-spacing:.08em}
+  .kim-lived-story h2{font-size:clamp(28px,8.7vw,36px);margin:10px 0 8px}
+  .kim-lived-story p{font-size:11px;line-height:1.44}
+  .kim-lived-story-link{font-size:9px;letter-spacing:.03em;margin-top:6px;min-height:32px}
+  .kim-lived-story-photo{width:93px;height:156px}
+  .kim-lived-story::before{right:-130px}
+}
+@media(orientation:landscape) and (max-height:530px){
+  .kim-lived-story{margin-block:24px;padding-block:16px}
+  .kim-lived-story-photo{height:160px}
+}
 </style>
 </head>
 <body><a class="skip-to-content" href="#main-content">Skip to main content</a>
@@ -160,9 +216,9 @@
 <section class="kim-lived-story" aria-labelledby="kim-lived-title">
   <div class="kim-lived-story-copy">
     <span class="kim-lived-story-kicker">SOME BLUES / LIVED / PERSONAL ARCHIVE / 002</span>
-    <h2 id="kim-lived-title">BLUE,<br><em>IN REAL LIFE.</em></h2>
-    <p>Some Blues was a concept. The colour kept going, into cafés, mirrors, nights out and ordinary days. Twelve personal photographs. Four blue moods. One lived story.</p>
-    <a href="/blue-in-real-life.html" class="kim-lived-story-link">STEP INTO THE LIVED ARCHIVE <svg class="line-icon kim-story-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+    <h2 id="kim-lived-title">BLUE, <em>IN REAL LIFE.</em></h2>
+    <p>Beyond the concept: blue in cafés, mirrors, nights out and everyday life. Twelve photographs. Four moods.</p>
+    <a href="/blue-in-real-life.html" class="kim-lived-story-link">EXPLORE THE LIVED ARCHIVE <svg class="line-icon kim-story-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
   </div>
   <a class="kim-lived-story-photo" href="/blue-in-real-life.html" aria-label="View twelve real-life blue outfit photographs"><img src="/assets/work/blue-real-life/photo-11.png" alt="Casual blue and white outfit photographed in a pink ice cream café" loading="lazy" width="459" height="825"></a>
 </section>
