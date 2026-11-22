@@ -3,7 +3,7 @@
    and that the original-photo lightbox is usable with mouse and keyboard. */
 const fs=require("node:fs");
 const {chromium}=require("playwright-core");
-const origin=process.env.KIM_BASE_URL||"https://khanyi-in-motion.vercel.app";
+const origin=process.env.KIM_BASE_URL||"http://127.0.0.1:8765";
 const viewports=[
  {name:"mobile-small-portrait",width:320,height:640},
  {name:"mobile-portrait",width:390,height:844},
@@ -16,7 +16,10 @@ const viewports=[
 const pages=[
  {name:"HOME",path:"/",gallery:false},
  {name:"SOME BLUES STORY",path:"/the-blueprint.html",gallery:false},
- {name:"LIVED PHOTO ARCHIVE",path:"/blue-in-real-life.html",gallery:true}
+ {name:"LIVED PHOTO ARCHIVE",path:"/blue-in-real-life.html",gallery:true},
+ {name:"MOVED RACE STORY",path:"/blue-on-the-move.html",gallery:false,race:true},
+ {name:"BRAND PARTNERSHIPS",path:"/for-brands.html",gallery:false,brand:true},
+ {name:"PINTEREST STUDIO",path:"/pinterest/",gallery:false,pinterest:true}
 ];
 const report=["Khanyi In Motion — responsive smoke test","Generated "+new Date().toISOString(),"Source: "+origin,""];
 const failures=[];
@@ -40,13 +43,22 @@ try {
      mainCount:document.querySelectorAll("main").length,
      canvaEmbeds:document.querySelectorAll('iframe[src*="canva.com"]').length,
      photos:document.querySelectorAll('button[data-archive-view]').length,
-     slides:document.querySelectorAll('button[data-archive-view][data-src*="story-"]').length
+     slides:document.querySelectorAll('button[data-archive-view][data-src*="story-"]').length,
+     raceThumbs:document.querySelectorAll('img[src*="/race/thumbs/"]').length,
+     raceOriginals:document.querySelectorAll('button[data-view][data-src*="/race/race-"]').length,
+     brandCases:document.querySelectorAll('.case[href]').length,
+     brandEmail:!!document.querySelector('a[href^="mailto:"]'),
+     brandWhatsapp:!!document.querySelector('a[href^="https://wa.me/"]'),
+     pinterestLinks:document.querySelectorAll('.pinterest-link[href]').length
     }));
     if(!response||response.status()!==200)issues.push("http "+response?.status());
     if(d.docWidth>d.width+3||d.bodyWidth>d.width+3){const offenders=await page.evaluate(()=>Array.from(document.querySelectorAll("body *")).map(el=>({el,r:el.getBoundingClientRect(),s:getComputedStyle(el)})).filter(x=>x.r.width>0&&x.r.right>window.innerWidth+2&&x.s.position!=="absolute"&&x.s.position!=="fixed"&&x.s.display!=="none").sort((a,b)=>b.r.right-a.r.right).slice(0,8).map(x=>x.el.tagName.toLowerCase()+(x.el.id?"#"+x.el.id:"")+(x.el.className&&typeof x.el.className==="string"?"."+x.el.className.split(" ").slice(0,2).join("."):"")+":"+Math.round(x.r.right)));issues.push("horizontal overflow "+d.docWidth+"/"+d.bodyWidth+" > "+d.width+" offenders "+offenders.join(","));}
     if(d.headingCount!==1)issues.push("expected one h1, found "+d.headingCount);
     if(d.canvaEmbeds)issues.push("broken Canva embed remains");
     if(p.gallery&&(d.photos!==18||d.slides!==0))issues.push("gallery media count mismatch "+d.photos+"/"+d.slides);
+    if(p.race&&(d.raceThumbs!==7||d.raceOriginals!==7))issues.push("MOVED original-media gallery missing ("+d.raceThumbs+" thumbnails / "+d.raceOriginals+" originals)");
+    if(p.brand&&(d.brandCases!==3||!d.brandEmail||!d.brandWhatsapp))issues.push("brand inquiry or portfolio evidence missing");
+    if(p.pinterest&&d.pinterestLinks<2)issues.push("Pinterest linked collections missing");
     if(p.gallery){
      const additions=await page.locator('img[src*="lived-extra-"], img[src*="real-new-"]').evaluateAll(async images=>{
        const loaded=await Promise.all(images.map(img=>new Promise(resolve=>{
@@ -78,7 +90,7 @@ try {
   }
   await page.close();
  }
- report.push("","RESULT "+(failures.length?"FAIL "+failures.length:"PASS 21 responsive page/viewport checks"));
+ report.push("","RESULT "+(failures.length?"FAIL "+failures.length:"PASS "+(viewports.length*pages.length)+" responsive page/viewport checks"));
  fs.mkdirSync("docs",{recursive:true});
  fs.writeFileSync("docs/responsive-smoke-report.txt",report.join("\n")+"\n");
  console.log(report.join("\n"));
