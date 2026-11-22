@@ -216,3 +216,14 @@
 /* Dialog lives outside the section; keep its icon at the same size as other controls. */
 .kim2-viewer .kim2-line-icon{width:17px;height:17px;stroke-width:1.8;display:inline-block;flex:none;vertical-align:middle}
 .kim2-viewer-close:hover{background:#f2f6ff;color:#0a1230;border-color:#f2f6ff}
+
+/* The Blueprint: purposeful Pinterest handoff within the creator process. */
+.kim2-board-bridge{border-top:1px solid #b5c6df;margin-top:18px;padding-top:20px}
+.kim2-board-bridge>p{margin:8px 0 17px;max-width:390px;color:#34486b}
+.kim2-board-bridge>a{display:flex;align-items:center;gap:13px;min-height:64px;padding:13px 16px;background:#15366c;color:#fff;text-decoration:none;transition:background .2s}
+.kim2-board-bridge>a:hover{background:#20488a;color:#fff}
+.kim2-board-bridge>a>img{width:30px;height:30px;flex:none;object-fit:contain;background:#fff;border-radius:100%;padding:4px}
+.kim2-board-bridge>a>span{display:flex;flex:1;flex-direction:column;gap:4px;font:850 11px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.015em}
+.kim2-board-bridge>a small{font-size:10px;font-weight:650;color:#dfebff}
+.kim2-board-bridge>a .kim2-line-icon{flex:none}
+@media(prefers-reduced-motion:reduce){.kim2-board-bridge>a{transition:none}}
