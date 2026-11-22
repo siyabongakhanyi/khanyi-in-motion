@@ -1,0 +1,39 @@
+name: One-time import of nine authentic LIVED photos
+on:
+  push:
+    paths: ['.github/workflows/import-real-lived-nine.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import-originals:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+      - name: Import the user's original photographs
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, urllib.request, subprocess, time
+          sources=json.loads("[{\"path\":\"assets/work/blue-real-life/real-new-01.jpg\",\"url\":\"https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2Faa59070c-0f9f-464e-9d85-d8d08764683e/watermark:F/width:165?csig=AAAAAAAAAAAAAAAAAAAAAJk13MumBeMk9CnNfthX4rBqoIID8Jcby4DT21sh1RPz&exp=1795377187&osig=AAAAAAAAAAAAAAAAAAAAAAF8UY3Kpmy3yhzWLd2uP8vAjSVdNUor7XKF1sALqSqg&signer=media-rpc&token=AAIAAU0AJGFhNTkwNzBjLTBmOWYtNDY0ZS05ZDg1LWQ4ZDA4NzY0NjgzZQAAAAABogTRyLhZNLKtbpYtSloLZkt4DwBTdqwCxWVkMij3xCKwa-vRBg&x-canva-quality=thumbnail\"},{\"path\":\"assets/work/blue-real-life/real-new-02.jpg\",\"url\":\"https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2Fbf249c78-b28f-4e6e-b8cc-7d406931806f/watermark:F/width:153?csig=AAAAAAAAAAAAAAAAAAAAABP2f5w8A9pEpOvspuqNSXd3bdAOJ6zOHAwFkr0CbN6O&exp=1795376689&osig=AAAAAAAAAAAAAAAAAAAAAIR2txHEAnZqycM31SjuDyetQvgVlwpTx_VfdSaKCgeB&signer=media-rpc&token=AAIAAU0AJGJmMjQ5Yzc4LWIyOGYtNGU2ZS1iOGNjLTdkNDA2OTMxODA2ZgAAAAABogTKL2h_OiFbE0ODeOiZDXQCs7f1eeD3LsRrhbgZrq-0R4Scew&x-canva-quality=thumbnail\"},{\"path\":\"assets/work/blue-real-life/real-new-03.jpg\",\"url\":\"https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2Ff286c1b0-2998-41be-84e3-d39c97ea2dd8/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAKUHmGA8bA5i0P_bPB42UhrVULZ-Tyucl3yAoGVlXTca&exp=1795376947&osig=AAAAAAAAAAAAAAAAAAAAAMj1ynn-cb7dXyD5Qt8InP3MKQF6Y8jUCRuD_vWyZST-&signer=media-rpc&token=AAIAAU0AJGYyODZjMWIwLTI5OTgtNDFiZS04NGUzLWQzOWM5N2VhMmRkOAAAAAABogTOHzjwlGChufgHUV3SsdtglUwkCTYbNAx8qEt9USptKOwW1g&x-canva-quality=thumbnail\"},{\"path\":\"assets/work/blue-real-life/real-new-04.jpg\",\"url\":\"https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2F26e977d5-e08c-4189-ac11-cc9d055fd0b2/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAJ37k0R1pySX0a9XVbu5A_W3ONXukI1vXPv2FQubOksW&exp=1795375079&osig=AAAAAAAAAAAAAAAAAAAAAODrExpE0pKEVf4ZZ1VzyeKhrpCBd4hq0lg8V6kTsOmw&signer=media-rpc&token=AAIAAU0AJDI2ZTk3N2Q1LWUwOGMtNDE4OS1hYzExLWNjOWQwNTVmZDBiMgAAAAABogSxnlgwzGF6b_Y53q8GNsEq70vp5I0msABkdTTGAcMFUB2LUg&x-canva-quality=thumbnail\"},{\"path\":\"assets/work/blue-real-life/real-new-05.jpg\",\"url\":\"https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2F3b9ffa08-65bd-4845-b3b0-589fe8d3ba5f/watermark:F/width:133?csig=AAAAAAAAAAAAAAAAAAAAAOTXVAnkGuCnUa4C5ThspwiI-ax-F3bq0MBwCydD2Gn7&exp=1795376570&osig=AAAAAAAAAAAAAAAAAAAAAN722jV-ShZtwXXx91255eJSsCaiIcbpmx-lP3bpMi5f&signer=media-rpc&token=AAIAAU0AJDNiOWZmYTA4LTY1YmQtNDg0NS1iM2IwLTU4OWZlOGQzYmE1ZgAAAAABogTIXpBC0mwZX3F4Ocb1mRyYX5kPujWFjDDe9TWJxoA9iuvyjg&x-canva-quality=thumbnail\"},{\"path\":\"assets/work/blue-real-life/real-new-06.jpg\",\"url\":\"https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2Fbc48deec-92ed-4e8d-8ca7-8d74c374c6ca/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAFcYFfZwgJCw7IKD38mjovcveVXOaBqnyQIafJWcGr1R&exp=1795374643&osig=AAAAAAAAAAAAAAAAAAAAALTV4EWoA8rkzTv4W7ii0Yy120ZxHru9jN4priv2X7JE&signer=media-rpc&token=AAIAAU0AJGJjNDhkZWVjLTkyZWQtNGU4ZC04Y2E3LThkNzRjMzc0YzZjYQAAAAABogSq9zjNsCMh8LEN6Gepx2w73kooWnmiXniHNEQ5CDRZeVseGA&x-canva-quality=thumbnail\"},{\"path\":\"assets/work/blue-real-life/real-new-07.jpg\",\"url\":\"https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2Fbc6db8c3-51d9-4e1d-bf82-eab4264ce22e/watermark:F/width:133?csig=AAAAAAAAAAAAAAAAAAAAANu8lPJ6RICBmmLm72k-qPqxq7osoXeBQc3CnHAKufy2&exp=1795376760&osig=AAAAAAAAAAAAAAAAAAAAAPXs5ixrqVMF_1XdbBbY6GvQyGM1OkhqAR1QFsix1JHw&signer=media-rpc&token=AAIAAU0AJGJjNmRiOGMzLTUxZDktNGUxZC1iZjgyLWVhYjQyNjRjZTIyZQAAAAABogTLRMAC5d0IZdnBf_RnPMaw8Hsb9mJFrzTZkeJMvaOXp78-iA&x-canva-quality=thumbnail\"},{\"path\":\"assets/work/blue-real-life/real-new-08.jpg\",\"url\":\"https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2F2aa2bd33-2e2d-488d-bcc4-528fa875f518/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAHOQUr93HetyFsd1rkTn0ZgVOm-IaxWJcNnicMiZF8hT&exp=1795377417&osig=AAAAAAAAAAAAAAAAAAAAACDCocsjNCwQTR0w6mrZp5p1_rPrA6vKTHW6Py1AjjQo&signer=media-rpc&token=AAIAAU0AJDJhYTJiZDMzLTJlMmQtNDg4ZC1iY2M0LTUyOGZhODc1ZjUxOAAAAAABogTVSyhKlfdUx1BgjGM6xc-PJ5XWOmFQak03dHt4ZHQBbMAytQ&x-canva-quality=thumbnail\"},{\"path\":\"assets/work/blue-real-life/real-new-09.jpg\",\"url\":\"https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2Fe9a5299e-5217-42b2-964e-9642b5795a7f/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAANGQlJ6s-tduz8cJ7sSsSnXlhgBUcrHmLMjNJ57OCvSu&exp=1795375342&osig=AAAAAAAAAAAAAAAAAAAAAOQI86sydyscTb3Uk2YvrEtwmCw_D3epcmDtq10fHAq-&signer=media-rpc&token=AAIAAU0AJGU5YTUyOTllLTUyMTctNDJiMi05NjRlLTk2NDJiNTc5NWE3ZgAAAAABogS1obBCQOhrOKxuRtGj6RKuAyJQCVL9BqK0mRbIiJAr_z7Ztg&x-canva-quality=thumbnail\"}]")
+          for image in sources:
+           p=pathlib.Path(image['path']);p.parent.mkdir(parents=True, exist_ok=True)
+           req=urllib.request.Request(image['url'],headers={'User-Agent':'Mozilla/5.0'})
+           for trial in range(3):
+            try:
+             with urllib.request.urlopen(req,timeout=35) as response: data=response.read()
+             if not data.startswith(bytes.fromhex('ffd8')): raise ValueError('Response is not JPEG')
+             p.write_bytes(data);print('saved',p,len(data));break
+            except Exception as e:
+             if trial==2:raise
+             print('Retry:',repr(e));time.sleep(2)
+          subprocess.run(['git','config','user.name','github-actions[bot]'],check=True)
+          subprocess.run(['git','config','user.email','github-actions[bot]@users.noreply.github.com'],check=True)
+          subprocess.run(['git','add','assets/work/blue-real-life/real-new-*.jpg'],check=True)
+          if subprocess.run(['git','diff','--cached','--quiet']).returncode:
+           subprocess.run(['git','commit','-m','Self-host nine more user-supplied original photos for LIVED'],check=True)
+           subprocess.run(['git','push'],check=True)
+          PY
