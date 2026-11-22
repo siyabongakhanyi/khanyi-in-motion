@@ -246,3 +246,12 @@
 @media(max-width:730px){.kim2-story-teaser{grid-template-columns:1fr}.kim2-story-teaser-copy{padding:25px 22px}.kim2-story-teaser-states>span{min-height:80px}}
 @media(max-width:460px){.kim2-story-teaser{margin-top:20px}.kim2-story-teaser h3{font-size:38px}.kim2-story-teaser-states>span{min-height:78px;padding:13px}.kim2-story-cta{width:100%;font-size:11px}}
 @media(prefers-reduced-motion:reduce){.kim2-story-cta{transition:none}}
+
+/* WORN chapter handoff — contextual access to the first original styling editorial. */
+#panel-worn .kim-worn-work-link{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:58px;margin:16px 0;padding:13px 14px;background:#15366c;color:#fff;text-decoration:none;border:1px solid #15366c;transition:background .2s,color .2s}
+#panel-worn .kim-worn-work-link:hover{background:#2857a5;color:#fff}
+#panel-worn .kim-worn-work-link:focus-visible{outline:3px solid #e94c27;outline-offset:3px}
+#panel-worn .kim-worn-work-link>span{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:850;line-height:1.4;letter-spacing:.035em}
+#panel-worn .kim-worn-work-link small{font-size:10px;font-weight:700;letter-spacing:.035em;color:#e3edff}
+#panel-worn .kim-worn-work-link .line-icon{width:18px;height:18px;flex:none}
+@media(prefers-reduced-motion:reduce){#panel-worn .kim-worn-work-link{transition:none}}
