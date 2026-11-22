@@ -1,0 +1,56 @@
+name: Restore real LIVED photography at original resolution
+on:
+  push:
+    paths:
+      - 'khanyi_blue_real_life_originals_ready_for_github.zip'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  restore-actual-photographs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+      - name: Replace thumbnails with user-supplied real originals
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          archive=Path('khanyi_blue_real_life_originals_ready_for_github.zip')
+          if not archive.exists():
+              print('No original-image package has been uploaded; nothing to do.')
+              raise SystemExit(0)
+          folder=Path('assets/work/blue-real-life')
+          wanted={str(folder/f'lived-extra-{i:02d}.jpg') for i in range(1,10)}
+          wanted.update(str(folder/f'real-new-{i:02d}.jpg') for i in range(1,10))
+          with ZipFile(archive) as z:
+              got=set(z.namelist())
+              if not wanted.issubset(got):
+                  raise RuntimeError('The uploaded ZIP must contain the 18 real images at their expected site paths.')
+              for path in sorted(wanted):
+                  payload=z.read(path)
+                  if not payload.startswith(bytes.fromhex('ffd8ff')) or len(payload)<100_000:
+                      raise RuntimeError('Expected a high-quality JPEG original for '+path)
+                  target=Path(path)
+                  target.parent.mkdir(parents=True,exist_ok=True)
+                  target.write_bytes(payload)
+                  print('Restored',path,len(payload),'bytes')
+          archive.unlink()
+          PY
+      - name: Commit original-resolution photographs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -f khanyi_blue_real_life_originals_ready_for_github.zip ]; then
+            echo "File not changed; no upgrade to commit."
+            exit 0
+          fi
+          git add assets/work/blue-real-life/lived-extra-*.jpg assets/work/blue-real-life/real-new-*.jpg
+          git add -u khanyi_blue_real_life_originals_ready_for_github.zip
+          if ! git diff --cached --quiet; then
+            git commit -m "Restore 18 user-supplied real photos in full web-ready resolution"
+            git push
+          fi
