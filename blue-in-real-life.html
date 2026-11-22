@@ -63,6 +63,17 @@
 @media(max-width:700px){.hero-grid{grid-template-columns:1fr}.hero-contact-sheet{max-width:530px;width:100%;margin-inline:auto;gap:11px;padding:18px 5px 44px}.hero-contact-sheet figure{max-width:170px}.photo-gallery,.photo-gallery.gallery-two{display:flex;flex-wrap:nowrap;justify-content:flex-start;width:100%;max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;gap:24px;padding:29px 20px 44px;scroll-padding-inline:20px;-webkit-overflow-scrolling:touch}.photo-card{flex:0 0 min(41vw,165px);max-width:165px;scroll-snap-align:center}.photo-card:nth-child(n){transform:none}.photo-card:nth-child(even){transform:rotate(2deg) translateY(8px)}.photo-card:nth-child(odd){transform:rotate(-2deg) translateY(-5px)}.carousel-controls{display:flex;justify-content:space-between}.carousel-controls>span{font-size:9px}}
 @media(max-width:420px){.hero-contact-sheet{gap:7px;padding-inline:0}.hero-contact-sheet figure{padding:4px 4px 7px}.hero-contact-sheet figure figcaption{font-size:8px}.hero-contact-stamp{font-size:7px;bottom:1px}.photo-card{flex:0 0 min(42vw,148px);max-width:148px}.photo-gallery,.photo-gallery.gallery-two{gap:16px}.photo-card figcaption{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.photo-gallery{scroll-behavior:auto}}
+
+/* Bound horizontal contact-sheet scrollers within each page section on small phones.
+   Rotated cards can extend inside their own scrolling track, never the page canvas. */
+html,body{max-width:100%;overflow-x:clip}
+@media(max-width:700px){
+ .chapter{overflow-x:clip;max-width:100%}
+ .chapter>.shell{max-width:calc(100% - 32px);min-width:0}
+ .chapter .photo-gallery{box-sizing:border-box;width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;contain:layout paint;isolation:isolate;overscroll-behavior-inline:contain}
+ .chapter .photo-card{min-width:0}
+}
+@media(max-width:420px){.chapter>.shell{max-width:calc(100% - 28px)}}
 </style></head><body>
 <header class="site-header"><nav class="shell site-nav" aria-label="Page navigation"><a class="brand" href="/#top" aria-label="Khanyi In Motion homepage">K<span>/</span>IM</a><a class="return" href="/#chapter-lived">BACK TO LIVED</a></nav></header>
 <main><section class="hero" aria-labelledby="story-title"><div class="shell hero-grid"><div class="hero-copy"><span class="eyebrow">K/IM / LIVED / SOME BLUES / 002</span>
