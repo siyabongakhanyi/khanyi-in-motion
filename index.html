@@ -665,7 +665,17 @@ html:not(.kim-js-ready) #the-world :is(#tab-worn,#tab-built,#tab-moved,#tab-live
 </style>
   <link rel="stylesheet" href="/some-blues.css" />
   <link rel="stylesheet" href="/blue-real-life.css" />
-</head>
+<style id="kim-focallens-built-entry">
+.kim-built-photo{display:grid;grid-template-columns:minmax(72px,105px) minmax(0,1fr);gap:14px;align-items:center;margin:15px 0 13px;padding:9px;border:1px solid rgba(234,218,193,.24);background:rgba(234,218,193,.075);color:inherit;text-decoration:none;transition:border-color .2s,background .2s}
+.kim-built-photo:hover,.kim-built-photo:focus-visible{border-color:var(--orange,#e85b32);background:rgba(234,218,193,.12);outline-offset:3px}
+.kim-built-photo img{width:100%;height:130px;object-fit:cover;object-position:50% 36%;display:block}
+.kim-built-photo-copy{display:flex;flex-direction:column;gap:6px;min-width:0}
+.kim-built-photo-kicker{font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--orange,#e85b32)}
+.kim-built-photo-copy strong{font-size:clamp(18px,2.1vw,27px);font-weight:800;line-height:.96;letter-spacing:-.02em}
+.kim-built-photo-copy small{font-size:11px;line-height:1.4;opacity:.85}
+.kim-built-photo-action{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.07em;margin-top:4px}
+@media(max-width:490px){.kim-built-photo{grid-template-columns:80px 1fr;gap:11px}.kim-built-photo img{height:119px}.kim-built-photo-copy strong{font-size:21px}.kim-built-photo-copy small{font-size:10px}}
+</style></head>
 <body>
   <header class="top wrap">
     <a class="logo" href="#top" aria-label="Khanyi in Motion home">K<span>/</span>IM<span class="logo-symbol" aria-hidden="true"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7.5"/></svg></span></a>
@@ -789,7 +799,11 @@ html:not(.kim-js-ready) #the-world :is(#tab-worn,#tab-built,#tab-moved,#tab-live
           <article class="v12-chapter v12-chapter-built" id="panel-built" role="tabpanel" aria-labelledby="tab-built" tabindex="0" data-panel="built">
             <div class="v12-feature-mark" aria-hidden="true">02</div>
             <div class="v12-feature-left"><span class="v12-mini">02 / IDEAS / THE MIND AT WORK</span><h3>IDEAS INTO<br/><em>IMPACT.</em></h3><p class="v12-original">Building ideas into impact through technology, UX, systems thinking, creativity and leadership.</p></div>
-            <div class="v12-feature-right"><span class="v12-label">INSIDE THIS WORLD</span><p>What I design, the problems I question, perspectives from my professional life and ideas worth taking further.</p><div class="v15-threads"><span class="v15-small">02 / THE THREADS</span><ul><li>UX & systems thinking</li><li>Technology ideas</li><li>Voice & leadership</li></ul></div><span class="v12-foot">THINK IT THROUGH. BUILD IT OUT.</span></div></article>
+            <div class="v12-feature-right"><span class="v12-label">INSIDE THIS WORLD</span><p>What I design, the problems I question, perspectives from my professional life and ideas worth taking further.</p><div class="v15-threads"><span class="v15-small">02 / THE THREADS</span><ul><li>UX & systems thinking</li><li>Technology ideas</li><li>Photography & creative direction</li><li>Voice & leadership</li></ul></div>
+<a class="kim-built-photo" href="/focallens.html" aria-label="View Khanyi FocalLens Media photography portfolio and the Unscripted beauty collaboration">
+<img src="/assets/focallens/look-purple.jpg" alt="Purple makeup portrait photographed by Khanyi FocalLens Media" loading="lazy" width="130" height="155">
+<span class="kim-built-photo-copy"><span class="kim-built-photo-kicker">NEW / PHOTOGRAPHY PRACTICE</span><strong>KHANYI<br>FOCALLENS MEDIA</strong><small>Portraiture · visual storytelling · spontaneous direction</small><span class="kim-built-photo-action">EXPLORE THE WORK <svg class="line-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></span></span></a>
+<span class="v12-foot">THINK IT THROUGH. BUILD IT OUT.</span></div></article>
           <article class="v12-chapter v12-chapter-moved" id="panel-moved" role="tabpanel" aria-labelledby="tab-moved" tabindex="0" data-panel="moved">
             <div class="v12-feature-mark" aria-hidden="true">03</div>
             <div class="v12-feature-left"><span class="v12-mini">03 / ENERGY / SHOWING UP</span><h3>BUILT BY<br/><em>MOVEMENT.</em></h3><p class="v12-original">Physical movement, discipline, challenges and discovering what I'm capable of.</p></div>
