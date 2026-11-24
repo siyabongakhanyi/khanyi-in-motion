@@ -1,4 +1,11 @@
-import { createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
+import { createHash, createHmac, randomBytes, timingSafeEqual, createDecipheriv } from 'node:crypto';
+import media0 from '../private-media/media-1.mjs';
+import media1 from '../private-media/media-2.mjs';
+import media2 from '../private-media/media-3.mjs';
+import media3 from '../private-media/media-4.mjs';
+import media4 from '../private-media/media-5.mjs';
+import media5 from '../private-media/media-6.mjs';
+const encryptedPhotos = Object.freeze({setup:media0,guests:media1,occasion:media2,venue:media3,signage:media4,entrance:media5});
 
 // The public GitHub repository intentionally contains NO client-specific brief,
 // recipient addresses, passwords, or confidential attachments. Private content
@@ -16,7 +23,7 @@ function securityHeaders(type = 'text/html; charset=utf-8') {
     'Referrer-Policy': 'no-referrer',
     'X-Content-Type-Options': 'nosniff',
     'X-Frame-Options': 'DENY',
-    'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'none'; script-src 'none'; object-src 'none'; upgrade-insecure-requests",
+    'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self'; script-src 'none'; object-src 'none'; upgrade-insecure-requests",
   };
 }
 
@@ -151,6 +158,8 @@ function frame(inner, label='PRIVATE PROJECT ROOM') {
   .application .app-bottom form{flex:none}.application .app-bottom .button{min-height:38px;padding:10px 15px}
   @media(max-width:900px){.application .app-hero{grid-template-columns:1fr}.application .app-aside{min-height:320px}.application .app-ribbon{grid-template-columns:repeat(2,1fr)}.application .app-ribbon>div:nth-child(2){border-right:0}.application .app-values-grid{grid-template-columns:repeat(2,1fr)}.application .app-personal{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:600px){.application .app-hero{padding:35px 0}.application h1{font-size:clamp(61px,14vw,92px)}.application .app-aside{padding:24px;min-height:325px}.application .app-aside-names strong{font-size:48px}.application .app-section-head,.application .app-contact{grid-template-columns:1fr;gap:23px}.application .app-section h2{font-size:50px}.application .app-section-text{font-size:23px}.application .app-values-grid,.application .app-checks,.application .app-strip{grid-template-columns:1fr}.application .app-value{min-height:0}.application .app-personal{grid-template-columns:1fr 1fr}.application .app-personal h3{font-size:20px}.application .app-reply{align-items:start;flex-direction:column}.application .app-bottom{flex-direction:column;align-items:start}.application .app-ribbon strong{font-size:12px}}
+
+  .application .case-gallery{margin-top:36px}.application .case-gallery header{margin:0 0 18px}.application .case-gallery h3{font:normal clamp(28px,4vw,46px)/1.1 Georgia,serif;margin:10px 0}.application .case-photo-grid{display:flex;gap:14px;align-items:flex-start}.application .case-photo{margin:0;min-width:0;flex:1}.application .case-photo.wide{flex:2.25}.application .case-photo img{width:100%;height:auto;display:block;background:#ded8cc;object-fit:contain;image-orientation:from-image}.application .case-photo figcaption{font-size:12px;color:#535750;line-height:1.55;padding:12px 0;border-bottom:1px solid var(--line)}@media(max-width:600px){.application .case-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.application .case-photo.wide{grid-column:1/-1}}
   @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
   </style></head><body><header class="top"><span class="word">PRIVATE / DECEMBER</span><small>${htmlEscape(label)} &nbsp; • &nbsp; RESTRICTED ACCESS</small></header>${inner}</body></html>`;
 }
@@ -159,6 +168,22 @@ function login(error=false) {
   return frame(body,'ACCESS / PRIVATE');
 }
 
+function getGalleryConfig() {
+  try { return JSON.parse(process.env.OFFDESK_PRIVATE_GALLERY_JSON || '{}') || {}; } catch { return {}; }
+}
+function serveGalleryPhoto(id) {
+  if (!Object.hasOwn(encryptedPhotos,id)) return unavailable();
+  try {
+    const key = Buffer.from(getGalleryConfig().key || '', 'base64');
+    if (key.length !== 32) return unavailable();
+    const b = Buffer.from(encryptedPhotos[id], 'base64');
+    const decipher = createDecipheriv('chacha20-poly1305',key,b.subarray(0,12),{authTagLength:16});
+    decipher.setAuthTag(b.subarray(-16));
+    const photo = Buffer.concat([decipher.update(b.subarray(12,-16)),decipher.final()]);
+    if (photo[0] !== 255 || photo[1] !== 216) return unavailable();
+    return new Response(photo,{status:200,headers:securityHeaders('image/jpeg')});
+  } catch { return unavailable(); }
+}
 function privateContent() {
   let data = {};
   try { data = JSON.parse(process.env.OFFDESK_PRIVATE_CONTENT_JSON || '{}'); }
@@ -182,10 +207,17 @@ function privateContent() {
   const interests=arr(data.outside).map(x=>`<article><h3>${e(x.title)}</h3><p>${e(x.text)}</p></article>`).join('');
   let caseData = {};
   try { caseData = JSON.parse(process.env.OFFDESK_PRIVATE_CASE_JSON || '{}') || {}; } catch { caseData = {}; }
+  const galleryConfig = getGalleryConfig();
+  const galleryGroup = i => {
+    const g = arr(galleryConfig.groups)[i];
+    if (!g) return '';
+    const figures = arr(g.photos).filter(p=>Object.hasOwn(encryptedPhotos,p.id)).map(p => `<figure class="case-photo ${p.w>p.h?'wide':'tall'}"><img src="${ROUTE}?photo=${encodeURIComponent(p.id)}" width="${Number(p.w)}" height="${Number(p.h)}" alt="${e(p.alt)}" loading="lazy" decoding="async"><figcaption>${e(p.caption)}</figcaption></figure>`).join('');
+    return figures ? `<div class="case-gallery"><header><span class="eyebrow">${e(g.description)}</span><h3>${e(g.name)}</h3></header><div class="case-photo-grid">${figures}</div></div>` : '';
+  };
   let supportingData = {};
   try { supportingData = JSON.parse(process.env.OFFDESK_PRIVATE_SUPPORTING_CASE_JSON || '{}') || {}; } catch { supportingData = {}; }
-  const supportingSection = supportingData.title && supportingData.url ? `<article class="app-section" style="padding:32px 0 0;margin-top:32px;border-top:1px solid var(--line);border-bottom:0" aria-labelledby="supporting-h"><div class="app-section-head"><div><span class="eyebrow">Additional experience / Media archive</span><h3 id="supporting-h" style="font:normal clamp(30px,4vw,58px)/1.1 Georgia,serif;margin:12px 0">${e(supportingData.title)}</h3></div><div><p class="sublead">${e(supportingData.intro)}</p><div class="app-buttons"><a class="button alt" href="${url(supportingData.url)}" target="_blank" rel="noopener noreferrer">VIEW PROJECT ARCHIVE ↗</a></div></div></div><div class="app-ribbon" style="grid-template-columns:repeat(3,minmax(0,1fr));margin:22px 0 0;border-top:1px solid var(--line)">${arr(supportingData.counts).map(x=>`<div><span>${e(x.label)}</span><strong style="font-size:clamp(23px,3vw,36px);font-variant-numeric:tabular-nums">${e(x.value)}</strong></div>`).join('')}</div></article>` : '';
-  const caseSection = caseData.title && caseData.event ? `<section class="app-section" id="client-experience" aria-labelledby="case-h"><div class="app-section-head"><div><span class="eyebrow">03 / Selected experience</span><h2 id="case-h">${e(caseData.title)}.<br>People first.</h2><p class="sublead">${e(caseData.event)} · ${e(caseData.date)} · ${e(caseData.location)}</p></div><div class="app-section-text"><p>${e(caseData.intro)}</p><p>${e(caseData.relevance)}</p></div></div><div class="app-personal">${arr(caseData.areas).map(x=>`<article><h3>${e(x.title)}</h3><p>${e(x.text)}</p></article>`).join('')}</div><div class="app-buttons"><a class="button" href="${url(caseData.gallery)}" target="_blank" rel="noopener noreferrer">VIEW EVENT PHOTOGRAPHY ↗</a><a class="button alt" href="${url(caseData.video)}" target="_blank" rel="noopener noreferrer">VIEW VIDEO ARCHIVE ↗</a></div><p class="sublead">Original event media. Google Drive access permissions apply.</p>${supportingSection}</section>` : '';
+  const supportingSection = supportingData.title && supportingData.url ? `<article class="app-section" style="padding:32px 0 0;margin-top:32px;border-top:1px solid var(--line);border-bottom:0" aria-labelledby="supporting-h"><div class="app-section-head"><div><span class="eyebrow">Additional experience / Media archive</span><h3 id="supporting-h" style="font:normal clamp(30px,4vw,58px)/1.1 Georgia,serif;margin:12px 0">${e(supportingData.title)}</h3></div><div><p class="sublead">${e(galleryConfig.support || supportingData.intro)}</p><div class="app-buttons"><a class="button alt" href="${url(supportingData.url)}" target="_blank" rel="noopener noreferrer">VIEW PROJECT ARCHIVE ↗</a></div></div></div><div class="app-ribbon" style="grid-template-columns:repeat(3,minmax(0,1fr));margin:22px 0 0;border-top:1px solid var(--line)">${arr(supportingData.counts).map(x=>`<div><span>${e(x.label)}</span><strong style="font-size:clamp(23px,3vw,36px);font-variant-numeric:tabular-nums">${e(x.value)}</strong></div>`).join('')}</div>${galleryGroup(1)}</article>` : '';
+  const caseSection = caseData.title && caseData.event ? `<section class="app-section" id="client-experience" aria-labelledby="case-h"><div class="app-section-head"><div><span class="eyebrow">03 / Selected experience</span><h2 id="case-h">${e(caseData.title)}.<br>People first.</h2><p class="sublead">${e(caseData.event)} · ${e(caseData.date)} · ${e(caseData.location)}</p></div><div class="app-section-text"><p>${e(galleryConfig.intro || caseData.intro)}</p><p>${e(caseData.relevance)}</p></div></div><div class="app-local-note"><div><span class="eyebrow">COLLABORATION / CREDIT</span><p>${e(galleryConfig.credit || '')}</p></div></div><div class="app-personal">${arr(caseData.areas).map(x=>`<article><h3>${e(x.title)}</h3><p>${e(x.text)}</p></article>`).join('')}</div>${galleryGroup(0)}<div class="app-buttons"><a class="button" href="${url(caseData.gallery)}" target="_blank" rel="noopener noreferrer">VIEW EVENT PHOTOGRAPHY ↗</a><a class="button alt" href="${url(caseData.video)}" target="_blank" rel="noopener noreferrer">VIEW VIDEO ARCHIVE ↗</a></div><p class="sublead">Original event media. Google Drive access permissions apply.</p>${supportingSection}</section>` : '';
   const body=`<main class="shell application" id="main"><section class="app-hero" aria-labelledby="app-title"><div class="app-hero-left"><div class="app-topline">A private seasonal application / ${company}</div><div><h1 id="app-title">Off the desk.<br><em>On the floor.</em></h1><p class="app-hero-lead">${e(data.heroLine)}</p></div><div class="app-hero-bottom"><span class="app-pill">${e(data.availability)}</span><span class="app-pill">Weekends + late shifts</span><span class="app-pill">Bedfordview local</span></div></div><div class="app-aside" aria-label="Applicant introduction"><div class="app-aside-top"><span>PRIVATE PROFILE / 01</span><span>DEC '26</span></div><div class="app-aside-names"><strong>${applicant.split(' ').join('<br>')}</strong><span>${e(data.headline)}</span></div><div class="app-aside-foot"><span>CUSTOMER EXPERIENCE<br>CREATIVITY + TECHNOLOGY</span><b>READY TO LEARN</b></div></div></section>
 <div class="app-ribbon"><div><span>Applicant</span><strong>${applicant}</strong></div><div><span>Where</span><strong>${e(data.location)}</strong></div><div><span>Availability</span><strong>${e(data.availability)}</strong></div><div><span>Shift preference</span><strong>${e(data.shifts)}</strong></div></div>
 <section class="app-section" id="story" aria-labelledby="story-h"><div class="app-section-head"><div><span class="eyebrow">01 / The person</span><h2 id="story-h">A different side<br>of work.</h2></div><div class="app-section-text"><p>${e(data.about)}</p><p>${e(data.intention)}</p></div></div><div class="app-local-note"><b>↗</b><p>${e(data.whyCompany)}</p></div></section>
@@ -202,7 +234,10 @@ function unavailable() { return send('Not Found',404); } // fail closed until co
 export function GET(req) {
   const secret=sharedSecret();
   if(!secret || secret.length < 24) return unavailable();
-  return send(hasValidSession(req,secret)?privateContent():login());
+  const valid=hasValidSession(req,secret);
+  const photo=new URL(req.url).searchParams.get('photo');
+  if(photo!==null) return valid?serveGalleryPhoto(photo):unavailable();
+  return send(valid?privateContent():login());
 }
 export async function POST(req) {
   const secret=sharedSecret();
